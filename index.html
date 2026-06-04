@@ -243,22 +243,26 @@
       color: rgba(245,200,0,0.85);
     }
     .pillar-title {
-      font-size: 14px;
+      font-size: 16px;
       font-weight: 700;
       color: var(--text);
       margin-bottom: 6px;
     }
     .pillar-en {
       font-family: 'Space Mono', monospace;
-      font-size: 10px;
+      font-size: 11px;
       color: var(--yellow);
       letter-spacing: 0.1em;
       margin-bottom: 12px;
     }
     .pillar-desc {
-      font-size: 13px;
+      font-size: 14px;
       color: var(--muted);
-      line-height: 1.6;
+      line-height: 1.7;
+      transition: color 0.2s;
+    }
+    .pillar:hover .pillar-desc {
+      color: var(--text);
     }
 
     /* ─── PROJECTS ─── */
@@ -310,34 +314,44 @@
     }
     .project-name {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 36px;
+      font-size: 42px;
       letter-spacing: 0.04em;
       color: var(--text);
       margin-bottom: 8px;
     }
     .project-sub {
-      font-size: 13px;
+      font-size: 14px;
       color: var(--yellow);
       font-family: 'Space Mono', monospace;
       margin-bottom: 16px;
       letter-spacing: 0.05em;
     }
     .project-desc {
-      font-size: 14px;
+      font-size: 15px;
       color: var(--muted);
-      line-height: 1.7;
+      line-height: 1.8;
       margin-bottom: 24px;
+      transition: color 0.2s;
+    }
+    .project-card:hover .project-desc {
+      color: #ffffff;
     }
     .project-tags {
       display: flex; flex-wrap: wrap; gap: 8px;
     }
     .tag {
       font-family: 'Space Mono', monospace;
-      font-size: 10px;
+      font-size: 11px;
       color: var(--muted);
       border: 1px solid var(--border);
-      padding: 4px 10px;
+      padding: 5px 12px;
       letter-spacing: 0.08em;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .project-card:hover .tag {
+      color: var(--text);
+      border-color: #444;
+    }
     }
     .project-year {
       position: absolute;
