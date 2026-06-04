@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>서비스 이용약관 — Billion Play</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --yellow: #F5C800;
+      --black: #0a0a0a;
+      --dark: #111111;
+      --card: #161616;
+      --border: #2a2a2a;
+      --text: #e8e8e8;
+      --muted: #888;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--black);
+      color: var(--text);
+      font-family: 'Noto Sans KR', sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 48px;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(245,200,0,0.08);
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px; letter-spacing: 0.12em;
+      color: var(--yellow); text-decoration: none;
+    }
+    .nav-back {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--muted);
+      text-decoration: none; transition: color 0.2s;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .nav-back::before { content: '←'; }
+    .nav-back:hover { color: var(--yellow); }
+
+    .page-header {
+      padding: 140px 48px 60px;
+      border-bottom: 1px solid var(--border);
+      background: var(--dark);
+    }
+    .page-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--yellow);
+      margin-bottom: 16px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .page-label::before { content: ''; width: 24px; height: 1px; background: var(--yellow); }
+    .page-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(40px, 6vw, 72px);
+      letter-spacing: 0.02em; color: var(--text); margin-bottom: 16px;
+    }
+    .page-meta {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px; color: var(--muted); letter-spacing: 0.1em;
+    }
+
+    .content-wrap {
+      max-width: 800px; margin: 0 auto;
+      padding: 72px 48px 100px;
+    }
+
+    .article h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px; letter-spacing: 0.05em;
+      color: var(--text); margin: 56px 0 16px;
+      padding-bottom: 10px; border-bottom: 1px solid var(--border);
+    }
+    .article h2:first-child { margin-top: 0; }
+    .article h3 {
+      font-size: 14px; font-weight: 700; color: var(--yellow);
+      margin: 28px 0 8px; font-family: 'Space Mono', monospace;
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .article p {
+      font-size: 14px; color: var(--muted);
+      margin-bottom: 16px; line-height: 1.9;
+    }
+    .article ul, .article ol {
+      padding-left: 20px; margin-bottom: 16px;
+    }
+    .article li {
+      font-size: 14px; color: var(--muted);
+      line-height: 1.9; margin-bottom: 6px;
+    }
+    .article strong { color: var(--text); font-weight: 500; }
+
+    .info-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--yellow);
+      padding: 20px 24px; margin: 24px 0;
+    }
+    .info-box p { margin-bottom: 0; }
+
+    .contact-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 28px 32px; margin-top: 48px;
+    }
+    .contact-box .label {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px; letter-spacing: 0.2em;
+      color: var(--yellow); margin-bottom: 12px;
+    }
+    .contact-box p { margin-bottom: 4px; }
+    .contact-box a { color: var(--text); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 48px;
+      display: flex; justify-content: space-between; align-items: center;
+      background: var(--dark);
+    }
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px; letter-spacing: 0.12em; color: var(--yellow);
+    }
+    .footer-copy {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px; color: var(--muted); letter-spacing: 0.08em;
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .page-header { padding: 120px 24px 48px; }
+      .content-wrap { padding: 48px 24px 72px; }
+      footer { flex-direction: column; gap: 16px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="./index.html" class="nav-logo">Billion Play</a>
+    <a href="./index.html" class="nav-back">홈으로</a>
+  </nav>
+
+  <div class="page-header">
+    <div class="page-label">Legal</div>
+    <h1 class="page-title">서비스 이용약관</h1>
+    <div class="page-meta">Terms of Service · 시행일: 2026년 07월 01일</div>
+  </div>
+
+  <div class="content-wrap">
+    <div class="article">
+
+      <div class="info-box">
+        <p>본 약관은 주식회사 빌리언플레이(이하 "회사")가 제공하는 모든 게임 서비스(이하 "서비스")의 이용에 관한 조건 및 절차를 규정합니다. 서비스를 이용하면 본 약관에 동의한 것으로 간주합니다.</p>
+      </div>
+
+      <h2>제1조 목적</h2>
+      <p>본 약관은 회사가 제공하는 모바일 게임 및 관련 서비스의 이용 조건, 절차, 회사와 이용자 간의 권리·의무 및 책임 사항을 규정함을 목적으로 합니다.</p>
+
+      <h2>제2조 정의</h2>
+      <ul>
+        <li><strong>"서비스"</strong>란 회사가 제공하는 모바일 게임, 웹사이트 및 관련 부가 서비스를 의미합니다.</li>
+        <li><strong>"이용자"</strong>란 서비스에 접속하여 본 약관에 따라 서비스를 이용하는 자를 의미합니다.</li>
+        <li><strong>"유료 아이템"</strong>이란 서비스 내에서 유료로 구매하거나 획득하는 아이템, 재화 등을 의미합니다.</li>
+        <li><strong>"콘텐츠"</strong>란 서비스 내에서 이용 가능한 게임, 캐릭터, 아이템, 이미지, 영상, 음악 등 일체를 의미합니다.</li>
+      </ul>
+
+      <h2>제3조 약관의 효력 및 변경</h2>
+      <p>본 약관은 서비스를 이용하는 모든 이용자에게 적용됩니다. 회사는 필요한 경우 약관을 변경할 수 있으며, 변경된 약관은 시행 7일 전 앱 내 공지를 통해 고지합니다. 변경 약관 시행 후 계속 서비스를 이용하면 변경된 약관에 동의한 것으로 봅니다.</p>
+
+      <h2>제4조 서비스의 제공 및 변경</h2>
+      <p>회사가 제공하는 서비스는 다음과 같습니다.</p>
+      <ul>
+        <li>모바일 캐주얼 퍼즐 게임 서비스</li>
+        <li>게임 계정 관리 및 데이터 저장 서비스</li>
+        <li>이벤트, 랭킹, 소셜 기능 등 부가 서비스</li>
+        <li>고객 지원 서비스</li>
+      </ul>
+      <p>회사는 서비스의 내용, 운영 정책 등을 변경할 수 있으며, 중요한 변경 사항은 사전에 공지합니다.</p>
+
+      <h2>제5조 서비스 이용</h2>
+      <h3>이용 자격</h3>
+      <p>만 14세 미만의 경우 법정대리인의 동의가 필요합니다. 회사의 서비스는 전 세계 이용자를 대상으로 하며, 해당 국가의 법령을 준수해야 합니다.</p>
+
+      <h3>계정 관리</h3>
+      <ul>
+        <li>이용자는 계정 정보의 보안에 책임을 집니다.</li>
+        <li>계정 도용 또는 부정 사용이 의심될 경우 즉시 회사에 신고해야 합니다.</li>
+        <li>타인의 계정을 무단으로 사용하는 행위는 금지됩니다.</li>
+      </ul>
+
+      <h2>제6조 금지 행위</h2>
+      <p>이용자는 다음 행위를 해서는 안 됩니다.</p>
+      <ul>
+        <li>핵, 봇, 매크로 등 비정상적인 방법으로 서비스를 이용하는 행위</li>
+        <li>서비스의 취약점을 악용하거나 버그를 의도적으로 이용하는 행위</li>
+        <li>다른 이용자의 게임 이용을 방해하는 행위</li>
+        <li>서비스 내 콘텐츠를 무단으로 복제, 배포, 상업적으로 이용하는 행위</li>
+        <li>관련 법령을 위반하는 행위</li>
+        <li>회사 또는 타인의 명예를 훼손하는 행위</li>
+        <li>허위 정보를 등록하거나 타인을 사칭하는 행위</li>
+      </ul>
+
+      <h2>제7조 유료 서비스 및 환불</h2>
+      <h3>유료 서비스</h3>
+      <p>서비스 내 일부 콘텐츠는 유료로 제공됩니다. 유료 콘텐츠 구매 시 각 앱 마켓(Google Play, App Store)의 결제 정책이 적용됩니다.</p>
+
+      <h3>환불 정책</h3>
+      <ul>
+        <li>인앱 구매의 환불은 각 앱 마켓의 환불 정책을 따릅니다.</li>
+        <li>이미 사용된 유료 아이템은 원칙적으로 환불되지 않습니다.</li>
+        <li>회사의 귀책 사유로 인한 서비스 장애 시 별도 보상 기준을 적용합니다.</li>
+        <li>환불 문의: <strong>support@billionplay.com</strong></li>
+      </ul>
+
+      <h2>제8조 서비스 중단 및 종료</h2>
+      <p>회사는 다음의 경우 서비스를 일시 중단하거나 종료할 수 있습니다.</p>
+      <ul>
+        <li>시스템 점검, 업데이트, 장애 복구가 필요한 경우</li>
+        <li>서비스 운영 정책상 필요한 경우</li>
+        <li>천재지변, 불가항력적 사유가 발생한 경우</li>
+      </ul>
+      <p>서비스 종료 시에는 최소 30일 전 앱 내 공지를 통해 안내합니다. 서비스 종료로 인한 유료 아이템 환불 정책은 별도로 공지합니다.</p>
+
+      <h2>제9조 지식재산권</h2>
+      <p>서비스 내 모든 콘텐츠(게임, 캐릭터, 이미지, 음악, 텍스트 등)에 대한 지식재산권은 회사에 귀속됩니다. 이용자는 서비스 이용 목적 범위 내에서만 콘텐츠를 이용할 수 있으며, 무단 복제·배포·상업적 이용은 금지됩니다.</p>
+
+      <h2>제10조 면책 조항</h2>
+      <p>회사는 다음의 경우 책임을 지지 않습니다.</p>
+      <ul>
+        <li>이용자의 귀책 사유로 인한 서비스 이용 장애</li>
+        <li>이용자 간 분쟁으로 인한 손해</li>
+        <li>무료로 제공되는 서비스의 이용으로 인한 손해 (단, 회사의 고의·중과실 제외)</li>
+        <li>이용자가 서비스를 통해 기대하는 수익의 미실현</li>
+      </ul>
+
+      <h2>제11조 분쟁 해결 및 준거법</h2>
+      <p>본 약관은 대한민국 법령에 따라 해석되며, 서비스 이용과 관련하여 분쟁이 발생한 경우 상호 협의를 통해 해결함을 원칙으로 합니다. 협의가 이루어지지 않는 경우 민사소송법에 따른 관할 법원에 소를 제기할 수 있습니다.</p>
+
+      <h2>제12조 문의처</h2>
+      <div class="contact-box">
+        <div class="label">고객 지원 및 이용약관 문의</div>
+        <p><strong>회사명:</strong> 주식회사 빌리언플레이</p>
+        <p><strong>이메일:</strong> <a href="mailto:support@billionplay.com">support@billionplay.com</a></p>
+        <p><strong>운영시간:</strong> 평일 10:00 – 18:00 (KST)</p>
+        <p><strong>주소:</strong> 부산광역시 해운대구 센텀중앙로 97, 센텀스카이비즈</p>
+      </div>
+
+      <p style="margin-top: 32px;">
+        공고일: 2026년 06월 24일<br>
+        시행일: 2026년 07월 01일
+      </p>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-logo">Billion Play</div>
+    <div class="footer-copy">© 2026 Billion Play Inc. All rights reserved.</div>
+  </footer>
+
+</body>
+</html>
