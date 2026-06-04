@@ -67,34 +67,25 @@
       overflow: hidden;
     }
 
-    .hero-bg {
+    /* 커버 이미지 */
+    .hero-cover {
+      position: absolute; inset: 0;
+      background: url('./cover.png') center center / cover no-repeat;
+    }
+
+    /* 텍스트 가독성용 오버레이 — 왼쪽 하단 어둡게 */
+    .hero-overlay {
       position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse 60% 50% at 70% 40%, rgba(245,200,0,0.07) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 60% at 20% 80%, rgba(245,200,0,0.04) 0%, transparent 60%);
+        linear-gradient(to right, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.1) 100%),
+        linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 50%, transparent 100%);
     }
 
-    .hero-grid {
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(245,200,0,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(245,200,0,0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
-      mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 70%, transparent 100%);
-    }
-
-    .hero-number {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(120px, 22vw, 320px);
-      line-height: 0.85;
-      color: rgba(245,200,0,0.06);
-      position: absolute;
-      right: -20px; top: 50%;
-      transform: translateY(-50%);
-      letter-spacing: -0.02em;
-      user-select: none;
-      pointer-events: none;
-    }
+    .hero-bg { display: none; }
+    .hero-grid { display: none; }
+    .hero-checker { display: none; }
+    .hero-logo-img { display: none; }
+    .hero-number { display: none; }
 
     .hero-tag {
       font-family: 'Space Mono', monospace;
@@ -528,7 +519,8 @@
       .contact-grid { grid-template-columns: 1fr; }
       footer { flex-direction: column; gap: 20px; text-align: center; }
       .footer-links { flex-wrap: wrap; justify-content: center; }
-      .hero-number { font-size: 40vw; right: -40px; }
+      .hero-logo-img { width: 160px; right: 4%; opacity: 0.5; top: 30%; transform: none; }
+      .hero-checker { width: 100%; opacity: 0.08; }
     }
   </style>
 </head>
@@ -547,9 +539,8 @@
 
   <!-- HERO -->
   <section id="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-grid"></div>
-    <div class="hero-number">10억</div>
+    <div class="hero-cover"></div>
+    <div class="hero-overlay"></div>
 
     <div class="hero-tag">Creative Game Studio · Busan, Korea</div>
     <h1 class="hero-title">
