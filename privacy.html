@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
   <title>개인정보처리방침 — Billion Play</title>
   <link rel="icon" type="image/png" href="./favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -15,8 +16,9 @@
       --dark: #111111;
       --card: #161616;
       --border: #2a2a2a;
-      --text: #e8e8e8;
-      --muted: #888;
+      --text: #f0f0f0;
+      --muted: #b0b0b0;
+      --faint: #8a8a8a;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -24,17 +26,27 @@
       background: var(--black);
       color: var(--text);
       font-family: 'Noto Sans KR', sans-serif;
-      font-weight: 300;
+      font-weight: 400;
       line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    html[data-lang="ko"] [lang="en"] { display: none !important; }
+    html[data-lang="en"] [lang="ko"] { display: none !important; }
+
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--yellow);
+      outline-offset: 3px;
     }
 
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; justify-content: space-between; align-items: center;
-      padding: 20px 48px;
-      background: rgba(10,10,10,0.92);
+      gap: 16px;
+      padding: 18px 48px;
+      background: rgba(10,10,10,0.94);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(245,200,0,0.08);
+      border-bottom: 1px solid rgba(245,200,0,0.10);
     }
     .nav-logo {
       font-family: 'Bebas Neue', sans-serif;
@@ -43,10 +55,11 @@
       color: var(--yellow);
       text-decoration: none;
     }
+    .nav-right { display: flex; align-items: center; gap: 28px; }
     .nav-back {
       font-family: 'Space Mono', monospace;
-      font-size: 11px;
-      letter-spacing: 0.15em;
+      font-size: 12px;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--muted);
       text-decoration: none;
@@ -56,6 +69,24 @@
     .nav-back::before { content: '←'; }
     .nav-back:hover { color: var(--yellow); }
 
+    .lang-switch { display: flex; border: 1px solid var(--border); }
+    .lang-btn {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      padding: 6px 12px;
+      background: transparent;
+      color: var(--faint);
+      border: none; cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      line-height: 1.4;
+    }
+    .lang-btn + .lang-btn { border-left: 1px solid var(--border); }
+    .lang-btn:hover { color: var(--text); }
+    .lang-btn[aria-pressed="true"] {
+      background: var(--yellow); color: var(--black); font-weight: 700;
+    }
+
     .page-header {
       padding: 140px 48px 60px;
       border-bottom: 1px solid var(--border);
@@ -63,8 +94,8 @@
     }
     .page-label {
       font-family: 'Space Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.25em;
+      font-size: 11px;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--yellow);
       margin-bottom: 16px;
@@ -73,109 +104,125 @@
     .page-label::before { content: ''; width: 24px; height: 1px; background: var(--yellow); }
     .page-title {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(40px, 6vw, 72px);
+      font-size: clamp(38px, 6vw, 68px);
       letter-spacing: 0.02em;
       color: var(--text);
       margin-bottom: 16px;
+      line-height: 1.05;
     }
     .page-meta {
       font-family: 'Space Mono', monospace;
-      font-size: 11px;
+      font-size: 12px;
       color: var(--muted);
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
     }
 
     .content-wrap {
-      max-width: 800px;
+      max-width: 780px;
       margin: 0 auto;
-      padding: 72px 48px 100px;
+      padding: 64px 48px 100px;
     }
 
     .article h2 {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 28px;
-      letter-spacing: 0.05em;
+      font-size: 30px;
+      letter-spacing: 0.04em;
       color: var(--text);
-      margin: 56px 0 16px;
+      margin: 56px 0 18px;
       padding-bottom: 10px;
       border-bottom: 1px solid var(--border);
     }
     .article h2:first-child { margin-top: 0; }
 
     .article h3 {
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 700;
       color: var(--yellow);
-      margin: 28px 0 8px;
-      font-family: 'Space Mono', monospace;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      margin: 30px 0 10px;
+      letter-spacing: 0.02em;
     }
 
     .article p {
-      font-size: 14px;
+      font-size: 16px;
       color: var(--muted);
       margin-bottom: 16px;
       line-height: 1.9;
     }
 
     .article ul, .article ol {
-      padding-left: 20px;
-      margin-bottom: 16px;
+      padding-left: 22px;
+      margin-bottom: 18px;
     }
     .article li {
-      font-size: 14px;
+      font-size: 16px;
       color: var(--muted);
       line-height: 1.9;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
-    .article strong { color: var(--text); font-weight: 500; }
+    .article strong { color: var(--text); font-weight: 700; }
+    .article a { color: var(--yellow); }
+
+    .table-scroll {
+      overflow-x: auto;
+      margin: 20px 0 24px;
+      border: 1px solid var(--border);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+      min-width: 520px;
+    }
+    th, td {
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.7;
+    }
+    th {
+      background: var(--card);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+    td { color: var(--muted); }
+    tr:last-child td { border-bottom: none; }
 
     .info-box {
       background: var(--card);
       border: 1px solid var(--border);
       border-left: 3px solid var(--yellow);
-      padding: 20px 24px;
-      margin: 24px 0;
+      padding: 22px 26px;
+      margin: 24px 0 40px;
     }
-    .info-box p { margin-bottom: 0; }
+    .info-box p { margin-bottom: 12px; }
+    .info-box p:last-child { margin-bottom: 0; }
 
     .contact-box {
       background: var(--card);
       border: 1px solid var(--border);
       padding: 28px 32px;
-      margin-top: 48px;
+      margin: 24px 0;
     }
     .contact-box .label {
       font-family: 'Space Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.2em;
+      font-size: 11px;
+      letter-spacing: 0.18em;
       color: var(--yellow);
-      margin-bottom: 12px;
+      margin-bottom: 14px;
+      text-transform: uppercase;
     }
-    .contact-box p { margin-bottom: 4px; }
-    .contact-box a { color: var(--text); }
-
-
-    .footer-legal {
-      background: #0d0d0d;
-      border-top: 1px solid var(--border);
-      padding: 20px 48px;
-      text-align: center;
-    }
-    .footer-legal p {
-      font-family: 'Space Mono', monospace;
-      font-size: 10px;
-      color: #555;
-      letter-spacing: 0.06em;
-      line-height: 1.9;
-    }
+    .contact-box p { margin-bottom: 6px; font-size: 15px; }
+    .contact-box p:last-child { margin-bottom: 0; }
 
     footer {
       border-top: 1px solid var(--border);
       padding: 32px 48px;
       display: flex; justify-content: space-between; align-items: center;
+      gap: 20px;
       background: var(--dark);
     }
     .footer-logo {
@@ -184,29 +231,39 @@
     }
     .footer-copy {
       font-family: 'Space Mono', monospace;
-      font-size: 10px; color: var(--muted); letter-spacing: 0.08em;
+      font-size: 11px; color: var(--muted); letter-spacing: 0.06em;
     }
 
-    @media (max-width: 768px) {
-      nav { padding: 16px 24px; }
-      .page-header { padding: 120px 24px 48px; }
-      .content-wrap { padding: 48px 24px 72px; }
-  
     .footer-legal {
       background: #0d0d0d;
       border-top: 1px solid var(--border);
-      padding: 20px 48px;
+      padding: 22px 48px;
       text-align: center;
     }
     .footer-legal p {
       font-family: 'Space Mono', monospace;
-      font-size: 10px;
-      color: #555;
-      letter-spacing: 0.06em;
-      line-height: 1.9;
+      font-size: 11px;
+      color: #9a9a9a;
+      letter-spacing: 0.04em;
+      line-height: 2;
     }
 
-    footer { flex-direction: column; gap: 16px; text-align: center; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 14px 20px; }
+      .nav-back { display: none; }
+      .page-header { padding: 110px 24px 44px; }
+      .content-wrap { padding: 48px 24px 72px; }
+      .article h2 { font-size: 26px; margin-top: 44px; }
+      .article p, .article li { font-size: 15px; }
+      footer { flex-direction: column; gap: 16px; text-align: center; }
+      .footer-legal { padding: 20px 24px; }
     }
   </style>
 </head>
@@ -214,115 +271,681 @@
 
   <nav>
     <a href="./index.html" class="nav-logo">Billion Play</a>
-    <a href="./index.html" class="nav-back">홈으로</a>
+    <div class="nav-right">
+      <a href="./index.html" class="nav-back"><span lang="ko">홈으로</span><span lang="en">Home</span></a>
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" class="lang-btn" data-set-lang="ko" aria-pressed="true">KR</button>
+        <button type="button" class="lang-btn" data-set-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
   </nav>
 
   <div class="page-header">
     <div class="page-label">Legal</div>
-    <h1 class="page-title">개인정보처리방침</h1>
-    <div class="page-meta">Privacy Policy · 시행일: 2026년 07월 01일</div>
+    <h1 class="page-title">
+      <span lang="ko">개인정보처리방침</span>
+      <span lang="en">Privacy Policy</span>
+    </h1>
+    <div class="page-meta">
+      <span lang="ko">공고일: 2026년 【월】 【일】 · 시행일: 2026년 【월】 【일】</span>
+      <span lang="en">Published: 【Month】【Day】, 2026 · Effective: 【Month】【Day】, 2026</span>
+    </div>
   </div>
 
   <div class="content-wrap">
-    <div class="article">
+
+    <!-- ══════════ 한국어 ══════════ -->
+    <div class="article" lang="ko">
 
       <div class="info-box">
-        <p>주식회사 빌리언플레이(이하 "회사")는 이용자의 개인정보를 소중히 여기며, 「개인정보 보호법」 및 관련 법령을 준수합니다. 본 방침은 회사가 제공하는 모든 게임 서비스에 적용됩니다.</p>
+        <p>주식회사 빌리언플레이(BILLIONPLAY CO., LTD., 이하 "회사")는 이용자의 개인정보를 중요하게 생각하며, 「개인정보 보호법」 및 서비스가 제공되는 국가·지역에서 적용되는 개인정보 보호 관련 법령을 준수합니다.</p>
+        <p>본 개인정보처리방침은 회사가 제공하는 모바일 게임 및 관련 서비스(이하 "서비스")에서 이용자의 개인정보를 어떠한 목적으로 처리하고 어떻게 보호하는지 설명합니다.</p>
       </div>
 
-      <h2>제1조 수집하는 개인정보</h2>
-      <h3>자동 수집 정보</h3>
-      <p>서비스 이용 과정에서 아래 정보가 자동으로 수집될 수 있습니다.</p>
+      <h2>제1조 처리하는 개인정보의 항목 및 이용 목적</h2>
+
+      <h3>1) 게임 이용 및 계정 관리</h3>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>구분</th><th>처리 항목</th><th>이용 목적</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>게임 계정</td><td>Firebase Authentication 익명 UID</td><td>이용자 식별, 게임 계정 관리, 데이터 저장 및 복원</td></tr>
+            <tr><td>게임 프로필</td><td>닉네임, 친구 코드</td><td>게임 프로필 및 친구 기능 제공</td></tr>
+            <tr><td>게임 이용</td><td>보유 재화, 진행 단계, 수집 현황 등 게임 진행정보</td><td>게임 서비스 제공, 진행 데이터 저장 및 복원</td></tr>
+            <tr><td>친구 기능</td><td>친구 관계 및 친구 요청 내역</td><td>친구 기능 제공</td></tr>
+            <tr><td>랭킹</td><td>랭킹 점수 및 참여 그룹</td><td>랭킹 및 경쟁 기능 제공</td></tr>
+            <tr><td>보상</td><td>보상 지급·수령 이력</td><td>보상 제공 및 중복 지급 방지</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>서비스 최초 이용 시 Firebase Authentication을 통해 임의의 UID가 생성됩니다. 해당 UID는 실명이나 연락처를 직접 나타내지는 않으나, 서비스 내에서 이용자를 지속적으로 구분하고 게임 데이터와 연결하기 위한 식별자로 사용되며, 회사는 이를 개인정보에 준하여 보호합니다.</p>
+
+      <h3>2) Google 및 Apple 계정 연동</h3>
+      <p>이용자가 게임 데이터 복원 등을 위해 외부 계정을 연결하는 경우 다음 정보가 처리될 수 있습니다.</p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>구분</th><th>처리 항목</th><th>이용 목적</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Google 계정 연동</td><td>Google 계정 식별정보, 이메일 주소</td><td>계정 연동, 이용자 확인, 게임 데이터 복원, 고객문의 대응</td></tr>
+            <tr><td>Sign in with Apple</td><td>Apple 계정 식별정보, 이메일 주소 또는 Apple 비공개 전달 주소</td><td>계정 연동, 이용자 확인, 게임 데이터 복원, 고객문의 대응</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>이메일 주소는 별도의 게임 데이터베이스(Cloud Firestore)에 중복 저장하지 않으며, Firebase Authentication의 인증 계정 정보에 포함되어 저장됩니다. 회사는 계정 확인 및 고객지원에 필요한 범위에서 해당 정보를 처리할 수 있습니다.</p>
+      <p>Apple 계정 연동 관련 내용은 iOS 서비스 제공 시 적용됩니다.</p>
+
+      <h3>3) 서비스 이용 과정에서 자동으로 처리되는 정보</h3>
       <ul>
-        <li>기기 정보: 기기 모델, 운영체제 버전, 고유 기기 식별자(ADID/IDFA)</li>
-        <li>네트워크 정보: IP 주소, 접속 국가 및 언어 설정</li>
-        <li>게임 플레이 데이터: 스테이지 진행도, 플레이 시간, 인앱 구매 이력</li>
-        <li>오류 및 진단 정보: 앱 충돌 로그, 성능 데이터</li>
+        <li>기기 모델 및 운영체제 정보</li>
+        <li>앱 버전 및 기기 관련 정보</li>
+        <li>서비스 이용 및 게임 이용 기록</li>
+        <li>오류·충돌 및 성능·진단 정보</li>
+        <li>IP 주소 및 이를 기반으로 추정한 국가·지역 정보</li>
+        <li>Android 광고 ID(AAID/GAID)</li>
+        <li>iOS 서비스 제공 시 IDFA/IDFV 등 광고·기기 관련 식별정보</li>
+        <li>광고 노출·클릭·설치·전환 등 광고 이용 및 성과 정보</li>
       </ul>
+      <p>회사는 애플리케이션 자체 기능을 통해 접속 IP 주소를 게임 데이터베이스에 별도로 저장하지 않습니다. 다만 Google Cloud 등 서비스 운영 인프라 및 분석·광고 서비스 제공 과정에서 IP 주소가 자동으로 처리되거나 서비스 운영 로그에 기록될 수 있습니다.</p>
 
-      <h3>선택적 수집 정보</h3>
+      <h3>4) Push 알림</h3>
+      <p>회사는 게임 진행 안내, 서비스 공지, 이벤트 및 혜택 안내 등을 위해 Push 알림 기능을 제공할 수 있습니다. 이를 위해 다음 정보가 처리될 수 있습니다.</p>
       <ul>
-        <li>소셜 로그인(Google, Apple) 연동 시: 이메일 주소, 프로필 이름</li>
-        <li>고객 지원 문의 시: 이메일 주소, 문의 내용</li>
-        <li>이벤트/프로모션 참여 시: 별도 고지된 항목</li>
+        <li>FCM 등록 토큰</li>
+        <li>이용자 UID</li>
+        <li>iOS 서비스 제공 시 APNs Push Token</li>
       </ul>
+      <p>이용자는 기기에서 제공되는 알림 설정 또는 회사가 제공하는 설정 기능을 통해 Push 알림 수신을 제한하거나 거부할 수 있습니다. 이벤트·혜택 안내 등 광고성 정보를 전송하는 경우 회사는 적용되는 법령에 따라 필요한 수신동의 및 수신거부 절차를 제공합니다.</p>
 
-      <h2>제2조 개인정보 수집 및 이용 목적</h2>
+      <h3>5) 고객문의</h3>
+      <p>이용자는 게임 내 설정 메뉴의 문의 기능을 통해 이메일로 회사에 문의할 수 있습니다. 문의 시 다음 정보가 메일 내용에 포함될 수 있습니다.</p>
       <ul>
-        <li><strong>서비스 제공:</strong> 게임 계정 관리, 게임 데이터 저장 및 동기화</li>
-        <li><strong>서비스 개선:</strong> 게임플레이 분석, 버그 수정, 신규 기능 개발</li>
-        <li><strong>고객 지원:</strong> 문의 처리, 불만 해소, 공지사항 전달</li>
-        <li><strong>보안 및 부정행위 방지:</strong> 어뷰징 감지, 계정 보호</li>
-        <li><strong>법적 의무 이행:</strong> 관련 법령에 따른 기록 보존</li>
+        <li>이용자 UID</li>
+        <li>앱 버전</li>
+        <li>기기 모델</li>
+        <li>운영체제 버전</li>
+        <li>게임 진행 단계</li>
+        <li>이용자가 작성한 문의 내용</li>
+        <li>이용자가 사용하는 이메일 주소</li>
       </ul>
+      <p>회사는 이용자가 이메일을 발송하는 경우 해당 정보를 수집하며, 문의 확인, 이용자 확인, 문제 해결 및 답변 목적으로 이용합니다.</p>
+      <p><strong>고객문의:</strong> <a href="mailto:help@billionplaygames.com">help@billionplaygames.com</a></p>
 
-      <h2>제3조 개인정보 보유 및 파기</h2>
-      <p>회사는 이용자의 개인정보를 수집 및 이용 목적이 달성된 후 지체 없이 파기합니다. 단, 관련 법령에 의해 보존이 필요한 경우 해당 기간 동안 보관합니다.</p>
+      <h3>6) 인앱결제</h3>
+      <p>이용자가 유료 상품을 구매하는 경우 Google Play 또는 Apple App Store 등 앱마켓 사업자가 결제를 처리합니다.</p>
+      <p>회사는 상품 지급, 구매 복원, 결제 확인, 부정 결제 방지 및 환불·분쟁 대응을 위해 주문·거래 식별정보, 상품정보, 구매 상태 및 결제 검증에 필요한 정보를 처리할 수 있습니다.</p>
+      <p>회사는 신용카드번호, 계좌번호 등 앱마켓 사업자가 직접 처리하는 결제수단 정보를 직접 수집하거나 보관하지 않습니다.</p>
+
+      <h3>7) 다른 이용자에게 공개되는 정보</h3>
+      <p>서비스의 친구 및 랭킹 기능을 통해 다음 정보가 다른 이용자에게 공개될 수 있습니다.</p>
       <ul>
-        <li>게임 계정 정보: 서비스 탈퇴 후 30일 이내 파기</li>
-        <li>고객 지원 기록: 문의 종료 후 3년</li>
-        <li>결제 관련 기록: 「전자상거래 등에서의 소비자보호에 관한 법률」에 따라 5년</li>
-        <li>접속 로그: 「통신비밀보호법」에 따라 3개월</li>
+        <li>닉네임</li>
+        <li>친구 코드</li>
+        <li>랭킹 점수 및 순위</li>
       </ul>
+      <p>이용자는 실명, 이메일 주소, 전화번호 등 개인을 직접 식별할 수 있는 정보를 닉네임으로 사용하지 않도록 유의하시기 바랍니다.</p>
 
-      <h2>제4조 제3자 제공 및 위탁</h2>
-      <h3>제3자 제공</h3>
-      <p>회사는 이용자의 동의 없이 개인정보를 제3자에게 제공하지 않습니다. 단, 법령에 의한 경우는 예외로 합니다.</p>
+      <h2>제2조 개인정보 처리에 대한 선택권</h2>
+      <p>회사는 서비스 제공에 필요한 개인정보 처리와 이용자의 선택에 따라 이루어지는 개인정보 처리를 구분합니다.</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>구분</th><th>내용</th></tr></thead>
+          <tbody>
+            <tr><td>서비스 제공에 필요한 처리</td><td>게임 계정 관리, 게임 데이터 저장·복원, 오류 진단, 서비스 보안 및 부정 이용 방지</td></tr>
+            <tr><td>맞춤형 광고</td><td>광고 식별자 등을 이용한 맞춤형 광고 및 광고 성과 측정</td></tr>
+            <tr><td>광고성 Push</td><td>이벤트·혜택 등 마케팅 정보 발송</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>회사는 이용자의 동의가 필요한 개인정보 처리에 대하여 적용되는 관련 법령에 따라 처리 목적별로 구분된 동의 절차를 제공합니다. 이용자는 선택적 개인정보 처리에 대한 동의를 거부하거나 언제든지 철회할 수 있습니다.</p>
+      <p>맞춤형 광고 및 광고성 정보 수신 등 선택적 개인정보 처리에 동의하지 않더라도 해당 선택적 기능 외의 기본적인 서비스 이용에는 원칙적으로 제한이 없습니다. 다만 서비스 제공에 필수적인 개인정보 처리가 제한되는 경우에는 서비스의 일부 또는 전부를 이용하기 어려울 수 있습니다.</p>
+      <p>개인정보의 국외 이전에 관한 사항은 제7조에서 별도로 안내합니다.</p>
 
-      <h3>처리 위탁</h3>
-      <p>원활한 서비스 제공을 위해 아래와 같이 처리를 위탁합니다.</p>
+      <h2>제3조 개인정보의 보유 및 이용기간</h2>
+      <p>회사는 개인정보의 처리 목적이 달성되거나 계정이 삭제된 경우 해당 개인정보를 지체 없이 파기하는 것을 원칙으로 합니다. 다만 관련 법령에 따라 일정 기간 보관할 필요가 있는 경우 해당 정보를 별도로 보관합니다.</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>정보</th><th>보유기간</th></tr></thead>
+          <tbody>
+            <tr><td>UID 및 게임 계정·진행정보</td><td>계정 삭제 시까지</td></tr>
+            <tr><td>Google/Apple 계정 연동정보</td><td>계정 삭제 또는 연동 해제 시까지</td></tr>
+            <tr><td>Push Token</td><td>계정 삭제 또는 해당 Push 기능 이용 종료 시까지</td></tr>
+            <tr><td>소비자 불만 및 분쟁 처리 기록</td><td>3년</td></tr>
+            <tr><td>계약 또는 청약철회 관련 기록</td><td>5년</td></tr>
+            <tr><td>대금결제 및 재화·서비스 공급 기록</td><td>5년</td></tr>
+            <tr><td>Google Cloud에서 자동 생성되는 운영 로그</td><td>서비스 설정 및 해당 서비스 제공자의 정책에 따른 기간</td></tr>
+            <tr><td>분석 및 오류 관련 정보</td><td>회사의 설정 또는 해당 서비스 제공자의 정책에 따른 기간</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>관련 법령에 따른 보존기간이 있는 경우 회사는 해당 정보를 법령상 보존 목적 이외의 용도로 이용하지 않습니다.</p>
+
+      <h2>제4조 개인정보의 제3자 제공</h2>
+      <p>회사는 원칙적으로 개인정보를 본 개인정보처리방침에 명시한 목적 범위에서 처리하며, 이용자의 동의 또는 법령상 근거 없이 개인정보를 제3자에게 제공하지 않습니다.</p>
+      <p>다만 이용자가 별도로 동의하거나, 법령에 특별한 규정이 있거나, 관계기관이 적법한 절차에 따라 요청하는 등 관련 법령에서 개인정보 제공을 허용하는 경우에는 예외로 합니다.</p>
+
+      <h2>제5조 개인정보 처리업무의 위탁</h2>
+      <p>회사는 안정적인 서비스 제공을 위해 다음과 같은 외부 서비스를 이용합니다.</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>수탁자</th><th>서비스</th><th>위탁 업무</th></tr></thead>
+          <tbody>
+            <tr><td>Google LLC</td><td>Firebase Authentication</td><td>이용자 인증 및 계정 연동</td></tr>
+            <tr><td>Google LLC</td><td>Cloud Firestore</td><td>게임 데이터 저장 및 관리</td></tr>
+            <tr><td>Google LLC</td><td>Cloud Functions</td><td>게임 서비스 운영을 위한 서버 기능 및 데이터 처리</td></tr>
+            <tr><td>Google LLC</td><td>Firebase Cloud Messaging</td><td>Push 알림 발송</td></tr>
+            <tr><td>Google LLC</td><td>Firebase Crashlytics</td><td>앱 오류 및 충돌 분석</td></tr>
+            <tr><td>Google LLC</td><td>BigQuery</td><td>서비스 이용 데이터 저장 및 분석</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>위탁 업무 또는 수탁자가 변경되는 경우 회사는 본 개인정보처리방침을 통해 관련 내용을 공개합니다.</p>
+
+      <h2>제6조 광고 및 분석 서비스</h2>
+      <p>회사는 서비스 이용현황 분석, 광고 제공, 맞춤형 광고 및 광고 성과 측정을 위해 다음 서비스를 이용합니다.</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>사업자</th><th>서비스</th><th>이용 목적</th></tr></thead>
+          <tbody>
+            <tr><td>Google LLC</td><td>Google Analytics for Firebase</td><td>서비스 이용통계 분석, 맞춤형 광고 제공 및 광고 성과 측정</td></tr>
+            <tr><td>Google LLC</td><td>Google AdMob</td><td>광고 제공 및 광고 성과 측정</td></tr>
+            <tr><td>AppLovin Corporation</td><td>AppLovin MAX</td><td>광고 미디에이션, 광고 제공 및 광고 성과 측정</td></tr>
+            <tr><td>Unity Technologies</td><td>Unity Ads</td><td>광고 제공 및 광고 성과 측정</td></tr>
+            <tr><td>Mintegral International Limited 및 관련 법인</td><td>Mintegral</td><td>광고 제공 및 광고 성과 측정</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>위 사업자는 광고 및 분석 서비스 제공 과정에서 광고 식별자, IP 주소, 기기·앱 정보, 광고 이용정보 등을 처리할 수 있습니다. 일부 정보는 각 사업자가 독립적으로 정한 개인정보처리방침 및 관련 법령에 따라 처리될 수 있습니다.</p>
+      <p>이용자는 기기의 개인정보 및 광고 관련 설정이나 회사가 제공하는 관련 설정 기능을 통해 맞춤형 광고와 관련된 선택을 변경할 수 있습니다.</p>
+
+      <h2>제7조 개인정보의 국외 이전</h2>
+      <p>회사는 서비스 제공을 위해 글로벌 클라우드, 인증, 분석 및 광고 서비스를 이용하고 있으며, 이 과정에서 일부 개인정보가 이용자가 거주하는 국가 외의 국가에서 처리·보관되거나 국외 사업자에게 이전될 수 있습니다.</p>
+      <p>회사는 개인정보의 국외 이전이 이루어지는 경우 「개인정보 보호법」 등 적용되는 관련 법령에서 정한 요건과 절차를 준수하며, 서비스 제공에 필요한 개인정보 처리와 광고·분석 등 선택적 기능과 관련된 개인정보 처리를 구분하여 관리합니다.</p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>이전받는 자</th><th>이전 국가</th><th>이전 항목</th><th>이전 목적</th><th>이전 시점·방법</th><th>보유·이용기간</th><th>연락처</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Google LLC 및 관련 법인</td>
+              <td>미국 등 Google 서비스 인프라 소재 국가</td>
+              <td>UID, 인증정보, 계정 연동정보, 이메일 주소, 기기·앱 정보, 이용정보, IP 주소, 광고 식별자, 오류·진단정보</td>
+              <td>인증, 이용 분석, 오류 진단, 광고 제공 및 성과 측정 등 해당 Google 서비스 제공</td>
+              <td>서비스 이용 과정에서 네트워크를 통해 전송</td>
+              <td>계정 삭제 시까지 또는 해당 서비스 정책·설정에 따른 기간</td>
+              <td>policies.google.com/privacy</td>
+            </tr>
+            <tr>
+              <td>AppLovin Corporation 및 관련 법인</td>
+              <td>미국 등 서비스 인프라 소재 국가</td>
+              <td>광고 식별자, IP 주소, 기기·앱 정보, 광고 이용정보</td>
+              <td>광고 제공, 광고 미디에이션 및 성과 측정</td>
+              <td>광고 서비스 이용 시 네트워크를 통해 전송</td>
+              <td>해당 사업자의 개인정보처리방침 및 보존정책에 따른 기간</td>
+              <td>applovin.com/privacy</td>
+            </tr>
+            <tr>
+              <td>Unity Technologies 및 관련 법인</td>
+              <td>미국 등 서비스 인프라 소재 국가</td>
+              <td>광고 식별자, IP 주소, 기기·앱 정보, 광고 이용정보</td>
+              <td>광고 제공 및 광고 성과 측정</td>
+              <td>광고 서비스 이용 시 네트워크를 통해 전송</td>
+              <td>해당 사업자의 개인정보처리방침 및 보존정책에 따른 기간</td>
+              <td>unity.com/legal</td>
+            </tr>
+            <tr>
+              <td>Mintegral International Limited 및 관련 법인</td>
+              <td>싱가포르 등 서비스 인프라 소재 국가</td>
+              <td>광고 식별자, IP 주소, 기기·앱 정보, 광고 이용정보</td>
+              <td>광고 제공 및 광고 성과 측정</td>
+              <td>광고 서비스 이용 시 네트워크를 통해 전송</td>
+              <td>해당 사업자의 개인정보처리방침 및 보존정책에 따른 기간</td>
+              <td>mintegral.com/en/privacy</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>게임 진행 정보, 닉네임, 친구 관계, 랭킹 및 보상 정보 등 주요 게임 데이터는 Google Cloud의 <strong>대한민국(서울) 리전</strong>에 저장됩니다.</p>
+
+      <h3>국외 이전에 관한 이용자의 선택 및 권리</h3>
+      <p>이용자는 관련 법령에서 정하는 범위에서 개인정보의 국외 이전과 관련된 권리를 행사할 수 있습니다.</p>
+      <p>광고 및 분석 등 선택적 기능과 관련된 개인정보 처리에 대해서는 기기의 개인정보·광고 관련 설정 또는 회사가 제공하는 관련 설정을 통해 해당 처리를 제한할 수 있습니다.</p>
+      <p>서비스 제공에 필수적인 인증 및 클라우드 서비스의 이용 과정에서 국외 처리가 필요한 경우, 해당 처리를 제한하면 계정 인증·복원 등 관련 기능 또는 서비스의 일부 이용이 어려울 수 있습니다.</p>
+      <p>국외 이전과 관련된 문의 또는 권리 행사는 <a href="mailto:help@billionplaygames.com">help@billionplaygames.com</a>으로 요청할 수 있습니다.</p>
+
+      <h2>제8조 맞춤형 광고 및 광고 식별자</h2>
+      <p>회사는 광고 제공 및 광고 성과 측정을 위해 Android 광고 ID(AAID/GAID) 등 광고 또는 기기 관련 식별정보를 처리할 수 있습니다.</p>
+      <p>Android 이용자는 기기의 개인정보 및 광고 관련 설정을 통해 광고 식별자를 재설정하거나 맞춤형 광고와 관련된 설정을 변경할 수 있습니다.</p>
+      <p>iOS 서비스를 제공하는 경우 회사는 Apple의 App Tracking Transparency 정책에 따라 필요한 추적 허용 절차를 제공하며, 이용자가 추적을 허용하지 않은 경우 IDFA를 이용한 추적을 수행하지 않습니다.</p>
+      <p>맞춤형 광고 이용을 제한하더라도 광고 자체는 계속 제공될 수 있으며, 이용자에게 표시되는 광고의 관련성이 낮아질 수 있습니다.</p>
+
+      <h2>제9조 개인정보의 파기절차 및 방법</h2>
+      <p>회사는 개인정보의 보유기간이 경과하거나 처리 목적이 달성되는 등 개인정보가 불필요하게 된 경우 지체 없이 해당 개인정보를 파기합니다. 관련 법령에 따라 일정 기간 보관해야 하는 개인정보는 다른 개인정보와 구분하여 해당 법정기간 동안 보관하며, 보존기간이 종료된 후 파기합니다.</p>
+      <h3>파기절차</h3>
+      <p>개인정보의 처리 목적이 달성되거나 계정 삭제 등으로 개인정보가 불필요하게 된 경우 회사는 해당 정보를 파기 대상으로 분류하고, 관련 법령에 따른 보존 의무가 있는지 확인한 후 파기합니다. 관련 법령에 따라 보존해야 하는 정보는 해당 보존기간 동안 다른 목적으로 이용되지 않도록 관리한 후 보존기간이 종료되면 파기합니다.</p>
+      <h3>파기방법</h3>
+      <p>전자적 파일 형태로 저장된 개인정보는 복구 또는 재생이 어렵도록 안전한 방법으로 삭제합니다. 종이 문서 등 비전자적 형태의 개인정보를 보유하게 되는 경우에는 분쇄 또는 소각 등 복구가 어려운 방법으로 파기합니다.</p>
+      <p>백업 시스템 등에 저장되어 기술적으로 즉시 삭제하기 어려운 개인정보는 다른 목적으로 이용되지 않도록 보호하고 정해진 백업 보존주기에 따라 삭제합니다.</p>
+
+      <h2>제10조 이용자의 권리와 행사방법</h2>
+      <p>이용자는 적용되는 관련 법령에서 정한 범위에서 자신의 개인정보에 대해 열람, 정정·삭제, 처리정지, 동의 철회, 계정 및 계정과 연결된 개인정보의 삭제, 개인정보의 국외 이전과 관련된 권리를 행사할 수 있습니다.</p>
+      <p>이용자는 게임 내에서 제공되는 기능 또는 <a href="mailto:help@billionplaygames.com">help@billionplaygames.com</a>을 통해 관련 요청을 할 수 있습니다.</p>
+      <p>회사는 관련 법령에서 정한 절차와 기간에 따라 이용자의 요청을 처리하며, 필요한 경우 개인정보 보호를 위해 요청자의 본인 여부를 확인할 수 있습니다.</p>
+
+      <h2>제11조 계정 및 게임 데이터 삭제</h2>
+      <p>이용자는 게임 내 <strong>설정 &gt; 계정 삭제</strong> 기능을 통해 계정 삭제를 요청할 수 있습니다.</p>
+      <p>계정 삭제 시 관련 법령에 따라 보존해야 하는 정보를 제외하고 회사가 관리하는 계정 및 UID와 연결된 개인정보와 게임 데이터가 삭제됩니다. 삭제되는 정보에는 다음 정보가 포함될 수 있습니다.</p>
       <ul>
-        <li><strong>Google Firebase:</strong> 게임 데이터 저장, 분석, 푸시 알림</li>
-        <li><strong>Google Play / Apple App Store:</strong> 인앱 결제 처리</li>
-        <li><strong>Adjust / AppsFlyer:</strong> 마케팅 성과 측정 (해당 시)</li>
+        <li>Firebase Authentication 계정 및 UID</li>
+        <li>닉네임 및 친구 코드</li>
+        <li>게임 진행 정보 및 보유 재화</li>
+        <li>친구 관계 및 친구 요청 정보</li>
+        <li>랭킹 관련 정보</li>
+        <li>보상 지급·수령 이력</li>
+        <li>계정과 연결된 Push Token</li>
       </ul>
+      <p>관련 법령에 따라 보존해야 하는 정보는 해당 목적에 필요한 기간 동안 별도로 보관한 후 삭제합니다. 삭제가 완료된 게임 데이터는 복구가 어려울 수 있습니다.</p>
+      <p>회사는 앱 외부에서도 계정 및 관련 데이터의 삭제를 요청할 수 있는 웹페이지를 제공합니다.</p>
+      <p><strong>계정 삭제 페이지: 【출시 전 구현 후 실제 URL 입력】</strong></p>
 
-      <h2>제5조 국외 이전</h2>
-      <p>회사는 서비스 운영을 위해 아래와 같이 개인정보를 국외로 이전할 수 있습니다.</p>
+      <h2>제12조 아동의 개인정보 보호</h2>
+      <p>회사의 서비스는 만 13세 미만의 아동을 대상으로 하지 않으며, 회사는 만 13세 미만의 아동으로부터 개인정보를 고의로 수집하지 않습니다.</p>
+      <p>일부 국가 또는 지역에서는 아동의 개인정보 처리에 법정대리인의 동의 또는 그 밖의 추가적인 보호조치를 요구할 수 있습니다.</p>
+      <p>회사는 아동의 개인정보를 처리하는 경우 해당 국가 또는 지역에서 적용되는 법령에 따른 동의 및 보호조치 등 필요한 절차를 준수합니다.</p>
+      <p>회사가 관련 법령에서 요구하는 적법한 절차 없이 아동의 개인정보가 수집되거나 처리되었다는 사실을 확인한 경우, 해당 개인정보를 삭제하거나 처리를 중단하는 등 필요한 조치를 취합니다.</p>
+      <p>아동의 개인정보와 관련된 문의는 <a href="mailto:help@billionplaygames.com">help@billionplaygames.com</a>으로 접수할 수 있습니다.</p>
+
+      <h2>제13조 개인정보의 안전성 확보조치</h2>
+      <p>회사는 개인정보가 분실, 도난, 유출, 위조, 변조 또는 훼손되지 않도록 관련 법령에 따라 필요한 관리적·기술적 보호조치를 시행합니다. 회사는 다음과 같은 보호조치를 적용합니다.</p>
       <ul>
-        <li><strong>이전 국가:</strong> 미국 (Google LLC 서버)</li>
-        <li><strong>이전 항목:</strong> 기기 정보, 게임 플레이 데이터</li>
-        <li><strong>이전 목적:</strong> 클라우드 서비스 운영 및 분석</li>
-        <li><strong>보호 조치:</strong> 표준 계약 조항(SCC) 적용</li>
+        <li>개인정보에 접근할 수 있는 인원을 업무상 필요한 범위로 제한</li>
+        <li>개인정보처리시스템에 대한 접근권한 관리 및 접근통제</li>
+        <li>개인정보 전송 구간에 대한 보안 통신(TLS) 적용</li>
+        <li>클라우드 서비스가 제공하는 저장 데이터 암호화 기능 활용</li>
+        <li>개인정보처리시스템의 접속기록 보관 및 관리</li>
+        <li>Google Cloud 및 Firebase 등 이용 중인 클라우드 서비스의 보안 기능 활용</li>
       </ul>
+      <p>회사는 자체 데이터센터를 운영하지 않으며 서비스 제공에 이용하는 클라우드 사업자가 제공하는 물리적·기술적 보안 체계를 함께 활용합니다.</p>
 
-      <h2>제6조 이용자의 권리</h2>
-      <p>이용자는 언제든지 아래 권리를 행사할 수 있습니다.</p>
-      <ul>
-        <li>개인정보 열람 요청</li>
-        <li>개인정보 정정·삭제 요청</li>
-        <li>개인정보 처리 정지 요청</li>
-        <li>개인정보 이동권 요청</li>
-      </ul>
-      <p>권리 행사는 <strong>support@billionplaygames.com</strong>으로 문의하시면 처리해 드립니다. 요청 접수 후 10영업일 이내에 처리됩니다.</p>
-
-      <h2>제7조 쿠키 및 추적 기술</h2>
-      <p>회사의 모바일 게임 서비스는 쿠키를 사용하지 않습니다. 다만, 광고 식별자(ADID/IDFA)를 통해 광고 성과를 측정할 수 있으며, 이는 기기 설정에서 제한할 수 있습니다.</p>
-      <ul>
-        <li><strong>Android:</strong> 설정 → Google → 광고 → 광고 ID 초기화 또는 삭제</li>
-        <li><strong>iOS:</strong> 설정 → 개인정보 보호 → 추적 → 앱이 추적을 요청하도록 허용 해제</li>
-      </ul>
-
-      <h2>제8조 아동 개인정보 보호</h2>
-      <p>회사의 서비스는 만 14세 미만 아동을 대상으로 하지 않습니다. 만 14세 미만 아동의 개인정보가 수집된 사실을 인지한 경우 즉시 삭제 조치합니다. 해당 사실을 알게 된 경우 <strong>support@billionplaygames.com</strong>으로 연락 주시기 바랍니다.</p>
-
-      <h2>제9조 개인정보 보호책임자</h2>
+      <h2>제14조 개인정보 보호책임자 및 개인정보 열람청구</h2>
       <div class="contact-box">
         <div class="label">개인정보 보호책임자</div>
-        <p><strong>소속:</strong> 주식회사 빌리언플레이</p>
-        <p><strong>이메일:</strong> <a href="mailto:support@billionplaygames.com">support@billionplaygames.com</a></p>
-        <p><strong>운영시간:</strong> 평일 10:00 – 18:00 (KST)</p>
+        <p><strong>회사명:</strong> 주식회사 빌리언플레이 (BILLIONPLAY CO., LTD.)</p>
+        <p><strong>성명:</strong> 고무진</p>
+        <p><strong>직책:</strong> 대표이사</p>
+        <p><strong>이메일:</strong> <a href="mailto:help@billionplaygames.com">help@billionplaygames.com</a></p>
       </div>
-      <p style="margin-top:16px;">개인정보 관련 분쟁 해결을 위해 개인정보분쟁조정위원회(www.kopico.go.kr) 또는 개인정보침해신고센터(privacy.kisa.or.kr)에 신고하실 수 있습니다.</p>
+      <div class="contact-box">
+        <div class="label">개인정보 열람청구 접수·처리</div>
+        <p><strong>담당:</strong> 대표이사 고무진</p>
+        <p><strong>이메일:</strong> <a href="mailto:help@billionplaygames.com">help@billionplaygames.com</a></p>
+      </div>
+      <p>이용자는 개인정보 보호와 관련된 문의, 불만 및 개인정보 열람·정정·삭제 등 관련 권리 행사를 위 연락처를 통해 요청할 수 있습니다.</p>
 
-      <h2>제10조 방침 변경</h2>
-      <p>본 개인정보처리방침은 법령·정책 변경 또는 서비스 변경에 따라 개정될 수 있습니다. 변경 시 시행 7일 전 앱 내 공지 또는 본 페이지를 통해 안내합니다.</p>
+      <h2>제15조 개인정보 침해에 대한 구제방법</h2>
+      <p>이용자는 개인정보 침해와 관련하여 다음 기관에 상담 또는 피해구제를 요청할 수 있습니다.</p>
+      <h3>대한민국</h3>
       <ul>
-        <li>공고일: 2026년 06월 24일</li>
-        <li>시행일: 2026년 07월 01일</li>
+        <li>개인정보침해 신고센터: 국번 없이 118</li>
+        <li>개인정보분쟁조정위원회: 1833-6972</li>
+        <li>대검찰청: 국번 없이 1301</li>
+        <li>경찰청: 국번 없이 182</li>
       </ul>
+      <h3>베트남</h3>
+      <ul>
+        <li>개인정보 보호 관할기관: 공안부(Bộ Công an, Ministry of Public Security)</li>
+      </ul>
+      <p>이용자가 거주하는 그 밖의 국가 또는 지역에 개인정보 보호 감독기구가 있는 경우 해당 기관에도 관련 상담 또는 권리구제를 요청할 수 있습니다.</p>
+
+      <h2>제16조 개인정보처리방침의 변경</h2>
+      <p>회사는 관련 법령, 서비스 내용 또는 개인정보 처리 방식이 변경되는 경우 본 개인정보처리방침을 변경할 수 있습니다.</p>
+      <p>개인정보처리방침이 변경되는 경우 관련 법령에서 정한 방법과 기간에 따라 변경 내용 및 시행일을 이용자에게 안내합니다. 이용자의 권리에 중대한 영향을 미치는 변경이 있는 경우에는 필요한 경우 별도의 동의를 받는 등 관련 법령에 따른 절차를 진행합니다.</p>
+      <p><strong>이전 개인정보처리방침: 【기존 개인정보처리방침이 있는 경우 URL 기재】</strong></p>
+
+      <h2>제17조 사업자 정보</h2>
+      <div class="contact-box">
+        <p><strong>회사명:</strong> 주식회사 빌리언플레이 (BILLIONPLAY CO., LTD.)</p>
+        <p><strong>대표자:</strong> 고무진</p>
+        <p><strong>사업자등록번호:</strong> 216-81-20560</p>
+        <p><strong>주소:</strong> 부산광역시 해운대구 센텀중앙로 97 (재송동, 센텀스카이비즈)</p>
+        <p><strong>개인정보 관련 문의:</strong> <a href="mailto:help@billionplaygames.com">help@billionplaygames.com</a></p>
+      </div>
+
+      <p style="margin-top:32px;">
+        공고일: 2026년 【월】 【일】<br>
+        시행일: 2026년 【월】 【일】
+      </p>
 
     </div>
+
+    <!-- ══════════ ENGLISH ══════════ -->
+    <div class="article" lang="en">
+
+      <div class="info-box">
+        <p>BILLIONPLAY CO., LTD. (the "Company") values your privacy and complies with the Personal Information Protection Act of the Republic of Korea and the applicable data protection laws of the countries and regions where the Service is provided.</p>
+        <p>This Privacy Policy explains the purposes for which the Company processes your personal data and how it protects that data in connection with its mobile games and related services (the "Service").</p>
+      </div>
+
+      <h2>1. Categories of Personal Data and Purposes of Use</h2>
+
+      <h3>1) Gameplay and Account Management</h3>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Category</th><th>Data Processed</th><th>Purpose of Use</th></tr></thead>
+          <tbody>
+            <tr><td>Game account</td><td>Firebase Authentication anonymous UID</td><td>User identification, account management, data storage and restoration</td></tr>
+            <tr><td>Game profile</td><td>Nickname, friend code</td><td>Providing game profile and friend features</td></tr>
+            <tr><td>Gameplay</td><td>Currency held, stage progress, collection status and other progress data</td><td>Providing the Service, storing and restoring progress data</td></tr>
+            <tr><td>Friend features</td><td>Friend relationships and friend request history</td><td>Providing friend features</td></tr>
+            <tr><td>Leaderboard</td><td>Leaderboard scores and participating group</td><td>Providing leaderboard and competitive features</td></tr>
+            <tr><td>Rewards</td><td>Reward grant and receipt history</td><td>Providing rewards and preventing duplicate grants</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>A random UID is generated through Firebase Authentication when you first use the Service. This UID does not directly reveal your real name or contact details, but it is used as an identifier to consistently distinguish you within the Service and to link you to your game data. The Company protects it with the same care as personal data.</p>
+
+      <h3>2) Google and Apple Account Linking</h3>
+      <p>If you link an external account to restore your game data, the following data may be processed.</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Category</th><th>Data Processed</th><th>Purpose of Use</th></tr></thead>
+          <tbody>
+            <tr><td>Google account linking</td><td>Google account identifier, email address</td><td>Account linking, user verification, game data restoration, customer support</td></tr>
+            <tr><td>Sign in with Apple</td><td>Apple account identifier, email address or Apple private relay address</td><td>Account linking, user verification, game data restoration, customer support</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Email addresses are not separately duplicated in the game database (Cloud Firestore); they are stored as part of the authentication account information in Firebase Authentication. The Company may process this information to the extent necessary for account verification and customer support.</p>
+      <p>Provisions relating to Apple account linking apply when the Service is provided on iOS.</p>
+
+      <h3>3) Data Generated Automatically During Use of the Service</h3>
+      <ul>
+        <li>Device model and operating system information</li>
+        <li>App version and device-related information</li>
+        <li>Service and gameplay usage records</li>
+        <li>Error, crash, performance, and diagnostic information</li>
+        <li>IP address and country or region estimated from it</li>
+        <li>Android Advertising ID (AAID/GAID)</li>
+        <li>Where the Service is provided on iOS, IDFA/IDFV and other advertising or device identifiers</li>
+        <li>Advertising usage and performance data such as impressions, clicks, installs, and conversions</li>
+      </ul>
+      <p>The Company does not separately store access IP addresses in the game database through the application's own functionality. However, IP addresses may be processed automatically or recorded in service operation logs by Google Cloud and other service infrastructure, as well as by analytics and advertising services.</p>
+
+      <h3>4) Push Notifications</h3>
+      <p>The Company may provide push notifications for gameplay guidance, service announcements, and information about events and benefits. The following data may be processed for this purpose.</p>
+      <ul>
+        <li>FCM registration token</li>
+        <li>User UID</li>
+        <li>Where the Service is provided on iOS, APNs push token</li>
+      </ul>
+      <p>You may restrict or refuse push notifications through your device's notification settings or through the settings provided by the Company. Where the Company sends advertising or promotional information such as event and benefit notices, it provides the consent and opt-out procedures required under applicable law.</p>
+
+      <h3>5) Customer Inquiries</h3>
+      <p>You may contact the Company by email through the inquiry function in the in-game settings menu. The following information may be included in the content of your inquiry email.</p>
+      <ul>
+        <li>User UID</li>
+        <li>App version</li>
+        <li>Device model</li>
+        <li>Operating system version</li>
+        <li>Game progress stage</li>
+        <li>The content of your inquiry</li>
+        <li>The email address you use to send the inquiry</li>
+      </ul>
+      <p>The Company collects this information when you send the email and uses it to review your inquiry, verify your identity, resolve the issue, and provide a response.</p>
+      <p><strong>Customer inquiries:</strong> <a href="mailto:help@billionplaygames.com">help@billionplaygames.com</a></p>
+
+      <h3>6) In-App Purchases</h3>
+      <p>When you purchase a paid item, the app marketplace operator such as Google Play or the Apple App Store processes the payment.</p>
+      <p>The Company may process order and transaction identifiers, product information, purchase status, and information necessary for payment verification in order to deliver purchased items, restore purchases, confirm payments, prevent fraudulent transactions, and handle refunds and disputes.</p>
+      <p>The Company does not directly collect or store payment method information such as credit card numbers or bank account numbers, which is handled directly by the app marketplace operator.</p>
+
+      <h3>7) Information Visible to Other Users</h3>
+      <p>The following information may be visible to other users through the Service's friend and leaderboard features.</p>
+      <ul>
+        <li>Nickname</li>
+        <li>Friend code</li>
+        <li>Leaderboard score and ranking</li>
+      </ul>
+      <p>Please avoid using information that directly identifies you — such as your real name, email address, or phone number — as your nickname.</p>
+
+      <h2>2. Your Choices Regarding Data Processing</h2>
+      <p>The Company distinguishes between processing necessary to provide the Service and processing that depends on your choice.</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Category</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td>Processing necessary to provide the Service</td><td>Game account management, storage and restoration of game data, error diagnostics, service security and prevention of misuse</td></tr>
+            <tr><td>Personalized advertising</td><td>Personalized advertising and ad performance measurement using advertising identifiers</td></tr>
+            <tr><td>Promotional push notifications</td><td>Sending marketing information such as events and benefits</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Where your consent is required, the Company provides consent procedures separated by processing purpose in accordance with applicable law. You may refuse or withdraw your consent to optional processing at any time.</p>
+      <p>Declining consent to optional processing such as personalized advertising or promotional messages does not, in principle, restrict your basic use of the Service apart from those optional features. However, if processing that is essential to providing the Service is restricted, you may be unable to use part or all of the Service.</p>
+      <p>Cross-border transfers of personal data are described separately in Article 7.</p>
+
+      <h2>3. Retention and Use Period</h2>
+      <p>The Company deletes personal data without delay once the purpose of processing has been achieved or the account has been deleted. Where retention is required under applicable law, the relevant data is stored separately for the required period.</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Data</th><th>Retention Period</th></tr></thead>
+          <tbody>
+            <tr><td>UID and game account / progress data</td><td>Until account deletion</td></tr>
+            <tr><td>Google/Apple account linking data</td><td>Until account deletion or unlinking</td></tr>
+            <tr><td>Push token</td><td>Until account deletion or discontinuation of the push feature</td></tr>
+            <tr><td>Records of consumer complaints and dispute resolution</td><td>3 years</td></tr>
+            <tr><td>Records relating to contracts or withdrawal of subscription</td><td>5 years</td></tr>
+            <tr><td>Records of payment and supply of goods or services</td><td>5 years</td></tr>
+            <tr><td>Operation logs generated automatically by Google Cloud</td><td>Period determined by service settings and the provider's operational policy</td></tr>
+            <tr><td>Analytics and error-related data</td><td>Period determined by the Company's settings or the relevant provider's policy</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Where a statutory retention period applies, the Company does not use the data for any purpose other than that statutory retention purpose.</p>
+
+      <h2>4. Provision of Personal Data to Third Parties</h2>
+      <p>The Company processes personal data within the scope of the purposes stated in this Privacy Policy and does not provide personal data to third parties without your consent or a legal basis.</p>
+      <p>Exceptions apply where you have given separate consent, where there is a specific provision under applicable law, where a competent authority makes a lawful request, or where applicable law otherwise permits such provision.</p>
+
+      <h2>5. Outsourcing of Personal Data Processing</h2>
+      <p>The Company uses the following external services to provide a stable service.</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Processor</th><th>Service</th><th>Outsourced Task</th></tr></thead>
+          <tbody>
+            <tr><td>Google LLC</td><td>Firebase Authentication</td><td>User authentication and account linking</td></tr>
+            <tr><td>Google LLC</td><td>Cloud Firestore</td><td>Storage and management of game data</td></tr>
+            <tr><td>Google LLC</td><td>Cloud Functions</td><td>Server functionality and data processing for service operation</td></tr>
+            <tr><td>Google LLC</td><td>Firebase Cloud Messaging</td><td>Sending push notifications</td></tr>
+            <tr><td>Google LLC</td><td>Firebase Crashlytics</td><td>App error and crash analysis</td></tr>
+            <tr><td>Google LLC</td><td>BigQuery</td><td>Storage and analysis of service usage data</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>If the outsourced tasks or processors change, the Company will disclose the change through this Privacy Policy.</p>
+
+      <h2>6. Advertising and Analytics Services</h2>
+      <p>The Company uses the following services for service usage analysis, ad delivery, personalized advertising, and ad performance measurement.</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Provider</th><th>Service</th><th>Purpose of Use</th></tr></thead>
+          <tbody>
+            <tr><td>Google LLC</td><td>Google Analytics for Firebase</td><td>Service usage analysis, personalized advertising, and ad performance measurement</td></tr>
+            <tr><td>Google LLC</td><td>Google AdMob</td><td>Ad delivery and ad performance measurement</td></tr>
+            <tr><td>AppLovin Corporation</td><td>AppLovin MAX</td><td>Ad mediation, ad delivery, and ad performance measurement</td></tr>
+            <tr><td>Unity Technologies</td><td>Unity Ads</td><td>Ad delivery and ad performance measurement</td></tr>
+            <tr><td>Mintegral International Limited and affiliated entities</td><td>Mintegral</td><td>Ad delivery and ad performance measurement</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>These providers may process advertising identifiers, IP addresses, device and app information, and advertising usage data in the course of providing advertising and analytics services. Some data may be processed under each provider's independently established privacy policy and applicable law.</p>
+      <p>You may change your choices regarding personalized advertising through your device's privacy and advertising settings or through the relevant settings provided by the Company.</p>
+
+      <h2>7. Cross-Border Transfer of Personal Data</h2>
+      <p>The Company uses global cloud, authentication, analytics, and advertising services to provide the Service. In this process, some personal data may be processed or stored in countries other than your country of residence, or transferred to overseas providers.</p>
+      <p>Where a cross-border transfer occurs, the Company complies with the requirements and procedures under the Personal Information Protection Act and other applicable laws, and manages processing necessary to provide the Service separately from processing relating to optional features such as advertising and analytics.</p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Recipient</th><th>Country</th><th>Data Transferred</th><th>Purpose</th><th>Timing and Method</th><th>Retention Period</th><th>Contact</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Google LLC and affiliated entities</td>
+              <td>United States and other countries where Google's service infrastructure is located</td>
+              <td>UID, authentication data, account linking data, email address, device and app information, usage data, IP address, advertising identifiers, error and diagnostic data</td>
+              <td>Authentication, usage analysis, error diagnostics, ad delivery and performance measurement, and other provision of the relevant Google services</td>
+              <td>Transmitted over the network during use of the Service</td>
+              <td>Until account deletion, or the period determined by the relevant service policy and settings</td>
+              <td>policies.google.com/privacy</td>
+            </tr>
+            <tr>
+              <td>AppLovin Corporation and affiliated entities</td>
+              <td>United States and other countries where its service infrastructure is located</td>
+              <td>Advertising identifiers, IP address, device and app information, advertising usage data</td>
+              <td>Ad delivery, ad mediation, and performance measurement</td>
+              <td>Transmitted over the network when advertising services are used</td>
+              <td>Period determined by the provider's privacy and retention policy</td>
+              <td>applovin.com/privacy</td>
+            </tr>
+            <tr>
+              <td>Unity Technologies and affiliated entities</td>
+              <td>United States and other countries where its service infrastructure is located</td>
+              <td>Advertising identifiers, IP address, device and app information, advertising usage data</td>
+              <td>Ad delivery and ad performance measurement</td>
+              <td>Transmitted over the network when advertising services are used</td>
+              <td>Period determined by the provider's privacy and retention policy</td>
+              <td>unity.com/legal</td>
+            </tr>
+            <tr>
+              <td>Mintegral International Limited and affiliated entities</td>
+              <td>Singapore and other countries where its service infrastructure is located</td>
+              <td>Advertising identifiers, IP address, device and app information, advertising usage data</td>
+              <td>Ad delivery and ad performance measurement</td>
+              <td>Transmitted over the network when advertising services are used</td>
+              <td>Period determined by the provider's privacy and retention policy</td>
+              <td>mintegral.com/en/privacy</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Core game data such as game progress, nicknames, friend relationships, leaderboard information, and reward records is stored in the <strong>Republic of Korea (Seoul) region</strong> of Google Cloud.</p>
+
+      <h3>Your Choices and Rights Regarding Cross-Border Transfers</h3>
+      <p>You may exercise your rights regarding cross-border transfers of personal data to the extent provided under applicable law.</p>
+      <p>For processing relating to optional features such as advertising and analytics, you may restrict such processing through your device's privacy and advertising settings or through the relevant settings provided by the Company.</p>
+      <p>Where cross-border processing is necessary for authentication and cloud services essential to providing the Service, restricting that processing may prevent you from using related features such as account authentication and restoration, or part of the Service.</p>
+      <p>For inquiries or requests relating to cross-border transfers, please contact <a href="mailto:help@billionplaygames.com">help@billionplaygames.com</a>.</p>
+
+      <h2>8. Personalized Advertising and Advertising Identifiers</h2>
+      <p>The Company may process advertising or device identifiers such as the Android Advertising ID (AAID/GAID) for ad delivery and ad performance measurement.</p>
+      <p>Android users may reset their advertising identifier or change personalized advertising settings through their device's privacy and advertising settings.</p>
+      <p>Where the Service is provided on iOS, the Company provides the tracking authorization procedure required under Apple's App Tracking Transparency policy. If you do not allow tracking, the Company does not carry out tracking using the IDFA.</p>
+      <p>Even if you limit personalized advertising, ads may continue to be shown, and the ads displayed to you may be less relevant.</p>
+
+      <h2>9. Destruction of Personal Data</h2>
+      <p>The Company destroys personal data without delay once the retention period has expired or the purpose of processing has been achieved and the data is no longer necessary. Personal data that must be retained for a certain period under applicable law is stored separately from other personal data for that statutory period and destroyed thereafter.</p>
+      <h3>Destruction Procedure</h3>
+      <p>Where the purpose of processing has been achieved or personal data is no longer necessary due to account deletion or otherwise, the Company classifies the data for destruction, verifies whether any statutory retention obligation applies, and then destroys it. Data subject to statutory retention is managed so that it is not used for any other purpose during the retention period and is destroyed once that period ends.</p>
+      <h3>Method of Destruction</h3>
+      <p>Personal data stored in electronic file form is deleted using a secure method that makes recovery or reproduction infeasible. Where personal data exists in non-electronic form such as printed documents, it is destroyed by shredding or incineration.</p>
+      <p>Personal data stored in backup systems that cannot be immediately deleted for technical reasons is protected from use for any other purpose and deleted in accordance with the established backup retention cycle.</p>
+
+      <h2>10. Your Rights and How to Exercise Them</h2>
+      <p>To the extent provided under applicable law, you may exercise your rights to access, correct or delete your personal data, suspend processing, withdraw consent, delete your account and the personal data linked to it, and exercise rights relating to cross-border transfers.</p>
+      <p>You may submit such requests through the features provided in the game or by contacting <a href="mailto:help@billionplaygames.com">help@billionplaygames.com</a>.</p>
+      <p>The Company handles your requests in accordance with the procedures and timeframes set out under applicable law and may verify your identity where necessary to protect your personal data.</p>
+
+      <h2>11. Account and Game Data Deletion</h2>
+      <p>You may request account deletion through <strong>Settings &gt; Delete Account</strong> in the game.</p>
+      <p>Upon account deletion, the personal data and game data linked to your account and UID that the Company manages will be deleted, except for data that must be retained under applicable law. The data deleted includes the following.</p>
+      <ul>
+        <li>Firebase Authentication account and UID</li>
+        <li>Nickname and friend code</li>
+        <li>Game progress data and currency held</li>
+        <li>Friend relationships and friend request data</li>
+        <li>Leaderboard data</li>
+        <li>Reward grant and receipt history</li>
+        <li>Push tokens linked to the account</li>
+      </ul>
+      <p>Data subject to statutory retention is stored separately for the period necessary for that purpose and then deleted. Deleted game data may not be recoverable.</p>
+      <p>The Company also provides a web page where you can request deletion of your account and related data from outside the app.</p>
+      <p><strong>Account deletion page: 【Enter actual URL after implementation】</strong></p>
+
+      <h2>12. Children's Privacy</h2>
+      <p>The Service is not directed to children under the age of 13, and the Company does not knowingly collect personal data from children under 13.</p>
+      <p>Some countries or regions may require the consent of a legal guardian or additional protective measures for the processing of children's personal data.</p>
+      <p>Where the Company processes children's personal data, it complies with the consent requirements, protective measures, and other procedures required under the laws applicable in the relevant country or region.</p>
+      <p>If the Company becomes aware that children's personal data has been collected or processed without the lawful procedures required under applicable law, it will take necessary measures such as deleting the data or ceasing processing.</p>
+      <p>For inquiries relating to children's personal data, please contact <a href="mailto:help@billionplaygames.com">help@billionplaygames.com</a>.</p>
+
+      <h2>13. Security Measures</h2>
+      <p>The Company implements the administrative and technical safeguards required under applicable law to prevent personal data from being lost, stolen, leaked, forged, altered, or damaged. The Company applies the following measures.</p>
+      <ul>
+        <li>Limiting access to personal data to personnel who require it for their duties</li>
+        <li>Managing access rights and access controls for personal data processing systems</li>
+        <li>Applying secure communication (TLS) to personal data in transit</li>
+        <li>Using the stored-data encryption features provided by cloud services</li>
+        <li>Retaining and managing access logs for personal data processing systems</li>
+        <li>Using the security features of the cloud services in use, including Google Cloud and Firebase</li>
+      </ul>
+      <p>The Company does not operate its own data center and relies on the physical and technical security frameworks provided by the cloud providers used to deliver the Service.</p>
+
+      <h2>14. Data Protection Officer and Access Requests</h2>
+      <div class="contact-box">
+        <div class="label">Data Protection Officer</div>
+        <p><strong>Company:</strong> BILLIONPLAY CO., LTD.</p>
+        <p><strong>Name:</strong> Ko Mu-jin</p>
+        <p><strong>Title:</strong> Chief Executive Officer</p>
+        <p><strong>Email:</strong> <a href="mailto:help@billionplaygames.com">help@billionplaygames.com</a></p>
+      </div>
+      <div class="contact-box">
+        <div class="label">Receipt and Handling of Access Requests</div>
+        <p><strong>Contact:</strong> Ko Mu-jin, Chief Executive Officer</p>
+        <p><strong>Email:</strong> <a href="mailto:help@billionplaygames.com">help@billionplaygames.com</a></p>
+      </div>
+      <p>You may submit inquiries, complaints, and requests to exercise your rights of access, correction, and deletion through the contact details above.</p>
+
+      <h2>15. Remedies for Privacy Infringement</h2>
+      <p>You may seek advice or remedies regarding privacy infringement from the following authorities.</p>
+      <h3>Republic of Korea</h3>
+      <ul>
+        <li>Privacy Infringement Report Center: 118 (no area code)</li>
+        <li>Personal Information Dispute Mediation Committee: 1833-6972</li>
+        <li>Supreme Prosecutors' Office: 1301 (no area code)</li>
+        <li>National Police Agency: 182 (no area code)</li>
+      </ul>
+      <h3>Vietnam</h3>
+      <ul>
+        <li>Competent authority for personal data protection: Ministry of Public Security (Bộ Công an)</li>
+      </ul>
+      <p>If a data protection supervisory authority exists in your country or region of residence, you may also contact that authority for advice or remedies.</p>
+
+      <h2>16. Changes to This Privacy Policy</h2>
+      <p>The Company may amend this Privacy Policy where applicable law, the content of the Service, or its data processing practices change.</p>
+      <p>Where this Privacy Policy is amended, the Company will notify you of the changes and their effective date in accordance with the methods and timeframes prescribed under applicable law. Where a change materially affects your rights, the Company will follow the procedures required under applicable law, including obtaining separate consent where necessary.</p>
+      <p><strong>Previous version of this Privacy Policy: 【Enter URL if a previous version exists】</strong></p>
+
+      <h2>17. Company Information</h2>
+      <div class="contact-box">
+        <p><strong>Company:</strong> BILLIONPLAY CO., LTD.</p>
+        <p><strong>Representative:</strong> Ko Mu-jin</p>
+        <p><strong>Business Registration Number:</strong> 216-81-20560</p>
+        <p><strong>Address:</strong> 97, Centum jungang-ro, Haeundae-gu, Busan, Republic of Korea</p>
+        <p><strong>Privacy inquiries:</strong> <a href="mailto:help@billionplaygames.com">help@billionplaygames.com</a></p>
+      </div>
+
+      <p style="margin-top:32px;">
+        Published: 【Month】【Day】, 2026<br>
+        Effective: 【Month】【Day】, 2026
+      </p>
+
+    </div>
+
   </div>
 
   <footer>
@@ -330,15 +953,45 @@
     <div class="footer-copy">© 2026 Billion Play Inc. All rights reserved.</div>
   </footer>
 
-
-  <!-- LEGAL STRIP -->
   <div class="footer-legal">
-    <p>
+    <p lang="ko">
       주식회사 BILLIONPLAY CO., LTD. | 대표이사: 고무진 | 사업자등록번호: 216-81-20560<br>
-      부산광역시 해운대구 센텀중앙로 97 (재송동, 센텀스카이비즈) · 97, Centum jungang-ro, Haeundae-gu, Busan, Republic of Korea<br>
+      부산광역시 해운대구 센텀중앙로 97 (재송동, 센텀스카이비즈)<br>
+      © 2026 Billion Play Inc. All rights reserved.
+    </p>
+    <p lang="en">
+      BILLIONPLAY CO., LTD. | CEO: Ko Mu-jin | Business Registration No. 216-81-20560<br>
+      97, Centum jungang-ro, Haeundae-gu, Busan, Republic of Korea<br>
       © 2026 Billion Play Inc. All rights reserved.
     </p>
   </div>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var buttons = document.querySelectorAll('.lang-btn');
+
+      function setLang(lang) {
+        root.setAttribute('data-lang', lang);
+        root.setAttribute('lang', lang);
+        buttons.forEach(function (b) {
+          b.setAttribute('aria-pressed', String(b.dataset.setLang === lang));
+        });
+        try { localStorage.setItem('bp-lang', lang); } catch (e) {}
+      }
+
+      var saved = null;
+      try { saved = localStorage.getItem('bp-lang'); } catch (e) {}
+      if (!saved) {
+        saved = (navigator.language || 'ko').toLowerCase().indexOf('ko') === 0 ? 'ko' : 'en';
+      }
+      setLang(saved);
+
+      buttons.forEach(function (b) {
+        b.addEventListener('click', function () { setLang(b.dataset.setLang); });
+      });
+    })();
+  </script>
 
 </body>
 </html>

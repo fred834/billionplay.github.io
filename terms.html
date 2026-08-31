@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
   <title>서비스 이용약관 — Billion Play</title>
   <link rel="icon" type="image/png" href="./favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -15,8 +16,9 @@
       --dark: #111111;
       --card: #161616;
       --border: #2a2a2a;
-      --text: #e8e8e8;
-      --muted: #888;
+      --text: #f0f0f0;
+      --muted: #b0b0b0;
+      --faint: #8a8a8a;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -24,32 +26,59 @@
       background: var(--black);
       color: var(--text);
       font-family: 'Noto Sans KR', sans-serif;
-      font-weight: 300;
+      font-weight: 400;
       line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    html[data-lang="ko"] [lang="en"] { display: none !important; }
+    html[data-lang="en"] [lang="ko"] { display: none !important; }
+
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--yellow);
+      outline-offset: 3px;
     }
 
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; justify-content: space-between; align-items: center;
-      padding: 20px 48px;
-      background: rgba(10,10,10,0.92);
+      gap: 16px;
+      padding: 18px 48px;
+      background: rgba(10,10,10,0.94);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(245,200,0,0.08);
+      border-bottom: 1px solid rgba(245,200,0,0.10);
     }
     .nav-logo {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 22px; letter-spacing: 0.12em;
       color: var(--yellow); text-decoration: none;
     }
+    .nav-right { display: flex; align-items: center; gap: 28px; }
     .nav-back {
       font-family: 'Space Mono', monospace;
-      font-size: 11px; letter-spacing: 0.15em;
+      font-size: 12px; letter-spacing: 0.12em;
       text-transform: uppercase; color: var(--muted);
       text-decoration: none; transition: color 0.2s;
       display: flex; align-items: center; gap: 8px;
     }
     .nav-back::before { content: '←'; }
     .nav-back:hover { color: var(--yellow); }
+
+    .lang-switch { display: flex; border: 1px solid var(--border); }
+    .lang-btn {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px; letter-spacing: 0.1em;
+      padding: 6px 12px;
+      background: transparent; color: var(--faint);
+      border: none; cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      line-height: 1.4;
+    }
+    .lang-btn + .lang-btn { border-left: 1px solid var(--border); }
+    .lang-btn:hover { color: var(--text); }
+    .lang-btn[aria-pressed="true"] {
+      background: var(--yellow); color: var(--black); font-weight: 700;
+    }
 
     .page-header {
       padding: 140px 48px 60px;
@@ -58,7 +87,7 @@
     }
     .page-label {
       font-family: 'Space Mono', monospace;
-      font-size: 10px; letter-spacing: 0.25em;
+      font-size: 11px; letter-spacing: 0.22em;
       text-transform: uppercase; color: var(--yellow);
       margin-bottom: 16px;
       display: flex; align-items: center; gap: 10px;
@@ -66,85 +95,72 @@
     .page-label::before { content: ''; width: 24px; height: 1px; background: var(--yellow); }
     .page-title {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(40px, 6vw, 72px);
-      letter-spacing: 0.02em; color: var(--text); margin-bottom: 16px;
+      font-size: clamp(38px, 6vw, 68px);
+      letter-spacing: 0.02em; color: var(--text);
+      margin-bottom: 16px; line-height: 1.05;
     }
     .page-meta {
       font-family: 'Space Mono', monospace;
-      font-size: 11px; color: var(--muted); letter-spacing: 0.1em;
+      font-size: 12px; color: var(--muted); letter-spacing: 0.08em;
     }
 
     .content-wrap {
-      max-width: 800px; margin: 0 auto;
-      padding: 72px 48px 100px;
+      max-width: 780px; margin: 0 auto;
+      padding: 64px 48px 100px;
     }
 
     .article h2 {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 28px; letter-spacing: 0.05em;
-      color: var(--text); margin: 56px 0 16px;
+      font-size: 30px; letter-spacing: 0.04em;
+      color: var(--text); margin: 56px 0 18px;
       padding-bottom: 10px; border-bottom: 1px solid var(--border);
     }
     .article h2:first-child { margin-top: 0; }
     .article h3 {
-      font-size: 14px; font-weight: 700; color: var(--yellow);
-      margin: 28px 0 8px; font-family: 'Space Mono', monospace;
-      letter-spacing: 0.08em; text-transform: uppercase;
+      font-size: 15px; font-weight: 700; color: var(--yellow);
+      margin: 30px 0 10px; letter-spacing: 0.02em;
     }
     .article p {
-      font-size: 14px; color: var(--muted);
+      font-size: 16px; color: var(--muted);
       margin-bottom: 16px; line-height: 1.9;
     }
     .article ul, .article ol {
-      padding-left: 20px; margin-bottom: 16px;
+      padding-left: 22px; margin-bottom: 18px;
     }
     .article li {
-      font-size: 14px; color: var(--muted);
-      line-height: 1.9; margin-bottom: 6px;
+      font-size: 16px; color: var(--muted);
+      line-height: 1.9; margin-bottom: 8px;
     }
-    .article strong { color: var(--text); font-weight: 500; }
+    .article strong { color: var(--text); font-weight: 700; }
+    .article a { color: var(--yellow); }
 
     .info-box {
       background: var(--card);
       border: 1px solid var(--border);
       border-left: 3px solid var(--yellow);
-      padding: 20px 24px; margin: 24px 0;
+      padding: 22px 26px; margin: 24px 0 40px;
     }
     .info-box p { margin-bottom: 0; }
 
     .contact-box {
       background: var(--card);
       border: 1px solid var(--border);
-      padding: 28px 32px; margin-top: 48px;
+      padding: 28px 32px; margin: 24px 0;
     }
     .contact-box .label {
       font-family: 'Space Mono', monospace;
-      font-size: 10px; letter-spacing: 0.2em;
-      color: var(--yellow); margin-bottom: 12px;
+      font-size: 11px; letter-spacing: 0.18em;
+      color: var(--yellow); margin-bottom: 14px;
+      text-transform: uppercase;
     }
-    .contact-box p { margin-bottom: 4px; }
-    .contact-box a { color: var(--text); }
-
-
-    .footer-legal {
-      background: #0d0d0d;
-      border-top: 1px solid var(--border);
-      padding: 20px 48px;
-      text-align: center;
-    }
-    .footer-legal p {
-      font-family: 'Space Mono', monospace;
-      font-size: 10px;
-      color: #555;
-      letter-spacing: 0.06em;
-      line-height: 1.9;
-    }
+    .contact-box p { margin-bottom: 6px; font-size: 15px; }
+    .contact-box p:last-child { margin-bottom: 0; }
 
     footer {
       border-top: 1px solid var(--border);
       padding: 32px 48px;
       display: flex; justify-content: space-between; align-items: center;
-      background: var(--dark);
+      gap: 20px; background: var(--dark);
     }
     .footer-logo {
       font-family: 'Bebas Neue', sans-serif;
@@ -152,29 +168,36 @@
     }
     .footer-copy {
       font-family: 'Space Mono', monospace;
-      font-size: 10px; color: var(--muted); letter-spacing: 0.08em;
+      font-size: 11px; color: var(--muted); letter-spacing: 0.06em;
     }
 
-    @media (max-width: 768px) {
-      nav { padding: 16px 24px; }
-      .page-header { padding: 120px 24px 48px; }
-      .content-wrap { padding: 48px 24px 72px; }
-  
     .footer-legal {
       background: #0d0d0d;
       border-top: 1px solid var(--border);
-      padding: 20px 48px;
-      text-align: center;
+      padding: 22px 48px; text-align: center;
     }
     .footer-legal p {
       font-family: 'Space Mono', monospace;
-      font-size: 10px;
-      color: #555;
-      letter-spacing: 0.06em;
-      line-height: 1.9;
+      font-size: 11px; color: #9a9a9a;
+      letter-spacing: 0.04em; line-height: 2;
     }
 
-    footer { flex-direction: column; gap: 16px; text-align: center; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 14px 20px; }
+      .nav-back { display: none; }
+      .page-header { padding: 110px 24px 44px; }
+      .content-wrap { padding: 48px 24px 72px; }
+      .article h2 { font-size: 26px; margin-top: 44px; }
+      .article p, .article li { font-size: 15px; }
+      footer { flex-direction: column; gap: 16px; text-align: center; }
+      .footer-legal { padding: 20px 24px; }
     }
   </style>
 </head>
@@ -182,17 +205,33 @@
 
   <nav>
     <a href="./index.html" class="nav-logo">Billion Play</a>
-    <a href="./index.html" class="nav-back">홈으로</a>
+    <div class="nav-right">
+      <a href="./index.html" class="nav-back"><span lang="ko">홈으로</span><span lang="en">Home</span></a>
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" class="lang-btn" data-set-lang="ko" aria-pressed="true">KR</button>
+        <button type="button" class="lang-btn" data-set-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
   </nav>
 
   <div class="page-header">
     <div class="page-label">Legal</div>
-    <h1 class="page-title">서비스 이용약관</h1>
-    <div class="page-meta">Terms of Service · 시행일: 2026년 07월 01일</div>
+    <h1 class="page-title">
+      <span lang="ko">서비스 이용약관</span>
+      <span lang="en">Terms of Service</span>
+    </h1>
+    <div class="page-meta">
+      <span lang="ko">공고일: 2026년 06월 24일 · 시행일: 2026년 07월 01일</span>
+      <span lang="en">Published: 24 June 2026 · Effective: 1 July 2026</span>
+    </div>
   </div>
 
   <div class="content-wrap">
     <div class="article">
+
+      <div class="info-box" lang="en">
+        <p>These Terms of Service are currently available in Korean only. An English version is in preparation. The Korean text below is the governing version.</p>
+      </div>
 
       <div class="info-box">
         <p>본 약관은 주식회사 빌리언플레이(이하 "회사")가 제공하는 모든 게임 서비스(이하 "서비스")의 이용에 관한 조건 및 절차를 규정합니다. 서비스를 이용하면 본 약관에 동의한 것으로 간주합니다.</p>
@@ -303,15 +342,45 @@
     <div class="footer-copy">© 2026 Billion Play Inc. All rights reserved.</div>
   </footer>
 
-
-  <!-- LEGAL STRIP -->
   <div class="footer-legal">
-    <p>
+    <p lang="ko">
       주식회사 BILLIONPLAY CO., LTD. | 대표이사: 고무진 | 사업자등록번호: 216-81-20560<br>
-      부산광역시 해운대구 센텀중앙로 97 (재송동, 센텀스카이비즈) · 97, Centum jungang-ro, Haeundae-gu, Busan, Republic of Korea<br>
+      부산광역시 해운대구 센텀중앙로 97 (재송동, 센텀스카이비즈)<br>
+      © 2026 Billion Play Inc. All rights reserved.
+    </p>
+    <p lang="en">
+      BILLIONPLAY CO., LTD. | CEO: Ko Mu-jin | Business Registration No. 216-81-20560<br>
+      97, Centum jungang-ro, Haeundae-gu, Busan, Republic of Korea<br>
       © 2026 Billion Play Inc. All rights reserved.
     </p>
   </div>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var buttons = document.querySelectorAll('.lang-btn');
+
+      function setLang(lang) {
+        root.setAttribute('data-lang', lang);
+        root.setAttribute('lang', lang);
+        buttons.forEach(function (b) {
+          b.setAttribute('aria-pressed', String(b.dataset.setLang === lang));
+        });
+        try { localStorage.setItem('bp-lang', lang); } catch (e) {}
+      }
+
+      var saved = null;
+      try { saved = localStorage.getItem('bp-lang'); } catch (e) {}
+      if (!saved) {
+        saved = (navigator.language || 'ko').toLowerCase().indexOf('ko') === 0 ? 'ko' : 'en';
+      }
+      setLang(saved);
+
+      buttons.forEach(function (b) {
+        b.addEventListener('click', function () { setLang(b.dataset.setLang); });
+      });
+    })();
+  </script>
 
 </body>
 </html>
