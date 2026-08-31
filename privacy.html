@@ -967,10 +967,21 @@
       }
 
       var saved = null;
-      try { saved = localStorage.getItem('bp-lang'); } catch (e) {}
+
+      // 1) URL parameter wins:  ?lang=en  /  ?lang=ko
+      var q = (location.search.match(/[?&]lang=(ko|en)\b/) || [])[1];
+      if (q) { saved = q; }
+
+      // 2) then the visitor's previous choice
+      if (!saved) {
+        try { saved = localStorage.getItem('bp-lang'); } catch (e) {}
+      }
+
+      // 3) then the browser language
       if (!saved) {
         saved = (navigator.language || 'ko').toLowerCase().indexOf('ko') === 0 ? 'ko' : 'en';
       }
+
       setLang(saved);
 
       buttons.forEach(function (b) {
