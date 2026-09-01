@@ -50,15 +50,20 @@
     }
     .nav-logo {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 22px; letter-spacing: 0.12em;
-      color: var(--yellow); text-decoration: none;
+      font-size: 22px;
+      letter-spacing: 0.12em;
+      color: var(--yellow);
+      text-decoration: none;
     }
     .nav-right { display: flex; align-items: center; gap: 28px; }
     .nav-back {
       font-family: 'Space Mono', monospace;
-      font-size: 12px; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--muted);
-      text-decoration: none; transition: color 0.2s;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
       display: flex; align-items: center; gap: 8px;
     }
     .nav-back::before { content: '←'; }
@@ -67,9 +72,11 @@
     .lang-switch { display: flex; border: 1px solid var(--border); }
     .lang-btn {
       font-family: 'Space Mono', monospace;
-      font-size: 11px; letter-spacing: 0.1em;
+      font-size: 11px;
+      letter-spacing: 0.1em;
       padding: 6px 12px;
-      background: transparent; color: var(--faint);
+      background: transparent;
+      color: var(--faint);
       border: none; cursor: pointer;
       transition: background 0.2s, color 0.2s;
       line-height: 1.4;
@@ -87,8 +94,10 @@
     }
     .page-label {
       font-family: 'Space Mono', monospace;
-      font-size: 11px; letter-spacing: 0.22em;
-      text-transform: uppercase; color: var(--yellow);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--yellow);
       margin-bottom: 16px;
       display: flex; align-items: center; gap: 10px;
     }
@@ -96,61 +105,114 @@
     .page-title {
       font-family: 'Bebas Neue', sans-serif;
       font-size: clamp(38px, 6vw, 68px);
-      letter-spacing: 0.02em; color: var(--text);
-      margin-bottom: 16px; line-height: 1.05;
+      letter-spacing: 0.02em;
+      color: var(--text);
+      margin-bottom: 16px;
+      line-height: 1.05;
     }
     .page-meta {
       font-family: 'Space Mono', monospace;
-      font-size: 12px; color: var(--muted); letter-spacing: 0.08em;
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
     }
 
     .content-wrap {
-      max-width: 780px; margin: 0 auto;
+      max-width: 780px;
+      margin: 0 auto;
       padding: 64px 48px 100px;
     }
 
     .article h2 {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 30px; letter-spacing: 0.04em;
-      color: var(--text); margin: 56px 0 18px;
-      padding-bottom: 10px; border-bottom: 1px solid var(--border);
+      font-size: 30px;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      margin: 56px 0 18px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
     }
     .article h2:first-child { margin-top: 0; }
+
     .article h3 {
-      font-size: 15px; font-weight: 700; color: var(--yellow);
-      margin: 30px 0 10px; letter-spacing: 0.02em;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--yellow);
+      margin: 30px 0 10px;
+      letter-spacing: 0.02em;
     }
+
     .article p {
-      font-size: 16px; color: var(--muted);
-      margin-bottom: 16px; line-height: 1.9;
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 16px;
+      line-height: 1.9;
     }
+
     .article ul, .article ol {
-      padding-left: 22px; margin-bottom: 18px;
+      padding-left: 22px;
+      margin-bottom: 18px;
     }
     .article li {
-      font-size: 16px; color: var(--muted);
-      line-height: 1.9; margin-bottom: 8px;
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.9;
+      margin-bottom: 8px;
     }
+
     .article strong { color: var(--text); font-weight: 700; }
     .article a { color: var(--yellow); }
+
+    .table-scroll {
+      overflow-x: auto;
+      margin: 20px 0 24px;
+      border: 1px solid var(--border);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+      min-width: 520px;
+    }
+    th, td {
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.7;
+    }
+    th {
+      background: var(--card);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+    td { color: var(--muted); }
+    tr:last-child td { border-bottom: none; }
 
     .info-box {
       background: var(--card);
       border: 1px solid var(--border);
       border-left: 3px solid var(--yellow);
-      padding: 22px 26px; margin: 24px 0 40px;
+      padding: 22px 26px;
+      margin: 24px 0 40px;
     }
-    .info-box p { margin-bottom: 0; }
+    .info-box p { margin-bottom: 12px; }
+    .info-box p:last-child { margin-bottom: 0; }
 
     .contact-box {
       background: var(--card);
       border: 1px solid var(--border);
-      padding: 28px 32px; margin: 24px 0;
+      padding: 28px 32px;
+      margin: 24px 0;
     }
     .contact-box .label {
       font-family: 'Space Mono', monospace;
-      font-size: 11px; letter-spacing: 0.18em;
-      color: var(--yellow); margin-bottom: 14px;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      color: var(--yellow);
+      margin-bottom: 14px;
       text-transform: uppercase;
     }
     .contact-box p { margin-bottom: 6px; font-size: 15px; }
@@ -160,7 +222,8 @@
       border-top: 1px solid var(--border);
       padding: 32px 48px;
       display: flex; justify-content: space-between; align-items: center;
-      gap: 20px; background: var(--dark);
+      gap: 20px;
+      background: var(--dark);
     }
     .footer-logo {
       font-family: 'Bebas Neue', sans-serif;
@@ -174,12 +237,15 @@
     .footer-legal {
       background: #0d0d0d;
       border-top: 1px solid var(--border);
-      padding: 22px 48px; text-align: center;
+      padding: 22px 48px;
+      text-align: center;
     }
     .footer-legal p {
       font-family: 'Space Mono', monospace;
-      font-size: 11px; color: #9a9a9a;
-      letter-spacing: 0.04em; line-height: 2;
+      font-size: 11px;
+      color: #9a9a9a;
+      letter-spacing: 0.04em;
+      line-height: 2;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -220,121 +286,536 @@
       <span lang="ko">서비스 이용약관</span>
       <span lang="en">Terms of Service</span>
     </h1>
-    <div class="page-meta">
-      <span lang="ko">공고일: 2026년 06월 24일 · 시행일: 2026년 07월 01일</span>
-      <span lang="en">Published: 24 June 2026 · Effective: 1 July 2026</span>
-    </div>
   </div>
 
   <div class="content-wrap">
-    <div class="article">
 
-      <div class="info-box" lang="en">
-        <p>These Terms of Service are currently available in Korean only. An English version is in preparation. The Korean text below is the governing version.</p>
-      </div>
+    <!-- ══════════ 한국어 ══════════ -->
+    <div class="article" lang="ko">
 
       <div class="info-box">
-        <p>본 약관은 주식회사 빌리언플레이(이하 "회사")가 제공하는 모든 게임 서비스(이하 "서비스")의 이용에 관한 조건 및 절차를 규정합니다. 서비스를 이용하면 본 약관에 동의한 것으로 간주합니다.</p>
+        <p>본 이용약관(이하 "약관")은 주식회사 빌리언플레이(BILLIONPLAY CO., LTD., 이하 "회사")가 제공하는 모바일 게임 및 이에 부수되는 서비스의 이용과 관련하여 회사와 이용자 간의 권리, 의무 및 책임사항과 기타 필요한 사항을 정합니다.</p>
       </div>
 
       <h2>제1조 목적</h2>
-      <p>본 약관은 회사가 제공하는 모바일 게임 및 관련 서비스의 이용 조건, 절차, 회사와 이용자 간의 권리·의무 및 책임 사항을 규정함을 목적으로 합니다.</p>
+      <p>본 약관은 회사가 제공하는 모바일 게임 및 이에 부수되는 서비스(이하 "서비스")의 이용조건 및 절차, 회사와 이용자의 권리·의무 및 책임사항, 그 밖에 서비스 이용에 필요한 사항을 규정함을 목적으로 합니다.</p>
 
-      <h2>제2조 정의</h2>
-      <ul>
-        <li><strong>"서비스"</strong>란 회사가 제공하는 모바일 게임, 웹사이트 및 관련 부가 서비스를 의미합니다.</li>
-        <li><strong>"이용자"</strong>란 서비스에 접속하여 본 약관에 따라 서비스를 이용하는 자를 의미합니다.</li>
-        <li><strong>"유료 아이템"</strong>이란 서비스 내에서 유료로 구매하거나 획득하는 아이템, 재화 등을 의미합니다.</li>
-        <li><strong>"콘텐츠"</strong>란 서비스 내에서 이용 가능한 게임, 캐릭터, 아이템, 이미지, 영상, 음악 등 일체를 의미합니다.</li>
-      </ul>
+      <h2>제2조 용어의 정의</h2>
+      <p>① 본 약관에서 사용하는 용어의 뜻은 다음과 같습니다.</p>
+      <ol>
+        <li><strong>"이용자"</strong>란 본 약관에 따라 회사가 제공하는 서비스를 이용하는 자를 말합니다.</li>
+        <li><strong>"계정"</strong>이란 이용자의 서비스 이용정보 및 게임 데이터를 식별·관리하기 위하여 생성되는 식별 단위를 말하며, 익명 또는 임시 형태의 계정과 Google, Apple 등 외부 계정에 연동된 계정을 포함합니다.</li>
+        <li><strong>"게스트 계정"</strong>이란 Google, Apple 등 회사가 지원하는 외부 계정과 연동하지 않은 상태에서 이용하는 계정을 말합니다.</li>
+        <li><strong>"게임재화"</strong>란 이용자가 게임 플레이, 이벤트, 보상, 구매 등의 방법으로 획득하여 서비스 내에서 사용할 수 있는 코인 등의 가상 재화를 말합니다.</li>
+        <li><strong>"게임아이템"</strong>이란 이용자가 서비스 내에서 게임 진행을 위하여 사용할 수 있는 부스터, 소모성 아이템 및 그 밖의 가상 아이템을 말합니다.</li>
+        <li><strong>"시간제 아이템"</strong>이란 일정 시간 동안 하트 또는 특정 게임아이템 등을 무제한 또는 특별한 조건으로 이용할 수 있도록 제공되는 아이템을 말합니다.</li>
+        <li><strong>"유료콘텐츠"</strong>란 이용자가 Google Play, Apple App Store 등 앱마켓을 통한 결제로 이용할 수 있는 게임재화, 게임아이템, 패키지, 시즌패스 및 그 밖의 디지털 콘텐츠를 말합니다.</li>
+        <li><strong>"시즌패스"</strong>란 회사가 정한 일정 기간 동안 진행되는 콘텐츠로서 이용조건 달성에 따라 무료 보상 및 구매 이용자에게 제공되는 추가 보상을 획득할 수 있는 상품 또는 시스템을 말합니다.</li>
+        <li><strong>"운영정책"</strong>이란 서비스 운영, 이용제한, 부정행위 대응 및 그 밖의 서비스 운영에 필요한 세부기준을 정한 정책을 말합니다.</li>
+      </ol>
+      <p>② 본 조에서 정하지 않은 용어는 관계 법령, 운영정책 및 서비스 내 안내에서 정하는 바에 따릅니다.</p>
 
-      <h2>제3조 약관의 효력 및 변경</h2>
-      <p>본 약관은 서비스를 이용하는 모든 이용자에게 적용됩니다. 회사는 필요한 경우 약관을 변경할 수 있으며, 변경된 약관은 시행 7일 전 앱 내 공지를 통해 고지합니다. 변경 약관 시행 후 계속 서비스를 이용하면 변경된 약관에 동의한 것으로 봅니다.</p>
+      <h2>제3조 회사정보 등의 제공</h2>
+      <p>회사는 이용자가 쉽게 확인할 수 있도록 서비스 내 또는 연결된 화면 등을 통하여 다음 사항을 제공합니다.</p>
+      <ol>
+        <li>회사명: 주식회사 빌리언플레이(BILLIONPLAY CO., LTD.)</li>
+        <li>대표자: 고무진</li>
+        <li>사업자등록번호: 216-81-20560</li>
+        <li>주소: 부산광역시 해운대구 센텀중앙로 97</li>
+        <li>고객문의: help@billionplaygames.com</li>
+        <li>이용약관</li>
+        <li>개인정보처리방침</li>
+      </ol>
 
-      <h2>제4조 서비스의 제공 및 변경</h2>
-      <p>회사가 제공하는 서비스는 다음과 같습니다.</p>
-      <ul>
-        <li>모바일 캐주얼 퍼즐 게임 서비스</li>
-        <li>게임 계정 관리 및 데이터 저장 서비스</li>
-        <li>이벤트, 랭킹, 소셜 기능 등 부가 서비스</li>
-        <li>고객 지원 서비스</li>
-      </ul>
-      <p>회사는 서비스의 내용, 운영 정책 등을 변경할 수 있으며, 중요한 변경 사항은 사전에 공지합니다.</p>
+      <h2>제4조 약관의 효력 및 변경</h2>
+      <p>① 본 약관은 서비스 내 또는 회사가 정한 방법으로 이용자에게 게시하거나 안내함으로써 효력이 발생합니다.</p>
+      <p>② 회사는 관계 법령을 위반하지 않는 범위에서 본 약관을 변경할 수 있습니다.</p>
+      <p>③ 회사가 약관을 변경하는 경우 적용일자, 변경내용 및 변경사유를 명시하여 적용일 최소 7일 전부터 서비스 내 또는 회사가 정한 방법으로 안내합니다.</p>
+      <p>④ 이용자에게 불리하거나 중대한 내용을 변경하는 경우 회사는 적용일 최소 30일 전부터 제3항의 방법으로 안내하며, 관계 법령에서 더 긴 기간을 정한 경우에는 해당 기간에 따릅니다.</p>
+      <p>⑤ 변경된 약관에 대하여 이용자의 동의가 별도로 필요한 경우 회사는 관계 법령에서 정한 절차에 따라 동의를 받습니다.</p>
+      <p>⑥ 이용자는 변경된 약관에 동의하지 않는 경우 이용계약을 해지할 수 있습니다.</p>
 
-      <h2>제5조 서비스 이용</h2>
-      <h3>이용 자격</h3>
-      <p>만 14세 미만의 경우 법정대리인의 동의가 필요합니다. 회사의 서비스는 전 세계 이용자를 대상으로 하며, 해당 국가의 법령을 준수해야 합니다.</p>
+      <h2>제5조 약관 외 준칙</h2>
+      <p>① 본 약관에서 정하지 않은 사항은 「전자상거래 등에서의 소비자보호에 관한 법률」, 「게임산업진흥에 관한 법률」, 「콘텐츠산업 진흥법」, 「약관의 규제에 관한 법률」, 「개인정보 보호법」 등 관계 법령 및 회사의 운영정책에 따릅니다.</p>
+      <p>② 서비스가 대한민국 외 국가 또는 지역에서 제공되는 경우 해당 국가 또는 지역에서 강행적으로 적용되는 법령에 따른 이용자의 권리는 본 약관으로 제한되지 않습니다.</p>
 
-      <h3>계정 관리</h3>
-      <ul>
-        <li>이용자는 계정 정보의 보안에 책임을 집니다.</li>
-        <li>계정 도용 또는 부정 사용이 의심될 경우 즉시 회사에 신고해야 합니다.</li>
-        <li>타인의 계정을 무단으로 사용하는 행위는 금지됩니다.</li>
-      </ul>
+      <h2>제6조 이용계약의 성립</h2>
+      <p>① 이용계약은 이용자가 회사가 정한 방법으로 본 약관에 동의하고 서비스를 이용하며 회사가 이를 승낙함으로써 성립합니다.</p>
+      <p>② 회사는 원칙적으로 이용자의 서비스 이용을 승낙합니다. 다만 다음 각 호에 해당하는 경우 이용을 제한하거나 승낙하지 않을 수 있습니다.</p>
+      <ol>
+        <li>관계 법령에 따라 서비스 이용이 제한되는 경우</li>
+        <li>타인의 정보 또는 계정을 부정하게 이용한 경우</li>
+        <li>서비스의 정상적인 운영을 방해할 목적으로 이용하는 경우</li>
+        <li>과거 본 약관 또는 운영정책 위반으로 이용이 제한된 경우</li>
+        <li>그 밖에 관계 법령 또는 서비스 운영상 승낙하기 어려운 정당한 사유가 있는 경우</li>
+      </ol>
 
-      <h2>제6조 금지 행위</h2>
-      <p>이용자는 다음 행위를 해서는 안 됩니다.</p>
-      <ul>
-        <li>핵, 봇, 매크로 등 비정상적인 방법으로 서비스를 이용하는 행위</li>
-        <li>서비스의 취약점을 악용하거나 버그를 의도적으로 이용하는 행위</li>
-        <li>다른 이용자의 게임 이용을 방해하는 행위</li>
-        <li>서비스 내 콘텐츠를 무단으로 복제, 배포, 상업적으로 이용하는 행위</li>
-        <li>관련 법령을 위반하는 행위</li>
-        <li>회사 또는 타인의 명예를 훼손하는 행위</li>
-        <li>허위 정보를 등록하거나 타인을 사칭하는 행위</li>
-      </ul>
+      <h2>제7조 이용연령 및 미성년자</h2>
+      <p>① 회사의 서비스는 만 13세 미만의 아동을 대상으로 하지 않습니다.</p>
+      <p>② 일부 국가 또는 지역에서는 서비스 이용, 개인정보 처리 또는 유료콘텐츠 구매 등에 법정대리인의 동의 또는 별도의 연령 기준이 적용될 수 있습니다.</p>
+      <p>③ 이용자는 자신에게 적용되는 관계 법령에 따라 필요한 동의 또는 허가를 갖추어 서비스를 이용하여야 합니다.</p>
+      <p>④ 미성년자인 이용자는 유료콘텐츠를 구매하기 전에 법정대리인의 동의를 얻어야 합니다. 회사는 관계 법령에서 요구하는 경우 미성년자의 서비스 이용 또는 유료콘텐츠 구매를 제한하거나 법정대리인의 동의를 요구할 수 있습니다.</p>
+      <p>⑤ 미성년자가 법정대리인의 동의 없이 유료콘텐츠를 구매한 경우 미성년자 본인 또는 법정대리인은 관계 법령에 따라 해당 구매를 취소할 수 있습니다. 다만 법정대리인이 처분을 허락한 재산의 범위에서 구매한 경우 등 관계 법령에 따라 취소가 제한되는 경우에는 그러하지 아니합니다.</p>
 
-      <h2>제7조 유료 서비스 및 환불</h2>
-      <h3>유료 서비스</h3>
-      <p>서비스 내 일부 콘텐츠는 유료로 제공됩니다. 유료 콘텐츠 구매 시 각 앱 마켓(Google Play, App Store)의 결제 정책이 적용됩니다.</p>
+      <h2>제8조 계정 및 계정 연동</h2>
+      <p>① 회사는 이용자의 게임 데이터를 식별하고 관리하기 위해 서비스 최초 이용 시 익명 또는 임시 형태의 계정을 생성할 수 있습니다.</p>
+      <p>② 이용자는 게임 데이터의 복원 및 기기 변경 등에 대비하여 회사가 제공하는 Google 또는 Apple 계정 연동 기능을 이용할 수 있습니다.</p>
+      <p>③ 이용자는 자신의 계정 및 외부 연동계정을 안전하게 관리하여야 하며, 타인에게 계정을 양도, 대여 또는 판매해서는 안 됩니다.</p>
+      <p>④ 외부 계정 제공자의 장애, 이용제한, 계정삭제 또는 정책 변경 등에 따라 외부 계정 연동 기능의 일부가 제한될 수 있습니다.</p>
 
-      <h3>환불 정책</h3>
-      <ul>
-        <li>인앱 구매의 환불은 각 앱 마켓의 환불 정책을 따릅니다.</li>
-        <li>이미 사용된 유료 아이템은 원칙적으로 환불되지 않습니다.</li>
-        <li>회사의 귀책 사유로 인한 서비스 장애 시 별도 보상 기준을 적용합니다.</li>
-        <li>환불 문의: <strong>support@billionplaygames.com</strong></li>
-      </ul>
+      <h2>제9조 게스트 계정 및 게임 데이터 복구</h2>
+      <p>① 외부 계정에 연동하지 않은 게스트 계정의 게임 데이터는 앱 삭제, 기기 변경, 단말기 초기화, 데이터 삭제 등의 경우 소실될 수 있으며, 소실된 게임 데이터는 복구할 수 없습니다.</p>
+      <p>② 회사는 이용자가 게임 데이터를 안전하게 보관하고 기기 변경 또는 재설치 후에도 계속 이용할 수 있도록 Google 또는 Apple 등 회사가 지원하는 외부 계정 연동 기능을 제공하며, 이용자에게 해당 기능의 이용을 권장합니다.</p>
+      <p>③ 이용자가 외부 계정을 정상적으로 연동한 경우 해당 외부 계정으로 로그인하여 연동된 게임 데이터를 이용할 수 있습니다.</p>
+      <p>④ 게스트 계정의 게임 데이터가 소실된 경우 유료콘텐츠의 구매 여부와 관계없이 기존 게스트 계정 및 게임 데이터는 복구할 수 없습니다.</p>
+      <p>⑤ 이용자는 유료콘텐츠를 구매하거나 게임 데이터를 계속 보관하려는 경우 사전에 외부 계정을 연동하는 것을 권장합니다.</p>
+      <p>⑥ 회사의 고의 또는 과실 등 회사의 귀책사유로 게임 데이터가 소실된 경우에는 관계 법령에 따라 필요한 조치를 합니다.</p>
 
-      <h2>제8조 서비스 중단 및 종료</h2>
-      <p>회사는 다음의 경우 서비스를 일시 중단하거나 종료할 수 있습니다.</p>
-      <ul>
-        <li>시스템 점검, 업데이트, 장애 복구가 필요한 경우</li>
-        <li>서비스 운영 정책상 필요한 경우</li>
-        <li>천재지변, 불가항력적 사유가 발생한 경우</li>
-      </ul>
-      <p>서비스 종료 시에는 최소 30일 전 앱 내 공지를 통해 안내합니다. 서비스 종료로 인한 유료 아이템 환불 정책은 별도로 공지합니다.</p>
+      <h2>제10조 회사의 의무</h2>
+      <p>① 회사는 관계 법령과 본 약관을 준수하며 안정적으로 서비스를 제공하기 위해 합리적인 노력을 합니다.</p>
+      <p>② 회사는 이용자의 의견 또는 불만이 정당하다고 인정되는 경우 이를 처리하기 위해 노력합니다.</p>
+      <p>③ 회사는 이용자의 개인정보를 관계 법령 및 개인정보처리방침에 따라 처리하고 보호합니다.</p>
+      <p>④ 회사는 서비스 운영과 관련된 장애가 발생한 경우 이를 확인하고 복구하기 위해 합리적인 노력을 합니다.</p>
 
-      <h2>제9조 지식재산권</h2>
-      <p>서비스 내 모든 콘텐츠(게임, 캐릭터, 이미지, 음악, 텍스트 등)에 대한 지식재산권은 회사에 귀속됩니다. 이용자는 서비스 이용 목적 범위 내에서만 콘텐츠를 이용할 수 있으며, 무단 복제·배포·상업적 이용은 금지됩니다.</p>
+      <h2>제11조 이용자의 의무</h2>
+      <p>이용자는 다음 각 호의 행위를 하여서는 안 됩니다.</p>
+      <ol>
+        <li>타인의 계정을 부정하게 이용하는 행위</li>
+        <li>계정 또는 게임 데이터를 판매, 구매, 양도, 대여 또는 교환하는 행위</li>
+        <li>회사가 승인하지 않은 프로그램, 핵, 매크로, 봇, 자동화 도구 등을 사용하는 행위</li>
+        <li>게임 또는 앱을 변조, 역설계, 디컴파일하거나 보안기능을 우회하는 행위</li>
+        <li>버그, 오류 또는 시스템상의 취약점을 악용하여 부당한 이익을 얻는 행위</li>
+        <li>게임재화, 게임아이템, 점수 또는 랭킹을 비정상적인 방법으로 획득하거나 조작하는 행위</li>
+        <li>회사 서버 또는 서비스의 정상적인 운영을 방해하는 행위</li>
+        <li>타인의 지식재산권, 개인정보 또는 그 밖의 권리를 침해하는 행위</li>
+        <li>관계 법령, 본 약관 또는 운영정책에 위반되는 행위</li>
+      </ol>
 
-      <h2>제10조 면책 조항</h2>
-      <p>회사는 다음의 경우 책임을 지지 않습니다.</p>
-      <ul>
-        <li>이용자의 귀책 사유로 인한 서비스 이용 장애</li>
-        <li>이용자 간 분쟁으로 인한 손해</li>
-        <li>무료로 제공되는 서비스의 이용으로 인한 손해 (단, 회사의 고의·중과실 제외)</li>
-        <li>이용자가 서비스를 통해 기대하는 수익의 미실현</li>
-      </ul>
+      <h2>제12조 서비스의 제공</h2>
+      <p>① 회사는 게임 플레이, 게임 데이터 저장, 이벤트, 랭킹, 보상, 결제 및 기타 부가 기능을 제공할 수 있습니다.</p>
+      <p>② 서비스는 원칙적으로 회사의 운영방침에 따라 제공됩니다. 다만 점검, 장애, 천재지변, 통신망 장애 등 서비스 운영상 필요한 사유가 있는 경우 일시적으로 이용이 제한될 수 있습니다.</p>
+      <p>③ 서비스의 일부 기능은 이용자의 기기, 운영체제, 앱 버전, 국가 또는 앱마켓에 따라 다르게 제공될 수 있습니다.</p>
+      <p>④ 서비스 이용을 위해 인터넷 연결이 필요할 수 있으며, 이에 따른 데이터 통신요금 등은 이용자가 이용하는 통신사업자의 정책에 따라 발생할 수 있습니다.</p>
 
-      <h2>제11조 분쟁 해결 및 준거법</h2>
-      <p>본 약관은 대한민국 법령에 따라 해석되며, 서비스 이용과 관련하여 분쟁이 발생한 경우 상호 협의를 통해 해결함을 원칙으로 합니다. 협의가 이루어지지 않는 경우 민사소송법에 따른 관할 법원에 소를 제기할 수 있습니다.</p>
+      <h2>제13조 서비스의 변경 및 업데이트</h2>
+      <p>① 회사는 게임 밸런스 조정, 오류 수정, 콘텐츠 개선, 기술적·운영상 필요 등에 따라 서비스의 내용, 기능, 게임재화, 게임아이템, 보상구조 등을 변경할 수 있습니다.</p>
+      <p>② 이용자의 권리 또는 유료콘텐츠의 이용에 중대한 영향을 미치는 변경이 있는 경우 회사는 관계 법령 및 본 약관에 따라 사전에 안내합니다.</p>
+      <p>③ 회사는 서비스 이용을 위해 필요한 앱 업데이트를 제공할 수 있으며, 중요한 업데이트를 적용하지 않는 경우 서비스의 일부 또는 전부를 이용할 수 없을 수 있습니다.</p>
 
-      <h2>제12조 문의처</h2>
+      <h2>제14조 게임재화 및 게임아이템</h2>
+      <p>① 게임재화 및 게임아이템은 게임 플레이, 이벤트, 출석, 랭킹 보상, 구매 또는 회사가 정한 그 밖의 방법으로 획득할 수 있습니다.</p>
+      <p>② 동일한 종류의 게임재화 또는 게임아이템이라도 무료로 획득하거나 유료콘텐츠의 일부로 제공될 수 있습니다.</p>
+      <p>③ 게임재화 및 게임아이템은 서비스 내에서만 사용할 수 있으며, 관계 법령에서 달리 정하지 않는 한 현금 또는 실제 화폐로 교환하거나 이용자 간에 양도할 수 없습니다.</p>
+      <p>④ 게임재화 및 게임아이템은 실제 화폐, 예금 또는 그 밖의 금전적 가치를 보관하는 수단이 아닙니다.</p>
+      <p>⑤ 게임재화 및 게임아이템의 획득은 이용자에게 해당 콘텐츠를 본 약관 및 서비스에서 정한 방법으로 이용할 수 있는 권리를 부여하는 것이며, 별도의 소유권 또는 현금에 대한 권리를 부여하는 것은 아닙니다.</p>
+      <p>⑥ 유료로 취득한 게임재화 및 게임아이템의 이용기간은 구매 화면 또는 서비스 내에서 별도로 정한 경우를 제외하고 서비스 종료 시까지로 합니다. 시간제 아이템 및 시즌패스의 이용기간은 각각 제15조 및 제16조에서 정한 바에 따릅니다.</p>
+      <p>⑦ 회사는 게임 운영 및 밸런스 조정을 위하여 무료로 제공된 게임재화 또는 게임아이템의 내용이나 사용조건 등을 변경할 수 있습니다.</p>
+      <p>⑧ 유료로 취득한 게임재화 또는 게임아이템의 변경, 청약철회 및 환불 등에 대해서는 관계 법령 및 본 약관에서 정한 바에 따릅니다.</p>
+
+      <h2>제15조 시간제 아이템</h2>
+      <p>① 회사는 일정 시간 동안 하트 또는 특정 게임아이템 등을 무제한으로 사용할 수 있는 시간제 아이템을 제공할 수 있습니다.</p>
+      <p>② 별도 표시가 없는 경우 시간제 아이템의 이용시간은 이용자가 해당 보상의 <strong>수령 버튼을 눌러 지급받은 시점부터</strong> 차감됩니다.</p>
+      <p>③ 시간제 아이템의 이용시간, 적용대상 및 사용조건은 해당 상품 또는 보상 화면에서 안내합니다.</p>
+      <p>④ 이용시간이 만료된 경우 해당 시간제 혜택은 종료됩니다.</p>
+
+      <h2>제16조 시즌패스</h2>
+      <p>① 회사는 일정 기간 동안 진행되는 시즌패스를 제공할 수 있습니다.</p>
+      <p>② 이용자는 회사가 정한 조건을 달성하여 무료 보상을 획득할 수 있으며, 시즌패스를 구매한 이용자는 해당 시즌에서 정한 조건을 달성하는 경우 추가 유료 보상을 획득할 수 있습니다.</p>
+      <p>③ 시즌패스의 기간, 가격, 보상, 단계, 보상 획득 조건 및 그 밖의 세부사항은 구매 화면 또는 게임 내에서 안내합니다.</p>
+      <p>④ 시즌 종료 시점까지 보상 획득 조건을 달성하여 수령 가능한 상태가 되었으나 이용자가 직접 수령하지 않은 <strong>무료 및 유료 보상은 시즌 종료 후 자동으로 지급됩니다.</strong></p>
+      <p>⑤ 시즌 종료 시점까지 보상 획득 조건을 달성하지 못한 단계의 보상은 지급되지 않습니다.</p>
+      <p>⑥ 시즌패스는 해당 시즌에 적용되는 상품으로서 시즌 종료 후에는 해당 시즌의 진행 또는 추가 보상 획득이 제한됩니다.</p>
+
+      <h2>제17조 유료콘텐츠 및 인앱결제</h2>
+      <p>① 회사는 게임재화, 게임아이템, 시간제 아이템, 패키지, 시즌패스 등 유료콘텐츠를 제공할 수 있습니다.</p>
+      <p>② 유료콘텐츠의 가격, 구성, 이용기간 및 주요 이용조건은 구매 화면에 표시합니다.</p>
+      <p>③ 유료콘텐츠의 결제는 Google Play, Apple App Store 등 이용자가 사용하는 앱마켓을 통해 처리됩니다.</p>
+      <p>④ 이용자는 앱마켓의 결제정책 및 이용조건을 확인한 후 유료콘텐츠를 구매하여야 합니다.</p>
+      <p>⑤ 앱마켓 또는 결제사업자의 정책, 환율, 세금 등에 따라 실제 결제금액 또는 표시방식이 달라질 수 있습니다.</p>
+      <p>⑥ 유료콘텐츠는 앱마켓의 결제 승인이 완료되고 해당 콘텐츠가 이용자의 게임 계정에 정상적으로 지급되어 이용 가능한 상태가 된 때 제공된 것으로 봅니다.</p>
+      <p>⑦ 이용자는 구매한 유료콘텐츠를 회사가 정한 방식과 용도에 따라 개인적이고 비상업적인 목적으로만 이용할 수 있습니다.</p>
+
+      <h2>제18조 청약철회</h2>
+      <p>① 이용자가 유료로 구매한 콘텐츠 중 청약철회가 가능한 콘텐츠는 구매 후 7일 이내에 서비스 내 고객문의 기능 또는 회사가 정한 방법을 통하여 청약철회를 요청할 수 있습니다.</p>
+      <p>② 다음 각 호의 어느 하나에 해당하는 경우에는 관계 법령에서 허용하는 범위에서 청약철회가 제한될 수 있습니다.</p>
+      <ol>
+        <li>이용자의 책임 있는 사유로 유료콘텐츠가 멸실되거나 훼손된 경우</li>
+        <li>유료콘텐츠의 전부 또는 일부를 사용하거나 소비한 경우</li>
+        <li>시간제 아이템의 이용시간이 시작된 경우</li>
+        <li>시즌패스의 유료 보상을 하나 이상 수령한 경우</li>
+        <li>구매 즉시 사용되거나 효력이 발생하는 콘텐츠의 이용이 시작된 경우</li>
+        <li>그 밖에 관계 법령에서 청약철회가 제한되는 경우</li>
+      </ol>
+      <p>③ 유료콘텐츠의 내용이 표시·광고된 내용과 다르거나 계약내용과 다르게 제공된 경우 이용자는 관계 법령에서 정한 기간 내에 청약철회를 요청할 수 있습니다.</p>
+      <p>④ 미성년자가 법정대리인의 동의 없이 유료콘텐츠를 구매한 경우 미성년자 본인 또는 법정대리인은 관계 법령에 따라 해당 구매를 취소할 수 있습니다. 다만 관계 법령에 따라 취소가 제한되는 경우에는 그러하지 아니합니다.</p>
+      <p>⑤ 청약철회에 따른 환급은 관계 법령에 따라 처리하며, Google Play, Apple App Store 등 앱마켓을 통한 결제의 취소 및 실제 환급 절차와 처리기간은 해당 앱마켓 또는 결제수단의 정책에 따를 수 있습니다.</p>
+      <p>⑥ 청약철회 또는 결제 취소가 완료되는 경우 회사는 해당 구매로 지급된 게임재화, 게임아이템 및 그 밖의 유료콘텐츠를 회수할 수 있습니다.</p>
+
+      <h2>제19조 과오납금의 환급</h2>
+      <p>① 이용자가 실제 결제하여야 할 금액보다 많은 금액을 결제한 경우 회사는 관계 법령에 따라 환급에 필요한 조치를 하며, 앱마켓을 통한 결제는 해당 앱마켓의 환급 절차에 따라 처리될 수 있습니다.</p>
+      <p>② 과오납이 회사의 귀책사유로 발생한 경우 회사는 관계 법령에 따라 필요한 조치를 합니다.</p>
+      <p>③ 환급이 앱마켓을 통해 이루어져야 하는 경우 회사는 이용자에게 해당 앱마켓의 환급 절차를 안내할 수 있습니다.</p>
+
+      <h2>제20조 이벤트, 랭킹 및 보상</h2>
+      <p>① 회사는 서비스 내에서 출석, 이벤트, 랭킹 및 그 밖의 방식으로 이용자에게 보상을 제공할 수 있습니다.</p>
+      <p>② 이벤트의 기간, 참여조건, 보상 및 지급방법은 서비스 내에서 별도로 안내합니다.</p>
+      <p>③ 랭킹은 회사가 정한 기준에 따라 산정되며, 게임 밸런스 또는 운영상 필요한 경우 랭킹 그룹이나 산정 방식 등이 변경될 수 있습니다.</p>
+      <p>④ 비정상적인 플레이, 버그 악용, 매크로, 데이터 조작 또는 그 밖의 부정한 방법으로 획득한 점수, 순위 및 보상은 무효 처리되거나 회수될 수 있습니다.</p>
+      <p>⑤ 서비스 장애 또는 운영상 오류 등 회사의 귀책사유로 랭킹 또는 보상에 중대한 오류가 발생한 경우 회사는 합리적인 범위에서 이를 수정하거나 필요한 조치를 할 수 있습니다.</p>
+
+      <h2>제21조 프로필 및 이용자 표시정보</h2>
+      <p>① 회사는 이용자가 닉네임 및 회사가 제공하는 프로필 관련 기능을 설정할 수 있도록 할 수 있습니다.</p>
+      <p>② 이용자는 타인의 권리나 관계 법령을 침해하거나 부적절한 닉네임 또는 프로필 정보를 사용해서는 안 됩니다.</p>
+      <p>③ 회사는 관계 법령, 본 약관 또는 운영정책을 위반하는 프로필 정보에 대하여 변경, 비공개 또는 그 밖의 필요한 조치를 할 수 있습니다.</p>
+
+      <h2>제22조 광고 및 제3자 서비스</h2>
+      <p>① 회사는 서비스 운영을 위하여 서비스 내에 광고를 게재할 수 있습니다.</p>
+      <p>② 서비스에는 제3자가 제공하는 광고, 콘텐츠 또는 외부 서비스로 연결되는 기능이 포함될 수 있습니다.</p>
+      <p>③ 이용자가 제3자의 광고 또는 외부 서비스를 이용하는 경우 해당 제3자의 이용약관 및 개인정보처리방침 등이 적용될 수 있습니다.</p>
+      <p>④ 회사는 회사의 고의 또는 과실이 없는 한 제3자가 독립적으로 제공하는 서비스에 대하여 책임을 부담하지 않습니다. 다만 관계 법령에서 달리 정하는 경우에는 해당 법령에 따릅니다.</p>
+
+      <h2>제23조 서비스 이용제한 및 부정행위에 대한 조치</h2>
+      <p>① 회사는 이용자가 본 약관, 운영정책 또는 관계 법령을 위반하는 경우 위반행위의 내용과 정도에 따라 다음 각 호의 조치를 할 수 있습니다.</p>
+      <ol>
+        <li>경고</li>
+        <li>비정상적으로 획득한 점수, 게임재화, 게임아이템 또는 보상의 회수</li>
+        <li>게임 데이터 또는 랭킹의 조정</li>
+        <li>특정 기능의 이용제한</li>
+        <li>일정 기간 서비스 이용정지</li>
+        <li>중대한 위반 또는 반복적인 위반의 경우 영구 이용제한</li>
+      </ol>
+      <p>② 회사는 제재를 적용하는 경우 위반행위의 경중, 횟수, 고의성 및 서비스에 미친 영향 등을 고려합니다.</p>
+      <p>③ 회사는 이용제한 조치를 하는 경우 그 사유, 기간 및 이의신청 방법을 게임 내 안내 또는 회사가 정한 방법으로 이용자에게 통지합니다.</p>
+      <p>④ 서비스 보안 침해, 앱 또는 서버 변조, 불법 프로그램 이용, 재화 또는 데이터 조작 등 서비스에 중대한 영향을 미치는 행위에 대해서는 단계적인 조치 없이 즉시 이용을 제한할 수 있으며, 이 경우 회사는 조치 후 지체 없이 제3항에 따라 통지합니다.</p>
+      <p>⑤ 이용자는 이용제한 조치를 통지받은 날부터 14일 이내에 서비스 내 고객문의 기능 또는 회사가 정한 방법을 통하여 이의를 신청할 수 있습니다.</p>
+      <p>⑥ 회사는 제5항에 따른 이의신청을 확인한 후 합리적인 기간 내에 답변하며, 이의가 정당하다고 인정되는 경우 해당 조치를 해제하거나 조정합니다.</p>
+      <p>⑦ 구체적인 이용제한 기준 및 절차는 운영정책에서 정할 수 있습니다.</p>
+
+      <h2>제24조 이용계약 해지 및 계정 삭제</h2>
+      <p>① 이용자는 서비스 내 <strong>설정 &gt; 계정 삭제</strong> 기능 또는 회사가 제공하는 방법을 통하여 언제든지 이용계약 해지 및 계정 삭제를 요청할 수 있습니다.</p>
+      <p>② 회사는 계정 삭제 전에 이용자에게 게임 진행정보, 게임재화, 게임아이템, 유료콘텐츠, 시즌패스 및 그 밖의 계정에 연결된 게임 데이터가 함께 삭제되며 복구할 수 없다는 사실을 안내합니다.</p>
+      <p>③ 이용자가 계정 삭제를 완료하면 관계 법령에 따라 보존하여야 하는 정보를 제외하고 해당 계정과 연결된 게임 데이터 및 보유 중인 무료·유료 게임재화, 게임아이템, 시즌패스, 미수령 보상 등은 함께 삭제되며, 삭제된 계정 및 게임 데이터는 복구할 수 없습니다.</p>
+      <p>④ 이용자는 청약철회 또는 환불을 요청하려는 유료콘텐츠가 있는 경우 계정 삭제 전에 해당 절차를 진행할 수 있습니다.</p>
+      <p>⑤ 계정 삭제에도 불구하고 관계 법령에 따라 이용자에게 인정되는 청약철회, 환불 또는 그 밖의 소비자 권리는 제한되지 않습니다.</p>
+
+      <h2>제25조 서비스의 중단</h2>
+      <p>① 회사는 다음 각 호의 사유가 있는 경우 서비스의 전부 또는 일부를 일시적으로 중단할 수 있습니다.</p>
+      <ol>
+        <li>서버 또는 설비의 점검, 교체 또는 보수</li>
+        <li>서비스 또는 통신망의 장애</li>
+        <li>천재지변, 전쟁, 국가비상사태 등 불가항력</li>
+        <li>관계기관의 명령 또는 관계 법령상 필요한 경우</li>
+        <li>그 밖에 서비스 제공이 현저히 어려운 사유가 있는 경우</li>
+      </ol>
+      <p>② 예측 가능한 서비스 중단의 경우 회사는 사전에 안내하도록 노력합니다. 다만 긴급하거나 사전에 통지하기 어려운 사유가 있는 경우 사후에 안내할 수 있습니다.</p>
+      <p>③ 회사의 귀책사유로 유료콘텐츠의 이용에 중대한 장애가 발생한 경우 회사는 관계 법령에 따라 필요한 조치를 합니다.</p>
+
+      <h2>제26조 서비스의 종료</h2>
+      <p>① 회사는 경영상, 기술상 또는 운영상 중대한 사유가 있는 경우 서비스의 전부 또는 일부를 종료할 수 있습니다.</p>
+      <p>② 회사가 서비스를 종료하는 경우 <strong>종료일로부터 최소 30일 전까지</strong> 종료일, 종료사유 및 유료콘텐츠의 처리방법을 게임 내 공지 및 회사가 정한 방법으로 안내합니다. 관계 법령에서 더 긴 기간 또는 별도의 통지방법을 정한 경우에는 해당 기준에 따릅니다.</p>
+      <p>③ 회사는 제2항의 기간 동안 유료콘텐츠의 판매를 중단하거나 제한할 수 있습니다.</p>
+      <p>④ 서비스 종료 시 사용하지 않았거나 이용기간이 남아 있는 유료콘텐츠는 관계 법령, 소비자분쟁해결기준 및 해당 앱마켓 정책에 따라 처리합니다.</p>
+      <p>⑤ 회사는 서비스 종료 후에도 최소 30일 동안 환불 및 이용자 문의 처리를 위한 고객 대응수단을 운영합니다. 관계 법령에서 더 긴 기간을 요구하는 경우에는 해당 기간에 따릅니다.</p>
+
+      <h2>제27조 지식재산권</h2>
+      <p>① 서비스 및 서비스에 포함된 게임, 캐릭터, 이미지, 그래픽, 애니메이션, 음악, 효과음, 문구, 프로그램, 게임 시스템 및 그 밖의 콘텐츠에 관한 지식재산권은 회사 또는 정당한 권리자에게 귀속됩니다.</p>
+      <p>② 회사는 이용자에게 본 약관에 따라 서비스를 개인적이고 비상업적인 목적으로 이용할 수 있는 제한적이고 비독점적이며 양도할 수 없는 이용권을 부여합니다.</p>
+      <p>③ 이용자는 회사 또는 정당한 권리자의 사전 동의 없이 서비스 또는 그 구성요소를 복제, 배포, 판매, 대여, 변조, 역설계 또는 상업적으로 이용해서는 안 됩니다.</p>
+
+      <h2>제28조 이용자에 대한 통지 및 고객문의</h2>
+      <p>① 회사는 서비스 운영에 필요한 사항을 게임 내 공지, 팝업, 이메일 또는 회사가 정한 방법으로 안내할 수 있습니다.</p>
+      <p>② 불특정 다수 이용자에게 공통으로 적용되는 사항은 서비스 내 공지로 통지를 대신할 수 있습니다. 다만 관계 법령상 개별 통지가 필요한 사항은 해당 법령에서 정한 방법으로 통지합니다.</p>
+      <p>③ 이용자는 서비스 내 고객문의 기능을 통하여 회사에 문의할 수 있습니다.</p>
       <div class="contact-box">
-        <div class="label">고객 지원 및 이용약관 문의</div>
-        <p><strong>회사명:</strong> 주식회사 빌리언플레이</p>
-        <p><strong>이메일:</strong> <a href="mailto:support@billionplaygames.com">support@billionplaygames.com</a></p>
-        <p><strong>운영시간:</strong> 평일 10:00 – 18:00 (KST)</p>
-        <p><strong>주소:</strong> 부산광역시 해운대구 센텀중앙로 97, 센텀스카이비즈</p>
+        <div class="label">고객문의</div>
+        <p><a href="mailto:help@billionplaygames.com">help@billionplaygames.com</a></p>
       </div>
+      <p>④ 회사는 이용자의 문의를 확인한 후 합리적인 기간 내에 답변 또는 필요한 조치를 하기 위해 노력합니다.</p>
 
-      <p style="margin-top: 32px;">
-        공고일: 2026년 06월 24일<br>
-        시행일: 2026년 07월 01일
-      </p>
+      <h2>제29조 손해배상</h2>
+      <p>① 회사 또는 이용자가 본 약관을 위반하여 상대방에게 손해를 입힌 경우 귀책 당사자는 관계 법령에 따라 그 손해를 배상할 책임을 질 수 있습니다.</p>
+      <p>② 회사의 고의 또는 과실로 이용자에게 손해가 발생한 경우 회사는 관계 법령에 따라 책임을 부담합니다.</p>
+      <p>③ 이용자의 약관 위반 또는 불법행위로 회사에 손해가 발생한 경우 회사는 관계 법령에 따라 이용자에게 손해배상을 청구할 수 있습니다.</p>
+
+      <h2>제30조 면책</h2>
+      <p>① 회사는 천재지변, 전쟁, 국가비상사태, 통신사업자의 장애 또는 그 밖에 회사가 합리적으로 통제하기 어려운 불가항력으로 서비스를 제공할 수 없는 경우 관계 법령에서 달리 정하지 않는 한 책임을 부담하지 않습니다.</p>
+      <p>② 회사는 이용자의 귀책사유로 발생한 서비스 이용 장애 또는 손해에 대하여 회사의 귀책사유가 없는 경우 책임을 부담하지 않습니다.</p>
+      <p>③ 회사는 이용자가 서비스 이용을 통하여 특정한 점수, 순위, 보상 또는 게임 결과를 얻을 것을 보장하지 않습니다.</p>
+      <p>④ 본 조는 회사의 고의 또는 중대한 과실에 따른 책임이나 관계 법령에 따라 제한할 수 없는 이용자의 권리를 배제하지 않습니다.</p>
+
+      <h2>제31조 준거법 및 분쟁의 해결</h2>
+      <p>① 본 약관은 대한민국 법률을 기본 준거법으로 합니다.</p>
+      <p>② 회사와 이용자 사이에 분쟁이 발생한 경우 당사자는 원만한 해결을 위하여 성실히 협의합니다.</p>
+      <p>③ 이용자는 서비스 이용과 관련된 분쟁에 대하여 콘텐츠분쟁조정위원회, 한국소비자원 소비자분쟁조정위원회, 전자거래분쟁조정위원회 등 관계 법령에 따른 분쟁조정기관에 상담 또는 조정을 신청할 수 있습니다.</p>
+      <p>④ 대한민국 외 국가 또는 지역의 이용자는 해당 국가 또는 지역의 소비자 보호기관 또는 분쟁조정기관에 상담 또는 조정을 신청할 수 있습니다.</p>
+      <p>⑤ 협의 또는 조정으로 해결되지 않는 분쟁에 대해서는 관계 법령에 따른 관할법원에 소를 제기할 수 있습니다.</p>
+      <p>⑥ 대한민국 외 국가 또는 지역의 이용자에게 강행적으로 적용되는 소비자보호법 또는 분쟁해결에 관한 권리는 본 조에 의하여 제한되지 않습니다.</p>
 
     </div>
+
+    <!-- ══════════ ENGLISH ══════════ -->
+    <div class="article" lang="en">
+
+      <div class="info-box">
+        <p>These Terms of Service ("Terms") govern the rights, obligations, responsibilities, and other necessary matters between BILLIONPLAY CO., LTD. ("Company") and users in connection with the mobile games and related services provided by the Company.</p>
+      </div>
+
+      <h2>Article 1. Purpose</h2>
+      <p>These Terms set forth the conditions and procedures for use of the mobile games and related services provided by the Company ("Services"), as well as the rights, obligations, responsibilities, and other necessary matters between the Company and users.</p>
+
+      <h2>Article 2. Definitions</h2>
+      <p>1. The terms used in these Terms shall have the following meanings:</p>
+      <ol>
+        <li><strong>"User"</strong> means any person who uses the Services in accordance with these Terms.</li>
+        <li><strong>"Account"</strong> means an identifier created to identify and manage a User's service usage information and game data, including anonymous or temporary accounts and accounts linked to third-party accounts such as Google or Apple.</li>
+        <li><strong>"Guest Account"</strong> means an account used without being linked to a third-party account supported by the Company, such as Google or Apple.</li>
+        <li><strong>"Virtual Currency"</strong> means virtual currency, such as Coins, that may be obtained through gameplay, events, rewards, purchases, or other methods and used within the Services.</li>
+        <li><strong>"Game Items"</strong> means boosters, consumable items, and other virtual items that may be used for gameplay within the Services.</li>
+        <li><strong>"Time-Limited Items"</strong> means items that allow Users to use lives, certain Game Items, or other benefits without limitation or under special conditions for a specified period of time.</li>
+        <li><strong>"Paid Content"</strong> means Virtual Currency, Game Items, bundles, Season Passes, and other digital content that may be purchased through application marketplaces such as Google Play or the Apple App Store.</li>
+        <li><strong>"Season Pass"</strong> means content or a system available for a limited period in which Users may obtain free rewards by meeting certain conditions, and Users who purchase the Season Pass may obtain additional paid rewards.</li>
+        <li><strong>"Operational Policy"</strong> means detailed policies established by the Company regarding operation of the Services, restrictions on use, prevention of misconduct, and other matters necessary for operation of the Services.</li>
+      </ol>
+      <p>2. Terms not defined in this Article shall be interpreted in accordance with applicable laws and regulations, the Operational Policy, and notices provided within the Services.</p>
+
+      <h2>Article 3. Company Information</h2>
+      <p>The Company shall make the following information available through the Services or linked pages so that Users can easily access it:</p>
+      <ol>
+        <li>Company Name: BILLIONPLAY CO., LTD.</li>
+        <li>Representative: Ko Mu-jin</li>
+        <li>Business Registration Number: 216-81-20560</li>
+        <li>Address: 97, Centum jungang-ro, Haeundae-gu, Busan, Republic of Korea</li>
+        <li>Customer Support: help@billionplaygames.com</li>
+        <li>Terms of Service</li>
+        <li>Privacy Policy</li>
+      </ol>
+
+      <h2>Article 4. Effectiveness and Amendment of the Terms</h2>
+      <p>1. These Terms become effective when they are posted or otherwise made available to Users within the Services or through another method designated by the Company.</p>
+      <p>2. The Company may amend these Terms to the extent permitted by applicable laws and regulations.</p>
+      <p>3. When the Company amends these Terms, it will provide notice of the effective date, the amended provisions, and the reasons for the amendment at least seven (7) days before the effective date through the Services or another method designated by the Company.</p>
+      <p>4. If an amendment is materially adverse to Users or involves significant changes, the Company will provide notice at least thirty (30) days before the effective date. If applicable law requires a longer notice period, the longer period shall apply.</p>
+      <p>5. Where separate consent from Users is required for amended Terms, the Company will obtain such consent in accordance with applicable laws and regulations.</p>
+      <p>6. A User who does not agree to amended Terms may terminate the service agreement.</p>
+
+      <h2>Article 5. Matters Not Provided for in These Terms</h2>
+      <p>1. Matters not provided for in these Terms shall be governed by applicable laws and regulations, including the Korean Act on Consumer Protection in Electronic Commerce, the Game Industry Promotion Act, the Content Industry Promotion Act, the Act on the Regulation of Terms and Conditions, the Personal Information Protection Act, and the Company's Operational Policy.</p>
+      <p>2. Where the Services are provided outside the Republic of Korea, nothing in these Terms shall limit any rights that Users may have under mandatory laws applicable in their country or region.</p>
+
+      <h2>Article 6. Formation of the Service Agreement</h2>
+      <p>1. The service agreement is formed when a User agrees to these Terms in the manner designated by the Company, begins using the Services, and the Company accepts such use.</p>
+      <p>2. The Company will generally accept a User's use of the Services. However, the Company may restrict or refuse use in any of the following circumstances:</p>
+      <ol>
+        <li>Where use of the Services is restricted by applicable law;</li>
+        <li>Where another person's information or account is used without authorization;</li>
+        <li>Where the Services are used for the purpose of interfering with their normal operation;</li>
+        <li>Where the User has previously been restricted for violating these Terms or the Operational Policy; or</li>
+        <li>Where there is another legitimate reason under applicable law or necessary for operation of the Services.</li>
+      </ol>
+
+      <h2>Article 7. Age Requirements and Minors</h2>
+      <p>1. The Services are not directed to children under the age of 13.</p>
+      <p>2. Certain countries or regions may apply separate age requirements or require consent from a legal guardian for use of the Services, processing of personal information, or purchases of Paid Content.</p>
+      <p>3. Users must obtain any consent or authorization required under the laws applicable to them before using the Services.</p>
+      <p>4. A minor must obtain consent from a legal guardian before purchasing Paid Content. Where required by applicable law, the Company may restrict a minor's use of the Services or purchase of Paid Content, or require consent from a legal guardian.</p>
+      <p>5. Where a minor purchases Paid Content without the consent of a legal guardian, the minor or the legal guardian may cancel the purchase in accordance with applicable law. However, cancellation may be restricted where permitted by applicable law, including where the purchase was made using property that the legal guardian permitted the minor to dispose of.</p>
+
+      <h2>Article 8. Accounts and Account Linking</h2>
+      <p>1. The Company may create an anonymous or temporary account when a User first accesses the Services in order to identify and manage game data.</p>
+      <p>2. Users may use the Google or Apple account-linking features provided by the Company to help restore game data or continue using the Services on another device.</p>
+      <p>3. Users are responsible for securely managing their Account and linked third-party accounts and may not sell, transfer, lease, or lend them to another person.</p>
+      <p>4. Account-linking functionality may be restricted due to outages, restrictions, account deletion, policy changes, or other circumstances involving third-party account providers.</p>
+
+      <h2>Article 9. Guest Accounts and Game Data Recovery</h2>
+      <p>1. Game data associated with a Guest Account that is not linked to an external account may be lost when the application is deleted, the device is changed or reset, or application data is deleted. Once lost, such game data cannot be restored.</p>
+      <p>2. The Company provides account-linking functionality through supported external accounts such as Google or Apple and recommends that Users link an external account in order to preserve their game data and continue using the Services after changing devices or reinstalling the application.</p>
+      <p>3. Where an external account has been successfully linked, the User may access the linked game data by signing in with that account.</p>
+      <p>4. If game data associated with a Guest Account is lost, the original Guest Account and its game data cannot be restored regardless of whether Paid Content was purchased.</p>
+      <p>5. Users are encouraged to link an external account before purchasing Paid Content or when they wish to preserve their game data.</p>
+      <p>6. If game data is lost due to the Company's intentional misconduct or negligence or other causes attributable to the Company, the Company will take appropriate measures in accordance with applicable law.</p>
+
+      <h2>Article 10. Obligations of the Company</h2>
+      <p>1. The Company shall comply with applicable laws and these Terms and make reasonable efforts to provide the Services in a stable manner.</p>
+      <p>2. Where the Company determines that a User's complaint or opinion is reasonable, it will make reasonable efforts to address it.</p>
+      <p>3. The Company will process and protect Users' personal information in accordance with applicable laws and the Privacy Policy.</p>
+      <p>4. If an issue occurs in connection with operation of the Services, the Company will make reasonable efforts to investigate and resolve it.</p>
+
+      <h2>Article 11. User Obligations</h2>
+      <p>Users must not engage in any of the following conduct:</p>
+      <ol>
+        <li>Unauthorized use of another person's Account;</li>
+        <li>Selling, purchasing, transferring, lending, renting, or exchanging an Account or game data;</li>
+        <li>Using unauthorized software, hacks, macros, bots, automation tools, or similar programs;</li>
+        <li>Modifying, reverse engineering, decompiling, or circumventing security features of the game or application;</li>
+        <li>Exploiting bugs, errors, or vulnerabilities to obtain an unfair advantage;</li>
+        <li>Obtaining or manipulating Virtual Currency, Game Items, scores, rankings, or other game data through abnormal methods;</li>
+        <li>Interfering with the Company's servers or the normal operation of the Services;</li>
+        <li>Infringing another person's intellectual property rights, privacy rights, or other rights; or</li>
+        <li>Violating applicable laws, these Terms, or the Operational Policy.</li>
+      </ol>
+
+      <h2>Article 12. Provision of the Services</h2>
+      <p>1. The Company may provide gameplay, storage of game data, events, rankings, rewards, payment functions, and other related features.</p>
+      <p>2. The Services are provided in accordance with the Company's operational policies. However, access may be temporarily restricted due to maintenance, service failures, natural disasters, telecommunications failures, or other operationally necessary circumstances.</p>
+      <p>3. Certain features may vary depending on the User's device, operating system, application version, country, or application marketplace.</p>
+      <p>4. An internet connection may be required to use the Services, and data or communication charges may be imposed by the User's telecommunications provider.</p>
+
+      <h2>Article 13. Changes and Updates to the Services</h2>
+      <p>1. The Company may modify the Services, features, Virtual Currency, Game Items, reward structures, or other content for purposes including game balance, bug fixes, content improvements, technical requirements, or operational needs.</p>
+      <p>2. Where a change materially affects a User's rights or use of Paid Content, the Company will provide advance notice in accordance with applicable law and these Terms.</p>
+      <p>3. The Company may provide updates necessary to use the Services, and failure to install an important update may prevent access to some or all of the Services.</p>
+
+      <h2>Article 14. Virtual Currency and Game Items</h2>
+      <p>1. Virtual Currency and Game Items may be obtained through gameplay, events, attendance rewards, rankings, purchases, or other methods designated by the Company.</p>
+      <p>2. The same type of Virtual Currency or Game Item may be obtained either free of charge or as part of Paid Content.</p>
+      <p>3. Virtual Currency and Game Items may only be used within the Services and may not be exchanged for cash or real-world currency or transferred between Users unless otherwise required by applicable law.</p>
+      <p>4. Virtual Currency and Game Items are not money, deposits, or other instruments used to store monetary value.</p>
+      <p>5. Obtaining Virtual Currency or Game Items grants the User a limited right to use the relevant content in accordance with these Terms and the Services and does not grant ownership rights or rights to cash.</p>
+      <p>6. Unless otherwise specified on the purchase screen or within the Services, Virtual Currency and Game Items obtained through payment may be used until termination of the relevant Service. The use periods for Time-Limited Items and Season Passes are governed by Articles 15 and 16, respectively.</p>
+      <p>7. The Company may modify the content or conditions of Virtual Currency or Game Items provided free of charge where necessary for operation or game balance.</p>
+      <p>8. Changes, withdrawal, or refunds involving Virtual Currency or Game Items obtained through payment shall be handled in accordance with applicable law and these Terms.</p>
+
+      <h2>Article 15. Time-Limited Items</h2>
+      <p>1. The Company may provide Time-Limited Items that allow unlimited use of lives or certain Game Items for a specified period of time.</p>
+      <p>2. Unless otherwise stated, the duration of a Time-Limited Item begins when the User presses the relevant reward claim button and the item is granted.</p>
+      <p>3. The duration, applicable content, and conditions of use will be displayed on the relevant item or reward screen.</p>
+      <p>4. Once the applicable period expires, the benefit provided by the Time-Limited Item will end.</p>
+
+      <h2>Article 16. Season Passes</h2>
+      <p>1. The Company may offer Season Passes that are available for a limited period.</p>
+      <p>2. Users may obtain free rewards by satisfying conditions designated by the Company, and Users who purchase a Season Pass may obtain additional paid rewards by satisfying the relevant conditions.</p>
+      <p>3. The duration, price, rewards, tiers, requirements for earning rewards, and other details of a Season Pass will be displayed on the purchase screen or within the game.</p>
+      <p>4. Any free or paid reward that becomes claimable before the end of a Season but has not been manually claimed by the User will be automatically granted after the Season ends.</p>
+      <p>5. Rewards for tiers whose requirements have not been satisfied before the Season ends will not be granted.</p>
+      <p>6. A Season Pass applies only to the relevant Season, and progress or additional reward acquisition may no longer be available once the Season has ended.</p>
+
+      <h2>Article 17. Paid Content and In-App Purchases</h2>
+      <p>1. The Company may offer Paid Content, including Virtual Currency, Game Items, Time-Limited Items, bundles, and Season Passes.</p>
+      <p>2. The price, contents, use period, and material conditions of Paid Content will be displayed on the purchase screen.</p>
+      <p>3. Purchases of Paid Content are processed through the application marketplace used by the User, such as Google Play or the Apple App Store.</p>
+      <p>4. Users should review the payment policies and terms of the applicable application marketplace before purchasing Paid Content.</p>
+      <p>5. The actual amount charged or the manner in which prices are displayed may vary depending on marketplace policies, payment service providers, exchange rates, taxes, or similar factors.</p>
+      <p>6. Paid Content is deemed provided when payment has been approved by the applicable application marketplace and the relevant content has been successfully credited to the User's game Account and made available for use.</p>
+      <p>7. Paid Content may only be used in the manner and for the purposes designated by the Company for personal and non-commercial use.</p>
+
+      <h2>Article 18. Withdrawal from Purchase</h2>
+      <p>1. A User may request withdrawal from the purchase of eligible Paid Content within seven (7) days after purchase through the in-game customer support function or another method designated by the Company.</p>
+      <p>2. To the extent permitted by applicable law, the right of withdrawal may be restricted in any of the following circumstances:</p>
+      <ol>
+        <li>Paid Content has been lost or damaged due to reasons attributable to the User;</li>
+        <li>All or part of the Paid Content has been used or consumed;</li>
+        <li>The usage period of a Time-Limited Item has begun;</li>
+        <li>At least one paid reward from a Season Pass has been claimed;</li>
+        <li>Content is immediately used or takes effect upon purchase and its use has begun; or</li>
+        <li>Another restriction applies under applicable law.</li>
+      </ol>
+      <p>3. Where Paid Content differs from the description or advertisement provided at the time of purchase or is provided in a manner inconsistent with the contract, the User may request withdrawal within the period prescribed by applicable law.</p>
+      <p>4. Where a minor purchases Paid Content without the consent of a legal guardian, the minor or legal guardian may cancel the purchase in accordance with applicable law, except where cancellation may lawfully be restricted.</p>
+      <p>5. Refunds resulting from a valid withdrawal will be handled in accordance with applicable law. The cancellation process and actual refund period for purchases made through Google Play, the Apple App Store, or another marketplace may be subject to the policies of the relevant marketplace or payment method.</p>
+      <p>6. Where a withdrawal or payment cancellation is completed, the Company may remove Virtual Currency, Game Items, or other Paid Content granted through that purchase.</p>
+
+      <h2>Article 19. Refund of Overpayments</h2>
+      <p>1. If a User pays more than the amount actually due, the Company will take the necessary steps to refund the overpayment in accordance with applicable law. Payments made through an application marketplace may be refunded in accordance with the procedures of that marketplace.</p>
+      <p>2. Where an overpayment is attributable to the Company, the Company will take the measures required under applicable law.</p>
+      <p>3. If a refund must be processed through an application marketplace, the Company may provide the User with information regarding the marketplace's refund procedure.</p>
+
+      <h2>Article 20. Events, Rankings, and Rewards</h2>
+      <p>1. The Company may provide rewards through attendance events, other events, rankings, or other methods within the Services.</p>
+      <p>2. The duration, participation requirements, rewards, and distribution method for an event will be separately announced within the Services.</p>
+      <p>3. Rankings are determined in accordance with criteria designated by the Company, and ranking groups or calculation methods may be changed where necessary for game balance or operation.</p>
+      <p>4. Scores, rankings, or rewards obtained through abnormal play, bug exploitation, macros, data manipulation, or other improper methods may be invalidated or removed.</p>
+      <p>5. Where a material ranking or reward error occurs due to a service failure or operational error attributable to the Company, the Company may correct the error or take other reasonable measures.</p>
+
+      <h2>Article 21. Profile and User-Displayed Information</h2>
+      <p>1. The Company may allow Users to configure nicknames and other profile-related features.</p>
+      <p>2. Users must not use nicknames or profile information that infringe the rights of others, violate applicable law, or are otherwise inappropriate.</p>
+      <p>3. The Company may modify, hide, or otherwise take necessary measures regarding profile information that violates applicable law, these Terms, or the Operational Policy.</p>
+
+      <h2>Article 22. Advertising and Third-Party Services</h2>
+      <p>1. The Company may display advertisements within the Services for purposes of operating the Services.</p>
+      <p>2. The Services may contain advertising, content, or functionality provided by third parties or links to external services.</p>
+      <p>3. A User's use of third-party advertising or external services may be subject to the third party's own terms of service and privacy policy.</p>
+      <p>4. Unless caused by the Company's intentional misconduct or negligence, the Company is not responsible for services independently provided by third parties, except where otherwise required by applicable law.</p>
+
+      <h2>Article 23. Restrictions on Use and Measures Against Misconduct</h2>
+      <p>1. If a User violates these Terms, the Operational Policy, or applicable law, the Company may take one or more of the following actions depending on the nature and severity of the violation:</p>
+      <ol>
+        <li>Warning;</li>
+        <li>Removal of improperly obtained scores, Virtual Currency, Game Items, or rewards;</li>
+        <li>Adjustment of game data or rankings;</li>
+        <li>Restriction of certain features;</li>
+        <li>Temporary suspension from the Services; or</li>
+        <li>Permanent restriction for material or repeated violations.</li>
+      </ol>
+      <p>2. In determining an appropriate measure, the Company may consider the severity, frequency, intent, and impact of the violation.</p>
+      <p>3. Where the Company restricts use of the Services, it will notify the User of the reason, duration, and method for filing an objection through the game or another method designated by the Company.</p>
+      <p>4. Where conduct materially threatens the Services, including security breaches, modification of the application or server, use of unauthorized software, or manipulation of Virtual Currency or data, the Company may immediately restrict use without first applying lesser measures. In such cases, the Company will provide notice without undue delay in accordance with Paragraph 3.</p>
+      <p>5. A User may file an objection through customer support or another method designated by the Company within fourteen (14) days after receiving notice of the restriction.</p>
+      <p>6. The Company will review the objection and respond within a reasonable period. If the objection is determined to be justified, the Company will remove or adjust the relevant restriction.</p>
+      <p>7. Detailed standards and procedures for restrictions may be set forth in the Operational Policy.</p>
+
+      <h2>Article 24. Termination and Account Deletion</h2>
+      <p>1. A User may terminate the service agreement and request deletion of the Account at any time through <strong>Settings &gt; Delete Account</strong> or another method provided by the Company.</p>
+      <p>2. Before an Account is deleted, the Company will inform the User that game progress, Virtual Currency, Game Items, Paid Content, Season Passes, and other game data associated with the Account will be deleted and cannot be restored.</p>
+      <p>3. Once Account deletion is completed, all game data associated with the Account, including free and paid Virtual Currency, Game Items, Season Passes, and unclaimed rewards, will be deleted except information that the Company is required by law to retain. Deleted Accounts and game data cannot be restored.</p>
+      <p>4. If the User intends to request withdrawal or a refund in connection with Paid Content, the User may complete the relevant process before deleting the Account.</p>
+      <p>5. Account deletion does not limit any withdrawal, refund, or other consumer rights that a User is entitled to under applicable law.</p>
+
+      <h2>Article 25. Suspension of the Services</h2>
+      <p>1. The Company may temporarily suspend all or part of the Services for any of the following reasons:</p>
+      <ol>
+        <li>Inspection, replacement, or maintenance of servers or equipment;</li>
+        <li>Service or telecommunications failures;</li>
+        <li>Natural disasters, war, national emergencies, or other force majeure events;</li>
+        <li>Orders from competent authorities or requirements under applicable law; or</li>
+        <li>Other circumstances that make provision of the Services materially difficult.</li>
+      </ol>
+      <p>2. Where a suspension can reasonably be anticipated, the Company will make reasonable efforts to provide advance notice. Where advance notice is not practicable due to an emergency or other circumstance, notice may be provided afterward.</p>
+      <p>3. If a material interruption affects Paid Content due to reasons attributable to the Company, the Company will take appropriate measures in accordance with applicable law.</p>
+
+      <h2>Article 26. Termination of the Services</h2>
+      <p>1. The Company may discontinue all or part of the Services for material business, technical, or operational reasons.</p>
+      <p>2. If the Company terminates a Service, it will provide notice of the termination date, reason for termination, and treatment of Paid Content <strong>at least thirty (30) days before termination</strong> through in-game notice or another method designated by the Company. Where applicable law requires a longer period or another form of notice, that requirement shall apply.</p>
+      <p>3. During the notice period, the Company may discontinue or restrict the sale of Paid Content.</p>
+      <p>4. Unused Paid Content or Paid Content with remaining usage periods at the time of termination will be handled in accordance with applicable laws, consumer dispute resolution standards, and the policies of the applicable application marketplace.</p>
+      <p>5. The Company will maintain a customer support channel for refunds and User inquiries for at least thirty (30) days after termination of the Service. If applicable law requires a longer period, the longer period shall apply.</p>
+
+      <h2>Article 27. Intellectual Property Rights</h2>
+      <p>1. Intellectual property rights in the Services and all content contained in the Services, including games, characters, images, graphics, animations, music, sound effects, text, software, and game systems, belong to the Company or the applicable rights holder.</p>
+      <p>2. Subject to these Terms, the Company grants Users a limited, non-exclusive, non-transferable right to use the Services for personal and non-commercial purposes.</p>
+      <p>3. Users may not reproduce, distribute, sell, rent, modify, reverse engineer, or commercially exploit the Services or any component thereof without the prior consent of the Company or the relevant rights holder.</p>
+
+      <h2>Article 28. Notices and Customer Support</h2>
+      <p>1. The Company may provide notices regarding operation of the Services through in-game notices, pop-ups, email, or other methods designated by the Company.</p>
+      <p>2. Notices applicable to an unspecified number of Users may be provided through a general notice within the Services. However, where individual notice is required by applicable law, the Company will provide such notice in the manner required by law.</p>
+      <p>3. Users may contact the Company through the in-game customer support function.</p>
+      <div class="contact-box">
+        <div class="label">Customer Support</div>
+        <p><a href="mailto:help@billionplaygames.com">help@billionplaygames.com</a></p>
+      </div>
+      <p>4. The Company will make reasonable efforts to respond or take necessary action within a reasonable period after reviewing a User inquiry.</p>
+
+      <h2>Article 29. Damages</h2>
+      <p>1. If the Company or a User causes damage to the other party by violating these Terms, the responsible party may be liable for damages in accordance with applicable law.</p>
+      <p>2. If a User suffers damage due to the Company's intentional misconduct or negligence, the Company will be liable as required by applicable law.</p>
+      <p>3. If the Company suffers damage as a result of a User's violation of these Terms or unlawful conduct, the Company may seek compensation from the User in accordance with applicable law.</p>
+
+      <h2>Article 30. Disclaimer</h2>
+      <p>1. The Company is not liable for failure to provide the Services due to natural disasters, war, national emergencies, telecommunications failures, or other force majeure events that are reasonably beyond the Company's control, except where otherwise required by applicable law.</p>
+      <p>2. The Company is not liable for service interruptions or losses caused by reasons attributable to the User where the Company is not at fault.</p>
+      <p>3. The Company does not guarantee that a User will obtain any particular score, ranking, reward, or gameplay outcome through use of the Services.</p>
+      <p>4. Nothing in this Article excludes liability arising from the Company's intentional misconduct or gross negligence or limits any User right that cannot be restricted under applicable law.</p>
+
+      <h2>Article 31. Governing Law and Dispute Resolution</h2>
+      <p>1. These Terms are primarily governed by the laws of the Republic of Korea.</p>
+      <p>2. If a dispute arises between the Company and a User, the parties will make good-faith efforts to resolve the dispute amicably.</p>
+      <p>3. Users may seek consultation or mediation regarding disputes related to the Services from dispute resolution bodies established under applicable law, including the Content Dispute Resolution Committee, the Consumer Dispute Settlement Commission of the Korea Consumer Agency, and the Electronic Documents and Electronic Transactions Dispute Mediation Committee.</p>
+      <p>4. Users located outside the Republic of Korea may seek consultation or dispute resolution from consumer protection authorities or dispute resolution bodies in their country or region.</p>
+      <p>5. Any dispute that cannot be resolved through consultation or mediation may be submitted to a court having jurisdiction under applicable law.</p>
+      <p>6. Nothing in this Article limits any consumer protection or dispute resolution rights that mandatorily apply to Users outside the Republic of Korea.</p>
+
+    </div>
+
   </div>
 
   <footer>
@@ -370,10 +851,21 @@
       }
 
       var saved = null;
-      try { saved = localStorage.getItem('bp-lang'); } catch (e) {}
+
+      // 1) URL parameter wins:  ?lang=en  /  ?lang=ko
+      var q = (location.search.match(/[?&]lang=(ko|en)\b/) || [])[1];
+      if (q) { saved = q; }
+
+      // 2) then the visitor's previous choice
+      if (!saved) {
+        try { saved = localStorage.getItem('bp-lang'); } catch (e) {}
+      }
+
+      // 3) then the browser language
       if (!saved) {
         saved = (navigator.language || 'ko').toLowerCase().indexOf('ko') === 0 ? 'ko' : 'en';
       }
+
       setLang(saved);
 
       buttons.forEach(function (b) {
