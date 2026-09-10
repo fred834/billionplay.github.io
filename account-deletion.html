@@ -265,6 +265,22 @@
       footer { flex-direction: column; gap: 16px; text-align: center; }
       .footer-legal { padding: 20px 24px; }
     }
+
+    .article .sub { opacity: .75; margin-bottom: 28px; }
+    .article code {
+      background: #8882; padding: 1px 6px; border-radius: 4px;
+      font-family: 'Space Mono', monospace; font-size: 0.92em; color: var(--text);
+    }
+    .article .box {
+      background: var(--card); border: 1px solid var(--border);
+      border-left: 3px solid var(--yellow);
+      padding: 18px 22px; margin: 16px 0 24px;
+      font-size: 16px; color: var(--muted); line-height: 1.9;
+    }
+    .article .doc-footer {
+      margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--border);
+      font-size: 14px; color: var(--faint); line-height: 1.9;
+    }
   </style>
 </head>
 <body>
@@ -293,9 +309,7 @@
         <!-- ══════════ 한국어 ══════════ -->
     <div class="article" lang="ko">
 
-      <div class="info-box">
-        <p>개발자: <strong>BILLIONPLAY CO., LTD.</strong></p>
-      </div>
+      <p class="sub">앱: <strong>SurvivalIsland</strong> · 개발자: <strong>BILLIONPLAY CO., LTD.</strong></p>
 
       <h2>1. 삭제를 요청하는 방법</h2>
 
@@ -309,53 +323,46 @@
       <h3>방법 B — 이메일로 요청</h3>
       <ol>
         <li><strong><a href="mailto:help@billionplaygames.com">help@billionplaygames.com</a></strong> 로 메일을 보냅니다.</li>
-        <li>제목에 <strong>계정 삭제 요청</strong> 이라고 적습니다.</li>
+        <li>제목에 <code>계정 삭제 요청</code> 이라고 적습니다.</li>
         <li>본문에 <strong>게임 내 닉네임</strong>과 <strong>친구 코드</strong>를 함께 적어 주세요.
             (로비 → 친구 → 내 코드에서 확인할 수 있습니다. 본인 계정 확인에 사용되며, 확인 후 폐기합니다.)</li>
       </ol>
 
-      <div class="info-box">
-        <p><strong>처리 기간</strong> — 요청을 받은 날로부터 <strong>영업일 기준 14일 이내</strong>에 처리하고 결과를 회신합니다. 백업 저장소에서 완전히 제거되기까지는 최대 <strong>90일</strong>이 걸릴 수 있습니다.</p>
+      <div class="box">
+        <strong>처리 기간</strong> — 요청을 받은 날로부터 <strong>영업일 기준 14일 이내</strong>에 처리하고 결과를 회신합니다.
+        백업 저장소에서 완전히 제거되기까지는 최대 <strong>90일</strong>이 걸릴 수 있습니다.
       </div>
 
       <h2>2. 삭제되는 데이터</h2>
       <p>계정 삭제 시 아래 데이터가 <strong>모두 영구 삭제</strong>되며 복구할 수 없습니다.</p>
       <div class="table-scroll">
-        <table>
-          <thead>
-            <tr><th>구분</th><th>내용</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>계정</td><td>인증 계정 및 고유 식별자(UID), 연동된 Google 계정 연결 정보</td></tr>
-            <tr><td>프로필</td><td>닉네임, 친구 코드, 레벨</td></tr>
-            <tr><td>게임 진행</td><td>클라우드 저장 데이터(스테이지 진행, 보유 재화·아이템, 수집·미션 진행 등)</td></tr>
-            <tr><td>소셜</td><td>친구 목록, 보낸·받은 친구 요청</td></tr>
-            <tr><td>랭킹</td><td>랭킹 그룹 참가 기록, 점수, 보상함</td></tr>
-          </tbody>
-        </table>
+      <table>
+        <tr><th>구분</th><th>내용</th></tr>
+        <tr><td>계정</td><td>인증 계정 및 고유 식별자(UID), 연동된 Google 계정 연결 정보</td></tr>
+        <tr><td>프로필</td><td>닉네임, 친구 코드, 레벨</td></tr>
+        <tr><td>게임 진행</td><td>클라우드 저장 데이터(스테이지 진행, 보유 재화·아이템, 수집·미션 진행 등)</td></tr>
+        <tr><td>소셜</td><td>친구 목록, 보낸·받은 친구 요청</td></tr>
+        <tr><td>랭킹</td><td>랭킹 그룹 참가 기록, 점수, 보상함</td></tr>
+      </table>
       </div>
 
       <h2>3. 삭제되지 않고 보관되는 데이터</h2>
       <div class="table-scroll">
-        <table>
-          <thead>
-            <tr><th>항목</th><th>보관 이유</th><th>보관 기간</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>이용 통계 ·<br>오류(크래시) 기록</td>
-              <td>개인을 식별할 수 없도록 처리된 집계 정보로, 서비스 품질 개선에 사용됩니다.</td>
-              <td>수집일로부터<br>최대 14개월</td>
-            </tr>
-            <tr>
-              <td>결제 · 거래 기록<br><span style="opacity:.7">(인앱 결제를 이용한 경우에 한함)</span></td>
-              <td>전자상거래 등에서의 소비자보호에 관한 법률에 따른 보존 의무</td>
-              <td>대금 결제 및 재화 공급 기록 5년<br>소비자 불만·분쟁 처리 기록 3년</td>
-            </tr>
-          </tbody>
-        </table>
+      <table>
+        <tr><th>항목</th><th>보관 이유</th><th>보관 기간</th></tr>
+        <tr>
+          <td>이용 통계 · 오류(크래시) 기록</td>
+          <td>개인을 식별할 수 없도록 처리된 집계 정보로, 서비스 품질 개선에 사용됩니다.</td>
+          <td>수집일로부터 최대 14개월</td>
+        </tr>
+        <tr>
+          <td>결제 · 거래 기록<br><span style="opacity:.7">(인앱 결제를 이용한 경우에 한함)</span></td>
+          <td>전자상거래 등에서의 소비자보호에 관한 법률에 따른 보존 의무</td>
+          <td>대금 결제 및 재화 공급 기록 5년<br>소비자 불만·분쟁 처리 기록 3년</td>
+        </tr>
+      </table>
       </div>
-      <p>인앱 결제 영수증 자체는 Google Play 가 보관하며, 그 보관 정책은 Google 에 따릅니다.</p>
+      <p style="opacity:.8">인앱 결제 영수증 자체는 Google Play 가 보관하며, 그 보관 정책은 Google 에 따릅니다.</p>
 
       <h2>4. 참고</h2>
       <ul>
@@ -364,81 +371,58 @@
         <li>앱을 삭제(제거)하는 것만으로는 서버에 저장된 데이터가 삭제되지 않습니다. 위 절차를 이용해 주세요.</li>
       </ul>
 
-      <div class="contact-box">
-        <div class="label">문의</div>
-        <p><a href="mailto:help@billionplaygames.com">help@billionplaygames.com</a></p>
-        <p>개인정보 처리에 관한 자세한 내용은 <a href="./privacy">개인정보처리방침</a>을 참고하세요.</p>
+      <div class="doc-footer">
+        최종 수정일: 2026-09-10 · 문의: <a href="mailto:help@billionplaygames.com">help@billionplaygames.com</a><br>
+        개인정보 처리에 관한 자세한 내용은 <a href="./privacy.html">개인정보처리방침</a>을 참고하세요.
       </div>
-
-      <p style="font-size:14px;color:var(--faint);margin-top:32px;">최종 수정일: 2026-09-10</p>
 
     </div>
 
     <!-- ══════════ ENGLISH ══════════ -->
     <div class="article" lang="en">
 
-      <div class="info-box">
-        <p>Developer: <strong>BILLIONPLAY CO., LTD.</strong></p>
-      </div>
+      <p class="sub">App: <strong>SurvivalIsland</strong> · Developer: <strong>BILLIONPLAY CO., LTD.</strong></p>
 
       <h2>1. How to request deletion</h2>
-
       <h3>Option A — In the app (recommended)</h3>
       <ol>
         <li>Launch the game and tap <strong>Settings</strong> on the lobby screen.</li>
         <li>Tap <strong>Delete account</strong>.</li>
         <li>Confirm. Your account and related data will be deleted.</li>
       </ol>
-
       <h3>Option B — By email</h3>
       <ol>
         <li>Email <strong><a href="mailto:help@billionplaygames.com">help@billionplaygames.com</a></strong>.</li>
-        <li>Use the subject line <strong>Account deletion request</strong>.</li>
+        <li>Use the subject line <code>Account deletion request</code>.</li>
         <li>Include your <strong>in-game nickname</strong> and <strong>friend code</strong>
             (Lobby → Friends → My code). We use these only to verify your account, then discard them.</li>
       </ol>
-
-      <div class="info-box">
-        <p><strong>Processing time</strong> — We process requests within <strong>14 business days</strong> and reply with the result. Complete removal from backups may take up to <strong>90 days</strong>.</p>
+      <div class="box">
+        <strong>Processing time</strong> — We process requests within <strong>14 business days</strong> and reply with the result.
+        Complete removal from backups may take up to <strong>90 days</strong>.
       </div>
 
       <h2>2. Data that is deleted</h2>
       <div class="table-scroll">
-        <table>
-          <thead>
-            <tr><th>Category</th><th>Details</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Account</td><td>Authentication account and unique identifier (UID); linked Google account association</td></tr>
-            <tr><td>Profile</td><td>Nickname, friend code, level</td></tr>
-            <tr><td>Progress</td><td>Cloud save (stage progress, currencies, items, collection and mission progress)</td></tr>
-            <tr><td>Social</td><td>Friend list, sent and received friend requests</td></tr>
-            <tr><td>Ranking</td><td>Ranking group membership, scores, reward inbox</td></tr>
-          </tbody>
-        </table>
+      <table>
+        <tr><th>Category</th><th>Details</th></tr>
+        <tr><td>Account</td><td>Authentication account and unique identifier (UID); linked Google account association</td></tr>
+        <tr><td>Profile</td><td>Nickname, friend code, level</td></tr>
+        <tr><td>Progress</td><td>Cloud save (stage progress, currencies, items, collection and mission progress)</td></tr>
+        <tr><td>Social</td><td>Friend list, sent and received friend requests</td></tr>
+        <tr><td>Ranking</td><td>Ranking group membership, scores, reward inbox</td></tr>
+      </table>
       </div>
 
       <h2>3. Data that is retained</h2>
       <div class="table-scroll">
-        <table>
-          <thead>
-            <tr><th>Item</th><th>Reason</th><th>Retention period</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Usage analytics &amp;<br>crash logs</td>
-              <td>Aggregated, de-identified data used to improve the service</td>
-              <td>Up to 14 months<br>from collection</td>
-            </tr>
-            <tr>
-              <td>Payment &amp; transaction records<br><span style="opacity:.7">(only if you made in-app purchases)</span></td>
-              <td>Required by applicable consumer protection law</td>
-              <td>Payment and supply records: 5 years<br>Consumer complaint records: 3 years</td>
-            </tr>
-          </tbody>
-        </table>
+      <table>
+        <tr><th>Item</th><th>Reason</th><th>Retention period</th></tr>
+        <tr><td>Usage analytics &amp; crash logs</td><td>Aggregated, de-identified data used to improve the service</td><td>Up to 14 months from collection</td></tr>
+        <tr><td>Payment &amp; transaction records<br><span style="opacity:.7">(only if you made in-app purchases)</span></td><td>Required by applicable consumer protection law</td><td>Payment and supply records: 5 years<br>Consumer complaint records: 3 years</td></tr>
+      </table>
       </div>
-      <p>Purchase receipts themselves are held by Google Play under Google's own retention policy.</p>
+      <p style="opacity:.8">Purchase receipts themselves are held by Google Play under Google's own retention policy.</p>
 
       <h2>4. Notes</h2>
       <ul>
@@ -447,13 +431,10 @@
         <li>Uninstalling the app alone does not delete data stored on our servers. Please use the steps above.</li>
       </ul>
 
-      <div class="contact-box">
-        <div class="label">Contact</div>
-        <p><a href="mailto:help@billionplaygames.com">help@billionplaygames.com</a></p>
-        <p>See our <a href="./privacy?lang=en">Privacy Policy</a> for details on how we handle personal data.</p>
+      <div class="doc-footer">
+        Last updated: 2026-09-10 · Contact: <a href="mailto:help@billionplaygames.com">help@billionplaygames.com</a><br>
+        See our <a href="./privacy.html?lang=en">Privacy Policy</a> for details on how we handle personal data.
       </div>
-
-      <p style="font-size:14px;color:var(--faint);margin-top:32px;">Last updated: 2026-09-10</p>
 
     </div>
 
@@ -491,8 +472,7 @@
         try { localStorage.setItem('bp-lang', lang); } catch (e) {}
       }
 
-      // This page defaults to English (Google Play review).
-      // Korean is shown only via ?lang=ko or the KR button.
+      // 이 페이지는 영어를 기본으로 표시합니다. 한글은 ?lang=ko 또는 KR 버튼.
       var q = (location.search.match(/[?&]lang=(ko|en)\b/) || [])[1];
 
       setLang(q || 'en');
