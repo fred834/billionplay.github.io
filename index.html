@@ -323,62 +323,18 @@
       margin-bottom: 18px;
     }
     .project-media-grid {
-      display: grid;
-      grid-template-columns: minmax(250px, 340px) minmax(0, 560px);
-      justify-content: start;
-      gap: 46px;
-      align-items: start;
-    }
-    .ua-video-wrap {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-    }
-    .main-media-frame {
-      width: min(100%, 320px);
-      aspect-ratio: 945 / 2048;
-      position: relative;
-      overflow: hidden;
-      background: #000;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      box-shadow: 0 18px 46px rgba(0,0,0,0.28);
-    }
-    .ua-video,
-    .main-gameplay-shot {
-      position: absolute;
-      inset: 0;
       width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover;
     }
-    .main-gameplay-shot { display: none; }
-    .show-video-btn {
-      font-family: 'Space Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.10em;
-      color: var(--muted);
-      background: transparent;
-      border: 1px solid var(--border);
-      padding: 7px 12px;
-      cursor: pointer;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .show-video-btn:hover { color: var(--yellow); border-color: var(--yellow-dim); }
     .gameplay-gallery {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 142px));
-      justify-content: start;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
       gap: 14px;
-      padding-top: 2px;
+      width: 100%;
     }
     .gameplay-thumb {
       padding: 0;
       border: 0;
       background: transparent;
-      cursor: pointer;
       border-radius: 10px;
     }
     .gameplay-shot {
@@ -389,16 +345,12 @@
       border-radius: 10px;
       border: 1px solid var(--border);
       background: var(--card);
-      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
     }
     .gameplay-thumb:hover .gameplay-shot {
       transform: translateY(-2px);
       border-color: var(--yellow-dim);
       box-shadow: 0 10px 22px rgba(0,0,0,0.18);
-    }
-    .gameplay-thumb.is-active .gameplay-shot {
-      border-color: var(--yellow);
-      box-shadow: 0 0 0 1px var(--yellow);
     }
     .project-card {
       background: var(--card);
@@ -650,10 +602,6 @@
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 1100px) {
-      .project-media-grid {
-        grid-template-columns: 1fr;
-      }
-      .ua-video { max-width: 360px; }
     }
     @media (max-width: 900px) {
       .pillars { grid-template-columns: 1fr; }
@@ -668,9 +616,7 @@
       section { padding: 72px 24px; }
       #hero { padding: 0 24px 64px; }
       .hero-sub { font-size: 16px; }
-      .project-media-grid { grid-template-columns: 1fr; gap: 28px; }
-      .main-media-frame { width: min(100%, 310px); border-radius: 14px; }
-      .gameplay-gallery { grid-template-columns: repeat(3, minmax(0, 112px)); justify-content: center; gap: 10px; }
+      .gameplay-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
       .gameplay-shot { border-radius: 9px; }
       footer { flex-direction: column; gap: 20px; text-align: center; }
       .footer-links { flex-wrap: wrap; justify-content: center; }
@@ -797,8 +743,8 @@
           <div class="project-name">Captain Bonnie : Block Puzzle</div>
           <div class="project-sub">Match-2 Puzzle Adventure</div>
           <div class="project-desc">
-            <span lang="ko">해적 모험 테마의 캐주얼 Match-2 퍼즐 게임.<br>실제 플레이 영상과 인게임 화면을 통해 현재 개발 중인 게임을 확인할 수 있습니다.</span>
-            <span lang="en">A casual Match-2 puzzle adventure set in a playful pirate world.<br>See the game in action through our current UA video and in-game screenshots.</span>
+            <span lang="ko">해적 모험 테마의 캐주얼 Match-2 퍼즐 게임.<br>인게임 스크린샷을 통해 현재 개발 중인 게임을 확인할 수 있습니다.</span>
+            <span lang="en">A casual Match-2 puzzle adventure set in a playful pirate world.<br>Explore the game through our current in-game screenshots.</span>
           </div>
           <div class="project-tags">
             <span class="tag">#CASUAL</span>
@@ -810,24 +756,13 @@
       </div>
 
       <div class="project-media-grid">
-        <div class="ua-video-wrap">
-          <div class="main-media-frame" id="project-main-media">
-            <video class="ua-video" id="project-ua-video" autoplay muted loop playsinline controls preload="metadata" aria-label="Project S UA video">
-              <source src="./assets/ua-video.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-            <img class="main-gameplay-shot" id="project-main-image" src="./assets/gameplay-01.jpg" alt="Selected Project S gameplay screenshot" />
-          </div>
-          <button class="show-video-btn" id="show-project-video" type="button">▶ UA VIDEO</button>
-        </div>
-
         <div class="gameplay-gallery" role="group" aria-label="Project S gameplay screenshots">
-          <button class="gameplay-thumb" type="button" data-src="./assets/gameplay-01.jpg" data-alt="Project S gameplay screenshot 1"><img class="gameplay-shot" src="./assets/gameplay-01.jpg" alt="Project S gameplay screenshot 1" loading="lazy" /></button>
-          <button class="gameplay-thumb" type="button" data-src="./assets/gameplay-02.jpg" data-alt="Project S gameplay screenshot 2"><img class="gameplay-shot" src="./assets/gameplay-02.jpg" alt="Project S gameplay screenshot 2" loading="lazy" /></button>
-          <button class="gameplay-thumb" type="button" data-src="./assets/gameplay-03.jpg" data-alt="Project S gameplay screenshot 3"><img class="gameplay-shot" src="./assets/gameplay-03.jpg" alt="Project S gameplay screenshot 3" loading="lazy" /></button>
-          <button class="gameplay-thumb" type="button" data-src="./assets/gameplay-04.jpg" data-alt="Project S gameplay screenshot 4"><img class="gameplay-shot" src="./assets/gameplay-04.jpg" alt="Project S gameplay screenshot 4" loading="lazy" /></button>
-          <button class="gameplay-thumb" type="button" data-src="./assets/gameplay-05.jpg" data-alt="Project S gameplay screenshot 5"><img class="gameplay-shot" src="./assets/gameplay-05.jpg" alt="Project S gameplay screenshot 5" loading="lazy" /></button>
-          <button class="gameplay-thumb" type="button" data-src="./assets/gameplay-06.jpg" data-alt="Project S gameplay screenshot 6"><img class="gameplay-shot" src="./assets/gameplay-06.jpg" alt="Project S gameplay screenshot 6" loading="lazy" /></button>
+          <div class="gameplay-thumb"><img class="gameplay-shot" src="./assets/gameplay-01.jpg" alt="Project S gameplay screenshot 1" loading="lazy" /></div>
+          <div class="gameplay-thumb"><img class="gameplay-shot" src="./assets/gameplay-02.jpg" alt="Project S gameplay screenshot 2" loading="lazy" /></div>
+          <div class="gameplay-thumb"><img class="gameplay-shot" src="./assets/gameplay-03.jpg" alt="Project S gameplay screenshot 3" loading="lazy" /></div>
+          <div class="gameplay-thumb"><img class="gameplay-shot" src="./assets/gameplay-04.jpg" alt="Project S gameplay screenshot 4" loading="lazy" /></div>
+          <div class="gameplay-thumb"><img class="gameplay-shot" src="./assets/gameplay-05.jpg" alt="Project S gameplay screenshot 5" loading="lazy" /></div>
+          <div class="gameplay-thumb"><img class="gameplay-shot" src="./assets/gameplay-06.jpg" alt="Project S gameplay screenshot 6" loading="lazy" /></div>
         </div>
       </div>
     </div>
@@ -927,34 +862,6 @@
         b.addEventListener('click', function () { setLang(b.dataset.setLang); });
       });
 
-      var uaVideo = document.getElementById('project-ua-video');
-      var mainImage = document.getElementById('project-main-image');
-      var showVideoBtn = document.getElementById('show-project-video');
-      var thumbs = document.querySelectorAll('.gameplay-thumb');
-
-      thumbs.forEach(function (thumb) {
-        thumb.addEventListener('click', function () {
-          if (!uaVideo || !mainImage) return;
-          uaVideo.pause();
-          uaVideo.style.display = 'none';
-          mainImage.src = thumb.dataset.src;
-          mainImage.alt = thumb.dataset.alt || 'Selected Project S gameplay screenshot';
-          mainImage.style.display = 'block';
-          thumbs.forEach(function (t) { t.classList.remove('is-active'); });
-          thumb.classList.add('is-active');
-        });
-      });
-
-      if (showVideoBtn) {
-        showVideoBtn.addEventListener('click', function () {
-          if (!uaVideo || !mainImage) return;
-          mainImage.style.display = 'none';
-          uaVideo.style.display = 'block';
-          thumbs.forEach(function (t) { t.classList.remove('is-active'); });
-          var playPromise = uaVideo.play();
-          if (playPromise && typeof playPromise.catch === 'function') playPromise.catch(function () {});
-        });
-      }
     })();
   </script>
 
