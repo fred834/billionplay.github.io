@@ -100,9 +100,11 @@
 
     /* ─── HERO ─── */
     #hero {
-      min-height: 100vh;
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 0 48px 80px;
+      height: clamp(640px, calc(100svh - 100px), 720px);
+      min-height: 640px;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 100px 48px 64px;
+      background: #30280b;
       position: relative;
       overflow: hidden;
     }
@@ -112,11 +114,31 @@
       background: url('./cover.png') center center / cover no-repeat;
     }
 
-    .hero-overlay {
+    .hero-video {
       position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: 72% center;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    #hero.is-playing .hero-video { opacity: 1; }
+    /* Preserve the original cover's brand graphics as a faint video watermark. */
+    #hero.is-playing .hero-cover {
+      z-index: 1; opacity: 0.06; pointer-events: none;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      pointer-events: none;
       background:
-        linear-gradient(to right, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0.10) 100%),
-        linear-gradient(to top, rgba(0,0,0,0.60) 0%, rgba(0,0,0,0.10) 45%, transparent 100%);
+        linear-gradient(to right, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.60) 35%, rgba(0,0,0,0.15) 70%, rgba(0,0,0,0.06) 100%),
+        linear-gradient(to top, rgba(0,0,0,0.48) 0%, transparent 60%),
+        linear-gradient(rgba(245,200,0,0.035), rgba(245,200,0,0.035));
+    }
+    #hero .hero-tag, #hero .hero-title, #hero .hero-sub, #hero .hero-cta { z-index: 2; }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-video { display: none; }
+      #hero.is-playing .hero-cover { opacity: 1; }
     }
 
     .hero-tag {
@@ -614,7 +636,9 @@
       .nav-links { display: none; }
       .nav-right { gap: 0; }
       section { padding: 72px 24px; }
-      #hero { padding: 0 24px 64px; }
+      #hero { height: auto; min-height: 560px; padding: 100px 24px 64px; }
+      .hero-video { object-position: 65% center; }
+      .hero-overlay { background: linear-gradient(to right, rgba(0,0,0,0.85), rgba(0,0,0,0.40)), linear-gradient(to top, rgba(0,0,0,0.5), transparent); }
       .hero-sub { font-size: 16px; }
       .gameplay-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
       .gameplay-shot { border-radius: 9px; }
@@ -646,8 +670,9 @@
 
   <!-- HERO -->
   <section id="hero">
-    <div class="hero-cover"></div>
-    <div class="hero-overlay"></div>
+    <div class="hero-cover" aria-hidden="true"></div>
+    <video class="hero-video" id="hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"></video>
+    <div class="hero-overlay" aria-hidden="true"></div>
 
     <div class="hero-tag">Creative Game Studio · Busan, Korea</div>
     <h1 class="hero-title">
@@ -862,6 +887,50 @@
         b.addEventListener('click', function () { setLang(b.dataset.setLang); });
       });
 
+    })();
+  </script>
+
+
+  <script>
+    /* Background gameplay only; all existing page sections remain unchanged. */
+    (function () {
+      var hero = document.getElementById('hero');
+      var video = document.getElementById('hero-video');
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+      var paths = ['./hero-gameplay.mp4', './assets/hero-gameplay.mp4'];
+      var attempt = 0;
+      function play() {
+        if (reduce.matches || document.hidden) return;
+        video.muted = true;
+        var result = video.play();
+        if (result && result.catch) result.catch(function () {});
+      }
+      function load() {
+        if (reduce.matches || attempt >= paths.length) return;
+        hero.classList.remove('is-playing');
+        video.src = paths[attempt++];
+        video.load();
+      }
+      video.addEventListener('canplay', play);
+      video.addEventListener('playing', function () { hero.classList.add('is-playing'); });
+      video.addEventListener('error', function () {
+        hero.classList.remove('is-playing');
+        if (attempt < paths.length) load();
+        else console.warn('Place hero-gameplay.mp4 beside index.html or in assets/.');
+      });
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) video.pause(); else play();
+      });
+      document.addEventListener('pointerdown', function () {
+        if (video.readyState >= 2) play();
+      }, { once: true });
+      function motionChanged() {
+        if (reduce.matches) { video.pause(); hero.classList.remove('is-playing'); }
+        else if (!attempt) load(); else play();
+      }
+      if (reduce.addEventListener) reduce.addEventListener('change', motionChanged);
+      else if (reduce.addListener) reduce.addListener(motionChanged);
+      load();
     })();
   </script>
 
