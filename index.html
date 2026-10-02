@@ -115,17 +115,18 @@
     }
 
     .hero-video {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: 72% center;
+      position: absolute; top: 76px; right: 5%; bottom: 28px; left: auto;
+      width: 52%; height: calc(100% - 104px);
+      object-fit: contain; object-position: center;
+      /* Show the whole portrait gameplay without enlarging it to the Hero width. */
       pointer-events: none;
       opacity: 0;
       transition: opacity 0.4s ease;
     }
     #hero.is-playing .hero-video { opacity: 1; }
-    /* Preserve the original cover's brand graphics as a faint video watermark. */
+    /* Keep the original brand cover behind the smaller gameplay. */
     #hero.is-playing .hero-cover {
-      z-index: 1; opacity: 0.06; pointer-events: none;
+      opacity: 0.35; pointer-events: none;
     }
     .hero-overlay {
       position: absolute; inset: 0; z-index: 1;
@@ -637,7 +638,7 @@
       .nav-right { gap: 0; }
       section { padding: 72px 24px; }
       #hero { height: auto; min-height: 560px; padding: 100px 24px 64px; }
-      .hero-video { object-position: 65% center; }
+      .hero-video { top: 76px; right: 0; bottom: 24px; width: 64%; height: calc(100% - 100px); object-position: right center; }
       .hero-overlay { background: linear-gradient(to right, rgba(0,0,0,0.85), rgba(0,0,0,0.40)), linear-gradient(to top, rgba(0,0,0,0.5), transparent); }
       .hero-sub { font-size: 16px; }
       .gameplay-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
