@@ -115,12 +115,12 @@
     }
 
     .hero-video {
-      position: absolute; top: 0; right: 0; bottom: 0; left: auto;
-      width: 82%; height: 100%;
-      object-fit: cover; object-position: center 58%;
-      /* Keep the immersive cover treatment, reducing magnification by 18%. */
-      -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 14%, #000 100%);
-      mask-image: linear-gradient(to right, transparent 0%, #000 14%, #000 100%);
+      position: absolute; top: 0; right: 10%; bottom: 0; left: auto;
+      width: 62%; height: 100%;
+      object-fit: cover; object-position: center 35%;
+      /* Reduce gameplay magnification by about 25%, keeping its center and showing more of the upper frame. */
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 14%, #000 94%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, #000 14%, #000 94%, transparent 100%);
       pointer-events: none;
       opacity: 0;
       transition: opacity 0.4s ease;
@@ -640,7 +640,7 @@
       .nav-right { gap: 0; }
       section { padding: 72px 24px; }
       #hero { height: auto; min-height: 560px; padding: 100px 24px 64px; }
-      .hero-video { top: 0; right: 0; bottom: 0; width: 100%; height: 100%; object-position: center 58%; -webkit-mask-image: none; mask-image: none; }
+      .hero-video { top: 0; right: 0; bottom: 0; width: 100%; height: 100%; object-position: center 35%; -webkit-mask-image: none; mask-image: none; }
       .hero-overlay { background: linear-gradient(to right, rgba(0,0,0,0.85), rgba(0,0,0,0.40)), linear-gradient(to top, rgba(0,0,0,0.5), transparent); }
       .hero-sub { font-size: 16px; }
       .gameplay-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
