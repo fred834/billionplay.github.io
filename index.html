@@ -100,63 +100,23 @@
 
     /* ─── HERO ─── */
     #hero {
-      height: clamp(640px, 72vh, 720px);
-      min-height: 640px;
-      max-height: 720px;
+      min-height: 100vh;
       display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 0 48px 64px;
+      padding: 0 48px 80px;
       position: relative;
       overflow: hidden;
-      isolation: isolate;
-      background: #15120a url('./cover.png') center center / cover no-repeat;
     }
 
-    /* 실제 플레이 영상을 영상 플레이어가 아니라 움직이는 커버처럼 사용 */
-    .hero-video {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: 64% center;
-      z-index: -4;
-      background: #15120a;
-      filter: saturate(0.94) contrast(1.02);
+    .hero-cover {
+      position: absolute; inset: 0;
+      background: url('./cover.png') center center / cover no-repeat;
     }
 
-    /* 영상 위에 브랜드 톤을 연결하는 옐로우 틴트 */
-    .hero-tint {
-      position: absolute;
-      inset: 0;
-      z-index: -3;
-      pointer-events: none;
-      background: rgba(245, 200, 0, 0.18);
-      mix-blend-mode: multiply;
-    }
-
-    /* 기존 체크 패턴의 인상을 아주 약하게만 남김 */
-    .hero-pattern {
-      position: absolute;
-      inset: 0;
-      z-index: -2;
-      pointer-events: none;
-      opacity: 0.09;
-      background-image:
-        linear-gradient(45deg, rgba(255,255,255,0.18) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.18) 75%),
-        linear-gradient(45deg, rgba(255,255,255,0.18) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.18) 75%);
-      background-size: 180px 180px;
-      background-position: 0 0, 90px 90px;
-    }
-
-    /* 왼쪽 텍스트는 확실히 읽히고 오른쪽 gameplay는 살아 있도록 그라데이션 */
     .hero-overlay {
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
+      position: absolute; inset: 0;
       background:
-        linear-gradient(90deg, rgba(7,7,5,0.90) 0%, rgba(12,10,5,0.78) 24%, rgba(15,12,4,0.48) 43%, rgba(14,11,4,0.18) 64%, rgba(10,8,3,0.08) 100%),
-        linear-gradient(0deg, rgba(3,3,2,0.62) 0%, rgba(3,3,2,0.18) 34%, rgba(3,3,2,0.08) 100%);
+        linear-gradient(to right, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0.10) 100%),
+        linear-gradient(to top, rgba(0,0,0,0.60) 0%, rgba(0,0,0,0.10) 45%, transparent 100%);
     }
 
     .hero-tag {
@@ -340,6 +300,57 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 24px;
+    }
+
+    /* Current project media showcase — keeps the existing site visual language */
+    .project-showcase {
+      margin-top: 8px;
+    }
+    .project-showcase-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 32px;
+      margin-bottom: 36px;
+    }
+    .project-showcase-copy {
+      max-width: 680px;
+    }
+    .project-showcase-copy .project-name {
+      margin-bottom: 8px;
+    }
+    .project-showcase-copy .project-desc {
+      margin-bottom: 18px;
+    }
+    .project-media-grid {
+      width: 100%;
+    }
+    .gameplay-gallery {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 14px;
+      width: 100%;
+    }
+    .gameplay-thumb {
+      padding: 0;
+      border: 0;
+      background: transparent;
+      border-radius: 10px;
+    }
+    .gameplay-shot {
+      width: 100%;
+      aspect-ratio: 945 / 2048;
+      object-fit: cover;
+      display: block;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .gameplay-thumb:hover .gameplay-shot {
+      transform: translateY(-2px);
+      border-color: var(--yellow-dim);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.18);
     }
     .project-card {
       background: var(--card);
@@ -587,33 +598,26 @@
         scroll-behavior: auto !important;
       }
       .ticker-inner { animation: none; }
-      .hero-video { display: none; }
     }
 
     /* ─── RESPONSIVE ─── */
+    @media (max-width: 1100px) {
+    }
     @media (max-width: 900px) {
       .pillars { grid-template-columns: 1fr; }
       .projects-grid { grid-template-columns: 1fr; }
+      .project-showcase-head { align-items: flex-start; flex-direction: column; }
+      .gameplay-gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     }
     @media (max-width: 768px) {
       nav { padding: 14px 20px; }
       .nav-links { display: none; }
       .nav-right { gap: 0; }
       section { padding: 72px 24px; }
-      #hero {
-        height: 680px;
-        min-height: 620px;
-        max-height: none;
-        padding: 0 24px 52px;
-      }
-      .hero-video { object-position: 68% center; }
-      .hero-pattern { background-size: 120px 120px; background-position: 0 0, 60px 60px; opacity: 0.07; }
-      .hero-overlay {
-        background:
-          linear-gradient(90deg, rgba(7,7,5,0.88) 0%, rgba(10,8,4,0.68) 55%, rgba(10,8,4,0.28) 100%),
-          linear-gradient(0deg, rgba(3,3,2,0.72) 0%, rgba(3,3,2,0.24) 48%, rgba(3,3,2,0.10) 100%);
-      }
+      #hero { padding: 0 24px 64px; }
       .hero-sub { font-size: 16px; }
+      .gameplay-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .gameplay-shot { border-radius: 9px; }
       footer { flex-direction: column; gap: 20px; text-align: center; }
       .footer-links { flex-wrap: wrap; justify-content: center; }
       .footer-legal { padding: 20px 24px; }
@@ -642,12 +646,8 @@
 
   <!-- HERO -->
   <section id="hero">
-    <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="./cover.png" aria-hidden="true">
-      <source src="./hero-gameplay.mp4" type="video/mp4" />
-    </video>
-    <div class="hero-tint" aria-hidden="true"></div>
-    <div class="hero-pattern" aria-hidden="true"></div>
-    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-cover"></div>
+    <div class="hero-overlay"></div>
 
     <div class="hero-tag">Creative Game Studio · Busan, Korea</div>
     <h1 class="hero-title">
@@ -734,40 +734,35 @@
   <!-- PROJECTS -->
   <section id="projects">
     <div class="section-label">Our Projects</div>
-    <h2 class="section-title">Coming Soon</h2>
+    <h2 class="section-title">Current Project</h2>
 
-    <div class="projects-grid">
-      <div class="project-card">
-        <div class="project-year">S</div>
-        <div class="project-badge">2026 H2</div>
-        <div class="project-name">Project S</div>
-        <div class="project-sub">Survival Island</div>
-        <div class="project-desc">
-          <span lang="ko">한 손으로 즐기는 무인도 생존 매치 퍼즐 게임.<br>서바이벌 아일랜드의 짜릿한 몰입감을 캐주얼하게.</span>
-          <span lang="en">A one-handed island survival match puzzle.<br>All the tension of a survival story, played casually.</span>
-        </div>
-        <div class="project-tags">
-          <span class="tag">#CASUAL</span>
-          <span class="tag">#PUZZLE</span>
-          <span class="tag">#SURVIVAL</span>
-          <span class="tag">#ISLAND</span>
+    <div class="project-showcase">
+      <div class="project-showcase-head">
+        <div class="project-showcase-copy">
+          <div class="project-badge">PROJECT S · 2026 H2</div>
+          <div class="project-name">Captain Bonnie : Block Puzzle</div>
+          <div class="project-sub">Match-2 Puzzle Adventure</div>
+          <div class="project-desc">
+            <span lang="ko">해적 모험 테마의 캐주얼 Match-2 퍼즐 게임.<br>인게임 스크린샷을 통해 현재 개발 중인 게임을 확인할 수 있습니다.</span>
+            <span lang="en">A casual Match-2 puzzle adventure set in a playful pirate world.<br>Explore the game through our current in-game screenshots.</span>
+          </div>
+          <div class="project-tags">
+            <span class="tag">#CASUAL</span>
+            <span class="tag">#PUZZLE</span>
+            <span class="tag">#MATCH-2</span>
+            <span class="tag">#PIRATE</span>
+          </div>
         </div>
       </div>
 
-      <div class="project-card">
-        <div class="project-year">G</div>
-        <div class="project-badge soon">2027 TBD</div>
-        <div class="project-name">Project G</div>
-        <div class="project-sub">Space Exploration</div>
-        <div class="project-desc">
-          <span lang="ko">한 손으로 즐기는 우주 탐험 매치 퍼즐 게임.<br>광활한 우주를 무대로 한 새로운 캐주얼 경험.</span>
-          <span lang="en">A one-handed space exploration match puzzle.<br>A new casual experience set across the open universe.</span>
-        </div>
-        <div class="project-tags">
-          <span class="tag">#CASUAL</span>
-          <span class="tag">#PUZZLE</span>
-          <span class="tag">#SPACE</span>
-          <span class="tag">#EXPLORATION</span>
+      <div class="project-media-grid">
+        <div class="gameplay-gallery" role="group" aria-label="Project S gameplay screenshots">
+          <div class="gameplay-thumb"><img class="gameplay-shot" src="./assets/gameplay-01.jpg" alt="Project S gameplay screenshot 1" loading="lazy" /></div>
+          <div class="gameplay-thumb"><img class="gameplay-shot" src="./assets/gameplay-02.jpg" alt="Project S gameplay screenshot 2" loading="lazy" /></div>
+          <div class="gameplay-thumb"><img class="gameplay-shot" src="./assets/gameplay-03.jpg" alt="Project S gameplay screenshot 3" loading="lazy" /></div>
+          <div class="gameplay-thumb"><img class="gameplay-shot" src="./assets/gameplay-04.jpg" alt="Project S gameplay screenshot 4" loading="lazy" /></div>
+          <div class="gameplay-thumb"><img class="gameplay-shot" src="./assets/gameplay-05.jpg" alt="Project S gameplay screenshot 5" loading="lazy" /></div>
+          <div class="gameplay-thumb"><img class="gameplay-shot" src="./assets/gameplay-06.jpg" alt="Project S gameplay screenshot 6" loading="lazy" /></div>
         </div>
       </div>
     </div>
@@ -867,15 +862,6 @@
         b.addEventListener('click', function () { setLang(b.dataset.setLang); });
       });
 
-      /* hero-gameplay.mp4가 없거나 재생되지 않아도 cover.png가 자연스럽게 남도록 처리 */
-      var heroVideo = document.querySelector('.hero-video');
-      if (heroVideo) {
-        heroVideo.addEventListener('error', function () { heroVideo.style.display = 'none'; });
-        var playPromise = heroVideo.play();
-        if (playPromise && typeof playPromise.catch === 'function') {
-          playPromise.catch(function () { /* muted autoplay 제한 시 poster/fallback 유지 */ });
-        }
-      }
     })();
   </script>
 
