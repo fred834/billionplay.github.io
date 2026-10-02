@@ -3,867 +3,403 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Billion Play — Creative Game Studio</title>
+  <title>Billion Play — Casual Mobile Game Studio</title>
+  <meta name="description" content="빌리언플레이는 부산의 캐주얼 모바일 게임 스튜디오입니다. 스낵처럼 가볍고 유쾌한 퍼즐 게임을 만듭니다." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Billion Play — Casual Mobile Game Studio" />
+  <meta property="og:description" content="스낵처럼 가볍고 유쾌한 캐주얼 퍼즐 게임을 만듭니다." />
+  <meta property="og:image" content="./assets/img/hero-game.jpg" />
+
   <link rel="icon" type="image/png" href="./favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --yellow: #F5C800;
-      --yellow-dim: #c9a200;
-      --black: #0a0a0a;
-      --dark: #111111;
-      --card: #161616;
-      --border: #2a2a2a;
-      --text: #f0f0f0;
-      --muted: #a8a8a8;
-      --faint: #8a8a8a;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--black);
-      color: var(--text);
-      font-family: 'Noto Sans KR', sans-serif;
-      font-weight: 400;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* ─── LANGUAGE SWITCH ─── */
-    html[data-lang="ko"] [lang="en"] { display: none !important; }
-    html[data-lang="en"] [lang="ko"] { display: none !important; }
-
-    .lang-switch {
-      display: flex;
-      align-items: stretch;
-      border: 1px solid var(--border);
-    }
-    .lang-btn {
-      font-family: 'Space Mono', monospace;
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      padding: 6px 12px;
-      background: transparent;
-      color: var(--faint);
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s, color 0.2s;
-      line-height: 1.4;
-    }
-    .lang-btn + .lang-btn { border-left: 1px solid var(--border); }
-    .lang-btn:hover { color: var(--text); }
-    .lang-btn[aria-pressed="true"] {
-      background: var(--yellow);
-      color: var(--black);
-      font-weight: 700;
-    }
-
-    /* ─── FOCUS ─── */
-    a:focus-visible, button:focus-visible {
-      outline: 2px solid var(--yellow);
-      outline-offset: 3px;
-    }
-
-    /* ─── NAV ─── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; justify-content: space-between; align-items: center;
-      gap: 20px;
-      padding: 18px 48px;
-      background: rgba(10,10,10,0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(245,200,0,0.10);
-    }
-    .nav-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 22px;
-      letter-spacing: 0.12em;
-      color: var(--yellow);
-    }
-    .nav-right { display: flex; align-items: center; gap: 32px; }
-    .nav-links { display: flex; gap: 32px; }
-    .nav-links a {
-      font-family: 'Space Mono', monospace;
-      font-size: 12px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--yellow); }
-
-    /* ─── HERO ─── */
-    #hero {
-      min-height: 100vh;
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 0 48px 80px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-cover {
-      position: absolute; inset: 0;
-      background: url('./cover.png') center center / cover no-repeat;
-    }
-
-    .hero-overlay {
-      position: absolute; inset: 0;
-      background:
-        linear-gradient(to right, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0.10) 100%),
-        linear-gradient(to top, rgba(0,0,0,0.60) 0%, rgba(0,0,0,0.10) 45%, transparent 100%);
-    }
-
-    .hero-tag {
-      font-family: 'Space Mono', monospace;
-      font-size: 12px;
-      letter-spacing: 0.18em;
-      color: var(--yellow);
-      text-transform: uppercase;
-      margin-bottom: 24px;
-      display: flex; align-items: center; gap: 12px;
-      position: relative; z-index: 1;
-    }
-    .hero-tag::before {
-      content: '';
-      width: 40px; height: 1px;
-      background: var(--yellow);
-    }
-
-    .hero-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(56px, 10vw, 130px);
-      line-height: 0.9;
-      letter-spacing: 0.01em;
-      color: #ffffff;
-      position: relative; z-index: 1;
-      animation: fadeUp 0.8s ease both;
-    }
-    .hero-title em {
-      color: var(--yellow);
-      font-style: normal;
-    }
-
-    .hero-sub {
-      margin-top: 28px;
-      font-size: 17px;
-      line-height: 1.75;
-      color: #ffffff;
-      max-width: 520px;
-      position: relative; z-index: 1;
-      animation: fadeUp 0.8s 0.15s ease both;
-      text-shadow: 0 1px 12px rgba(0,0,0,0.6);
-    }
-
-    .hero-cta {
-      margin-top: 40px;
-      display: flex; gap: 20px; align-items: center; flex-wrap: wrap;
-      position: relative; z-index: 1;
-      animation: fadeUp 0.8s 0.25s ease both;
-    }
-    .btn-primary {
-      background: var(--yellow);
-      color: var(--black);
-      font-family: 'Space Mono', monospace;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 15px 30px;
-      border: none; cursor: pointer;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.15s;
-      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
-    }
-    .btn-primary:hover { background: #ffe033; transform: translateY(-2px); }
-
-    .btn-ghost {
-      font-family: 'Space Mono', monospace;
-      font-size: 13px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #ffffff;
-      text-decoration: none;
-      display: flex; align-items: center; gap: 8px;
-      transition: color 0.2s;
-    }
-    .btn-ghost:hover { color: var(--yellow); }
-    .btn-ghost::after { content: '→'; }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ─── SECTION BASE ─── */
-    section { padding: 100px 48px; }
-    .section-label {
-      font-family: 'Space Mono', monospace;
-      font-size: 11px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--yellow);
-      margin-bottom: 16px;
-      display: flex; align-items: center; gap: 10px;
-    }
-    .section-label::before {
-      content: '';
-      width: 24px; height: 1px;
-      background: var(--yellow);
-    }
-    .section-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(40px, 6vw, 72px);
-      letter-spacing: 0.02em;
-      line-height: 1;
-      color: var(--text);
-      margin-bottom: 48px;
-    }
-
-    /* ─── VISION ─── */
-    #vision { background: var(--dark); }
-
-    .vision-quote {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(28px, 4vw, 52px);
-      line-height: 1.15;
-      color: var(--text);
-      border-left: 3px solid var(--yellow);
-      padding-left: 28px;
-      margin-bottom: 60px;
-      max-width: 700px;
-    }
-
-    .pillars {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-    }
-    .pillar {
-      background: var(--card);
-      padding: 36px 32px;
-      position: relative;
-      overflow: hidden;
-      transition: background 0.2s;
-    }
-    .pillar:hover { background: #1c1c1c; }
-    .pillar::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 2px;
-      background: var(--yellow);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s;
-    }
-    .pillar:hover::before { transform: scaleX(1); }
-    .pillar-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 48px;
-      color: rgba(245,200,0,0.5);
-      line-height: 1;
-      margin-bottom: 16px;
-      transition: color 0.3s;
-    }
-    .pillar:hover .pillar-num { color: rgba(245,200,0,0.95); }
-    .pillar-title {
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 6px;
-      line-height: 1.5;
-    }
-    .pillar-en {
-      font-family: 'Space Mono', monospace;
-      font-size: 12px;
-      color: var(--yellow);
-      letter-spacing: 0.08em;
-      margin-bottom: 12px;
-    }
-    .pillar-desc {
-      font-size: 15px;
-      color: var(--muted);
-      line-height: 1.75;
-      transition: color 0.2s;
-    }
-    .pillar:hover .pillar-desc { color: var(--text); }
-
-    /* ─── PROJECTS ─── */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-    }
-
-    /* Current project media showcase — keeps the existing site visual language */
-    .project-showcase {
-      margin-top: 8px;
-    }
-    .project-showcase-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 32px;
-      margin-bottom: 36px;
-    }
-    .project-showcase-copy {
-      max-width: 680px;
-    }
-    .project-showcase-copy .project-name {
-      margin-bottom: 8px;
-    }
-    .project-showcase-copy .project-desc {
-      margin-bottom: 18px;
-    }
-    .project-media-grid {
-      width: 100%;
-    }
-    .gameplay-gallery {
-      display: grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
-      gap: 14px;
-      width: 100%;
-    }
-    .gameplay-thumb {
-      padding: 0;
-      border: 0;
-      background: transparent;
-      border-radius: 10px;
-    }
-    .gameplay-shot {
-      width: 100%;
-      aspect-ratio: 945 / 2048;
-      object-fit: cover;
-      display: block;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: var(--card);
-      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-    }
-    .gameplay-thumb:hover .gameplay-shot {
-      transform: translateY(-2px);
-      border-color: var(--yellow-dim);
-      box-shadow: 0 10px 22px rgba(0,0,0,0.18);
-    }
-    .project-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      padding: 40px;
-      position: relative;
-      overflow: hidden;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .project-card:hover {
-      border-color: var(--yellow-dim);
-      transform: translateY(-4px);
-    }
-    .project-card::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--yellow), transparent);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-    .project-card:hover::after { opacity: 1; }
-
-    .project-badge {
-      font-family: 'Space Mono', monospace;
-      font-size: 11px;
-      letter-spacing: 0.14em;
-      color: var(--black);
-      background: var(--yellow);
-      padding: 5px 11px;
-      display: inline-block;
-      margin-bottom: 24px;
-      font-weight: 700;
-    }
-    .project-badge.soon {
-      background: transparent;
-      color: var(--muted);
-      border: 1px solid #3a3a3a;
-    }
-    .project-name {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 42px;
-      letter-spacing: 0.04em;
-      color: var(--text);
-      margin-bottom: 8px;
-    }
-    .project-sub {
-      font-size: 14px;
-      color: var(--yellow);
-      font-family: 'Space Mono', monospace;
-      margin-bottom: 16px;
-      letter-spacing: 0.05em;
-    }
-    .project-desc {
-      font-size: 16px;
-      color: var(--muted);
-      line-height: 1.8;
-      margin-bottom: 24px;
-      transition: color 0.2s;
-    }
-    .project-card:hover .project-desc { color: #ffffff; }
-    .project-tags {
-      display: flex; flex-wrap: wrap; gap: 8px;
-    }
-    .tag {
-      font-family: 'Space Mono', monospace;
-      font-size: 12px;
-      color: var(--muted);
-      border: 1px solid #3a3a3a;
-      padding: 5px 12px;
-      letter-spacing: 0.06em;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .project-card:hover .tag {
-      color: var(--text);
-      border-color: #4d4d4d;
-    }
-    .project-year {
-      position: absolute;
-      top: 40px; right: 40px;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 64px;
-      color: rgba(245,200,0,0.10);
-      line-height: 1;
-      pointer-events: none;
-    }
-
-    /* ─── ROADMAP ─── */
-    #roadmap { background: var(--dark); }
-
-    .timeline {
-      position: relative;
-      padding-left: 32px;
-    }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 8px; bottom: 8px;
-      width: 1px;
-      background: linear-gradient(to bottom, var(--yellow), transparent);
-    }
-    .milestone {
-      position: relative;
-      padding: 0 0 48px 32px;
-    }
-    .milestone::before {
-      content: '';
-      position: absolute;
-      left: -4px; top: 7px;
-      width: 9px; height: 9px;
-      background: var(--yellow);
-      border-radius: 50%;
-      box-shadow: 0 0 12px rgba(245,200,0,0.4);
-    }
-    .milestone-date {
-      font-family: 'Space Mono', monospace;
-      font-size: 12px;
-      color: var(--yellow);
-      letter-spacing: 0.14em;
-      margin-bottom: 6px;
-    }
-    .milestone-text {
-      font-size: 16px;
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    /* ─── CONTACT ─── */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
-      max-width: 620px;
-    }
-    .contact-block {
-      background: var(--card);
-      border: 1px solid var(--border);
-      padding: 32px;
-    }
-    .contact-block-title {
-      font-family: 'Space Mono', monospace;
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--yellow);
-      margin-bottom: 16px;
-    }
-    .contact-block p {
-      font-size: 15px;
-      color: var(--muted);
-      line-height: 1.85;
-    }
-    .contact-block a {
-      color: var(--text);
-      text-decoration: none;
-      border-bottom: 1px solid #3a3a3a;
-      transition: border-color 0.2s, color 0.2s;
-    }
-    .contact-block a:hover {
-      color: var(--yellow);
-      border-color: var(--yellow);
-    }
-
-    /* ─── FOOTER ─── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 40px 48px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      background: var(--dark);
-    }
-    .footer-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 18px;
-      letter-spacing: 0.12em;
-      color: var(--yellow);
-    }
-    .footer-copy {
-      font-family: 'Space Mono', monospace;
-      font-size: 11px;
-      color: var(--muted);
-      letter-spacing: 0.06em;
-    }
-    .footer-links { display: flex; gap: 24px; }
-    .footer-links a {
-      font-family: 'Space Mono', monospace;
-      font-size: 11px;
-      color: var(--muted);
-      text-decoration: none;
-      letter-spacing: 0.08em;
-      transition: color 0.2s;
-    }
-    .footer-links a:hover { color: var(--yellow); }
-
-    .footer-legal {
-      background: #0d0d0d;
-      border-top: 1px solid var(--border);
-      padding: 22px 48px;
-      text-align: center;
-    }
-    .footer-legal p {
-      font-family: 'Space Mono', monospace;
-      font-size: 11px;
-      color: #9a9a9a;
-      letter-spacing: 0.04em;
-      line-height: 2;
-    }
-
-    /* ─── TICKER ─── */
-    .ticker {
-      overflow: hidden;
-      background: var(--yellow);
-      padding: 10px 0;
-      white-space: nowrap;
-    }
-    .ticker-inner {
-      display: inline-flex; gap: 0;
-      animation: ticker 20s linear infinite;
-    }
-    .ticker-item {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 14px;
-      letter-spacing: 0.2em;
-      color: var(--black);
-      padding: 0 40px;
-    }
-    .ticker-item::after {
-      content: '✦';
-      margin-left: 40px;
-    }
-    @keyframes ticker {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
-
-    /* ─── REDUCED MOTION ─── */
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
-      .ticker-inner { animation: none; }
-    }
-
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 1100px) {
-    }
-    @media (max-width: 900px) {
-      .pillars { grid-template-columns: 1fr; }
-      .projects-grid { grid-template-columns: 1fr; }
-      .project-showcase-head { align-items: flex-start; flex-direction: column; }
-      .gameplay-gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    }
-    @media (max-width: 768px) {
-      nav { padding: 14px 20px; }
-      .nav-links { display: none; }
-      .nav-right { gap: 0; }
-      section { padding: 72px 24px; }
-      #hero { padding: 0 24px 64px; }
-      .hero-sub { font-size: 16px; }
-      .gameplay-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-      .gameplay-shot { border-radius: 9px; }
-      footer { flex-direction: column; gap: 20px; text-align: center; }
-      .footer-links { flex-wrap: wrap; justify-content: center; }
-      .footer-legal { padding: 20px 24px; }
-      .project-year { display: none; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./assets/css/main.css" />
+  <script>
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("js");
+    }
+  </script>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <div class="nav-logo">Billion Play</div>
-    <div class="nav-right">
-      <div class="nav-links">
-        <a href="#vision">Vision</a>
-        <a href="#projects">Projects</a>
-        <a href="#roadmap">Roadmap</a>
-        <a href="#contact">Contact</a>
-      </div>
+<a class="skip-link" href="#main">
+  <span lang="ko">본문으로 건너뛰기</span>
+  <span lang="en">Skip to content</span>
+</a>
+
+<!-- ══════════════════════════════════════════════ HEADER ══ -->
+<header class="header">
+  <div class="shell header__inner">
+    <a class="brand" href="#top" aria-label="Billion Play">
+      <span class="brand__mark" aria-hidden="true">B</span>
+      <span>Billion<em>Play</em></span>
+    </a>
+
+    <nav class="nav" id="primary-nav" aria-label="Main">
+      <a href="#projects"><span lang="ko">게임</span><span lang="en">Game</span></a>
+      <a href="#features"><span lang="ko">특징</span><span lang="en">Features</span></a>
+      <a href="#vision"><span lang="ko">회사 소개</span><span lang="en">About</span></a>
+      <a href="#contact"><span lang="ko">문의</span><span lang="en">Contact</span></a>
+    </nav>
+
+    <div class="header__actions">
       <div class="lang-switch" role="group" aria-label="Language">
         <button type="button" class="lang-btn" data-set-lang="ko" aria-pressed="true">KR</button>
         <button type="button" class="lang-btn" data-set-lang="en" aria-pressed="false">EN</button>
       </div>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <section id="hero">
-    <div class="hero-cover"></div>
-    <div class="hero-overlay"></div>
-
-    <div class="hero-tag">Creative Game Studio · Busan, Korea</div>
-    <h1 class="hero-title">
-      Billion<br><em>Play</em>
-    </h1>
-    <p class="hero-sub">
-      <span lang="ko">전 세계 10억 명의 일상에<br>스낵처럼 가볍고 유쾌한 즐거움을 채웁니다.</span>
-      <span lang="en">Snack-sized joy for a billion everyday moments,<br>anywhere in the world.</span>
-    </p>
-    <div class="hero-cta">
-      <a href="#projects" class="btn-primary">Our Projects</a>
-      <a href="#contact" class="btn-ghost">Contact Us</a>
-    </div>
-  </section>
-
-  <!-- TICKER -->
-  <div class="ticker" aria-hidden="true">
-    <div class="ticker-inner">
-      <span class="ticker-item">BILLION PLAY GAMES</span>
-      <span class="ticker-item">CASUAL MOBILE GAMES</span>
-      <span class="ticker-item">GLOBAL LAUNCH 2026</span>
-      <span class="ticker-item">STRESS-FREE IMMERSION</span>
-      <span class="ticker-item">BILLION PLAY GAMES</span>
-      <span class="ticker-item">CASUAL MOBILE GAMES</span>
-      <span class="ticker-item">GLOBAL LAUNCH 2026</span>
-      <span class="ticker-item">STRESS-FREE IMMERSION</span>
-      <span class="ticker-item">BILLION PLAY GAMES</span>
-      <span class="ticker-item">CASUAL MOBILE GAMES</span>
-      <span class="ticker-item">GLOBAL LAUNCH 2026</span>
-      <span class="ticker-item">STRESS-FREE IMMERSION</span>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">
+        <span aria-hidden="true"></span>
+      </button>
     </div>
   </div>
+</header>
 
-  <!-- VISION -->
-  <section id="vision">
-    <div class="section-label">Vision &amp; Direction</div>
-    <h2 class="section-title">We Make Play<br>For Everyone</h2>
+<main id="main">
 
-    <div class="vision-quote">
-      <span lang="ko">"복잡한 스트레스 없이,<br>오직 순수한 재미와 몰입감만."</span>
-      <span lang="en">"No stress, no clutter.<br>Just pure fun and focus."</span>
-    </div>
-
-    <div class="pillars">
-      <div class="pillar">
-        <div class="pillar-num">01</div>
-        <div class="pillar-title">
-          <span lang="ko">누구나 즉시 즐기는 웰메이드 캐주얼</span>
-          <span lang="en">Easy to start, built to last</span>
-        </div>
-        <div class="pillar-en">Accessible &amp; Premium</div>
-        <div class="pillar-desc">
-          <span lang="ko">진입 장벽 없이 누구나 즉시 몰입할 수 있는 완성도 높은 캐주얼 게임을 만듭니다.</span>
-          <span lang="en">Casual games anyone can pick up in seconds, finished to a standard that keeps them playing.</span>
-        </div>
-      </div>
-      <div class="pillar">
-        <div class="pillar-num">02</div>
-        <div class="pillar-title">
-          <span lang="ko">스트레스 제로의 짜릿한 몰입감</span>
-          <span lang="en">Thrill without the pressure</span>
-        </div>
-        <div class="pillar-en">Stress-Free Immersion</div>
-        <div class="pillar-desc">
-          <span lang="ko">부담 없이 짜릿한 쾌감을 선사하는 게임플레이 경험에 집중합니다.</span>
-          <span lang="en">We focus on gameplay that feels satisfying to play, never demanding to keep up with.</span>
-        </div>
-      </div>
-      <div class="pillar">
-        <div class="pillar-num">03</div>
-        <div class="pillar-title">
-          <span lang="ko">글로벌 유저를 사로잡는 대중적 감성</span>
-          <span lang="en">A look that travels</span>
-        </div>
-        <div class="pillar-en">Global Standard Visual</div>
-        <div class="pillar-desc">
-          <span lang="ko">전 세계 어디서나 통하는 글로벌 스탠다드 비주얼 언어로 만들어갑니다.</span>
-          <span lang="en">A visual language that reads the same way in every market we launch in.</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects">
-    <div class="section-label">Our Projects</div>
-    <h2 class="section-title">Current Project</h2>
-
-    <div class="project-showcase">
-      <div class="project-showcase-head">
-        <div class="project-showcase-copy">
-          <div class="project-badge">PROJECT S · 2026 H2</div>
-          <div class="project-name">Captain Bonnie : Block Puzzle</div>
-          <div class="project-sub">Match-2 Puzzle Adventure</div>
-          <div class="project-desc">
-            <span lang="ko">해적 모험 테마의 캐주얼 Match-2 퍼즐 게임.<br>인게임 스크린샷을 통해 현재 개발 중인 게임을 확인할 수 있습니다.</span>
-            <span lang="en">A casual Match-2 puzzle adventure set in a playful pirate world.<br>Explore the game through our current in-game screenshots.</span>
-          </div>
-          <div class="project-tags">
-            <span class="tag">#CASUAL</span>
-            <span class="tag">#PUZZLE</span>
-            <span class="tag">#MATCH-2</span>
-            <span class="tag">#PIRATE</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-media-grid">
-        <div class="gameplay-gallery" role="group" aria-label="Project S gameplay screenshots">
-          <div class="gameplay-thumb"><img class="gameplay-shot" src="./assets/gameplay-01.jpg" alt="Project S gameplay screenshot 1" loading="lazy" /></div>
-          <div class="gameplay-thumb"><img class="gameplay-shot" src="./assets/gameplay-02.jpg" alt="Project S gameplay screenshot 2" loading="lazy" /></div>
-          <div class="gameplay-thumb"><img class="gameplay-shot" src="./assets/gameplay-03.jpg" alt="Project S gameplay screenshot 3" loading="lazy" /></div>
-          <div class="gameplay-thumb"><img class="gameplay-shot" src="./assets/gameplay-04.jpg" alt="Project S gameplay screenshot 4" loading="lazy" /></div>
-          <div class="gameplay-thumb"><img class="gameplay-shot" src="./assets/gameplay-05.jpg" alt="Project S gameplay screenshot 5" loading="lazy" /></div>
-          <div class="gameplay-thumb"><img class="gameplay-shot" src="./assets/gameplay-06.jpg" alt="Project S gameplay screenshot 6" loading="lazy" /></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ROADMAP -->
-  <section id="roadmap">
-    <div class="section-label">Milestones</div>
-    <h2 class="section-title">Roadmap</h2>
-
-    <div class="timeline">
-      <div class="milestone">
-        <div class="milestone-date">2026. Q2</div>
-        <div class="milestone-text">
-          <span lang="ko">주식회사 빌리언플레이 법인 설립</span>
-          <span lang="en">BILLIONPLAY CO., LTD. incorporated</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="section-label">Contact</div>
-    <h2 class="section-title">Get In Touch</h2>
-
-    <div class="contact-grid">
-      <div class="contact-block">
-        <div class="contact-block-title">Business &amp; Support</div>
-        <p lang="ko">
-          제품 및 제휴 문의<br>
-          <a href="mailto:support@billionplaygames.com">support@billionplaygames.com</a><br><br>
-          운영 시간<br>
-          평일 10:00 – 18:00 (KST)<br><br>
-          주식회사 빌리언플레이<br>
-          부산광역시 해운대구 센텀중앙로 97<br>
-          센텀스카이비즈, Republic of Korea
+  <!-- ════════════════════════════════════════════════ HERO ══ -->
+  <section class="hero" id="top">
+    <div class="shell hero__inner">
+      <div class="reveal">
+        <h1 class="hero__title">Billion <em>Play</em></h1>
+        <p class="hero__tagline">
+          <span lang="ko">전 세계 10억 명의 일상에 스낵처럼 가볍고 유쾌한 즐거움을 채웁니다.</span>
+          <span lang="en">Snack-sized joy for a billion everyday moments, anywhere in the world.</span>
         </p>
-        <p lang="en">
-          Business and partnership enquiries<br>
-          <a href="mailto:support@billionplaygames.com">support@billionplaygames.com</a><br><br>
-          Office hours<br>
-          Mon – Fri, 10:00 – 18:00 (KST)<br><br>
-          BILLIONPLAY CO., LTD.<br>
-          97, Centum jungang-ro, Haeundae-gu<br>
-          Busan, Republic of Korea
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="#projects">
+            <span lang="ko">게임 보기</span><span lang="en">See the game</span>
+          </a>
+          <a class="btn btn--ghost" href="#contact">
+            <span lang="ko">문의하기</span><span lang="en">Get in touch</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero__visual reveal">
+        <span class="hero__blob" aria-hidden="true"></span>
+        <img src="./assets/img/hero-game.jpg" width="900" height="1250" fetchpriority="high"
+             alt="해적 테마 매치 퍼즐 게임 플레이 화면. 블록이 연쇄로 터지며 폭발 이펙트가 번지고 있다." />
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════ FEATURED GAME ══ -->
+  <section class="section" id="projects" aria-labelledby="game-title">
+    <div class="shell">
+      <div class="game__head reveal">
+        <div>
+          <p class="eyebrow">
+            <span lang="ko">개발 중인 게임</span><span lang="en">In development</span>
+          </p>
+          <h2 class="section-title" id="game-title">
+            <span lang="ko">해적 테마 매치 퍼즐</span>
+            <span lang="en">A pirate-themed match puzzle</span>
+          </h2>
+          <p class="section-lead">
+            <span lang="ko">같은 색 블록을 탭해 터뜨리는 퍼즐에, 별을 모아 배를 완성해 나가는 성장 구조를 결합했습니다.</span>
+            <span lang="en">Tap to clear matching blocks, collect stars, and rebuild your ship voyage by voyage.</span>
+          </p>
+        </div>
+        <ul class="chips" aria-label="Game info">
+          <li class="chip"><span lang="ko">모바일</span><span lang="en">Mobile</span></li>
+          <li class="chip"><span lang="ko">캐주얼 퍼즐</span><span lang="en">Casual puzzle</span></li>
+          <li class="chip"><span lang="ko">개발 완료 · 검증 단계</span><span lang="en">Built · in testing</span></li>
+        </ul>
+      </div>
+
+      <div class="game__body">
+        <video class="game__video reveal" data-ua-video
+               src="./assets/video/billionplay-ua.mp4"
+               poster="./assets/video/billionplay-ua-poster.jpg"
+               autoplay muted loop playsinline preload="metadata"
+               aria-label="게임 플레이 영상"></video>
+
+        <div class="gallery reveal" data-gallery role="group" aria-label="인게임 스크린샷">
+          <div class="gallery__grid" tabindex="0">
+            <figure class="gallery__item">
+              <img src="./assets/img/shot-01.jpg" width="720" height="1560" loading="lazy" decoding="async"
+                   alt="블록이 연쇄로 터지며 화면 전체에 폭발 이펙트가 퍼지는 플레이 화면" />
+            </figure>
+            <figure class="gallery__item">
+              <img src="./assets/img/shot-02.jpg" width="720" height="1560" loading="lazy" decoding="async"
+                   alt="밤 배경 스테이지. 나무 상자와 보물 가방 장애물이 보드를 덮고 있다." />
+            </figure>
+            <figure class="gallery__item">
+              <img src="./assets/img/shot-03.jpg" width="720" height="1560" loading="lazy" decoding="async"
+                   alt="문어 보스가 촉수로 보드를 감싼 특수 스테이지" />
+            </figure>
+            <figure class="gallery__item">
+              <img src="./assets/img/shot-04.jpg" width="720" height="1560" loading="lazy" decoding="async"
+                   alt="유리병과 모래게, 상자가 함께 배치된 복합 목표 스테이지" />
+            </figure>
+            <figure class="gallery__item">
+              <img src="./assets/img/shot-05.jpg" width="720" height="1560" loading="lazy" decoding="async"
+                   alt="밤 스테이지. 덤불과 유적돌이 보드 가운데를 가로막고 있다." />
+            </figure>
+            <figure class="gallery__item">
+              <img src="./assets/img/shot-06.jpg" width="720" height="1560" loading="lazy" decoding="async"
+                   alt="유리병이 보드를 가득 채운 대형 수집 목표 스테이지" />
+            </figure>
+          </div>
+
+          <div class="gallery__nav">
+            <div class="gallery__dots" role="group" aria-label="Pages"></div>
+            <button type="button" class="gallery__btn" data-gallery-prev aria-label="이전 스크린샷">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M15 18 9 12l6-6" />
+              </svg>
+            </button>
+            <button type="button" class="gallery__btn" data-gallery-next aria-label="다음 스크린샷">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </button>
+          </div>
+          <p class="gallery__status" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════ GAME FEATURES ══ -->
+  <section class="section section--soft" id="features" aria-labelledby="features-title">
+    <div class="shell">
+      <div class="reveal">
+        <h2 class="section-title" id="features-title">
+          <span lang="ko">한 판마다 달라지는 퍼즐</span>
+          <span lang="en">Every level plays differently</span>
+        </h2>
+        <p class="section-lead">
+          <span lang="ko">조작은 탭 하나로 끝나지만, 목표와 장애물 조합이 매번 달라집니다.</span>
+          <span lang="en">One tap to play. The goals and obstacles change every time.</span>
         </p>
       </div>
+
+      <div class="features">
+        <article class="feature feature--lead reveal">
+          <img src="./assets/img/feature-gimmick.jpg" width="760" height="1056" loading="lazy" decoding="async"
+               alt="유리병, 상자, 보물 가방 등 여러 장애물이 한 보드에 섞여 있는 스테이지" />
+          <div>
+            <h3 class="feature__title">
+              <span lang="ko">11종의 장애물</span>
+              <span lang="en">Eleven obstacle types</span>
+            </h3>
+            <p class="feature__text">
+              <span lang="ko">유리병, 상자, 덤불, 모래게처럼 제거 조건과 반응이 각각 다른 장애물이 스테이지마다 다르게 조합됩니다. 같은 장애물이라도 수량과 위치에 따라 풀이가 완전히 달라집니다.</span>
+              <span lang="en">Bottles, crates, bushes, crabs and more. Each clears differently, and each level mixes them in a new way, so the same obstacle never plays the same twice.</span>
+            </p>
+          </div>
+        </article>
+
+        <div class="features__pair">
+          <article class="feature reveal">
+            <img src="./assets/img/feature-stage.jpg" width="760" height="1056" loading="lazy" decoding="async"
+                 alt="상자와 모래게가 층층이 쌓인 고난도 스테이지" />
+            <div>
+              <h3 class="feature__title">
+                <span lang="ko">배를 완성하는 성장</span>
+                <span lang="en">Rebuild your ship</span>
+              </h3>
+              <p class="feature__text">
+                <span lang="ko">스테이지에서 얻은 별로 배의 부품을 하나씩 수리합니다. 한 척을 완성하면 더 큰 배가 열립니다.</span>
+                <span lang="en">Spend the stars you earn to repair your ship part by part. Finish one, and a bigger ship opens up.</span>
+              </p>
+            </div>
+          </article>
+
+          <article class="feature reveal">
+            <img src="./assets/img/feature-boss.jpg" width="760" height="1056" loading="lazy" decoding="async"
+                 alt="문어 보스가 촉수로 보드를 둘러싼 보스 스테이지" />
+            <div>
+              <h3 class="feature__title">
+                <span lang="ko">보스 스테이지</span>
+                <span lang="en">Boss levels</span>
+              </h3>
+              <p class="feature__text">
+                <span lang="ko">체력을 가진 보스를 여러 번 공격해 클리어하는 특수 스테이지로 진행에 변화를 줍니다.</span>
+                <span lang="en">Special levels where a boss with its own health bar breaks up the rhythm of regular play.</span>
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-logo">Billion Play</div>
-    <div class="footer-copy">© 2026 Billion Play Inc. All rights reserved.</div>
-    <div class="footer-links">
-      <a href="mailto:support@billionplaygames.com">Email</a>
+  <!-- ═══════════════════════════════════════════ CTA BAND ══ -->
+  <section class="band" aria-labelledby="band-title">
+    <div class="shell band__inner">
+      <p class="band__text" id="band-title">
+        <span lang="ko">퍼블리싱과 제휴 문의를 기다립니다.</span>
+        <span lang="en">Open to publishing and partnership enquiries.</span>
+      </p>
+      <a class="btn btn--ghost" href="mailto:support@billionplaygames.com">
+        <span lang="ko">메일 보내기</span><span lang="en">Email us</span>
+      </a>
     </div>
-  </footer>
+  </section>
 
-  <!-- LEGAL STRIP -->
-  <div class="footer-legal">
-    <p lang="ko">
-      주식회사 BILLIONPLAY CO., LTD. | 대표이사: 고무진 | 사업자등록번호: 216-81-20560<br>
-      부산광역시 해운대구 센텀중앙로 97 (재송동, 센텀스카이비즈)<br>
-      © 2026 Billion Play Inc. All rights reserved.
-    </p>
-    <p lang="en">
-      BILLIONPLAY CO., LTD. | CEO: Ko Mu-jin | Business Registration No. 216-81-20560<br>
-      97, Centum jungang-ro, Haeundae-gu, Busan, Republic of Korea<br>
-      © 2026 Billion Play Inc. All rights reserved.
-    </p>
+  <!-- ═════════════════════════════════════════════ ABOUT ══ -->
+  <section class="section" id="vision" aria-labelledby="about-title">
+    <div class="shell about__inner">
+      <div class="reveal">
+        <p class="eyebrow">
+          <span lang="ko">부산의 캐주얼 게임 스튜디오</span>
+          <span lang="en">Casual game studio in Busan, Korea</span>
+        </p>
+        <h2 class="section-title" id="about-title">
+          <span lang="ko">복잡하지 않게, 오래 즐겁게</span>
+          <span lang="en">Simple to start, good enough to stay</span>
+        </h2>
+
+        <div class="principles">
+          <div class="principle">
+            <span class="principle__dot" aria-hidden="true">1</span>
+            <div>
+              <h3><span lang="ko">바로 시작할 수 있게</span><span lang="en">Easy to start</span></h3>
+              <p>
+                <span lang="ko">설명이 거의 필요 없는 조작으로 누구나 첫 판부터 몰입할 수 있게 만듭니다.</span>
+                <span lang="en">Controls that need almost no explaining, so the first level already feels good.</span>
+              </p>
+            </div>
+          </div>
+          <div class="principle">
+            <span class="principle__dot" aria-hidden="true">2</span>
+            <div>
+              <h3><span lang="ko">부담 없는 몰입</span><span lang="en">Thrill without pressure</span></h3>
+              <p>
+                <span lang="ko">짧은 시간에 끝나는 한 판, 결제하지 않아도 진행이 막히지 않는 설계를 지향합니다.</span>
+                <span lang="en">A level fits in a short break, and progress never depends on spending.</span>
+              </p>
+            </div>
+          </div>
+          <div class="principle">
+            <span class="principle__dot" aria-hidden="true">3</span>
+            <div>
+              <h3><span lang="ko">어디서나 통하는 비주얼</span><span lang="en">A look that travels</span></h3>
+              <p>
+                <span lang="ko">국가와 언어에 상관없이 읽히는 밝고 친근한 아트를 기준으로 삼습니다.</span>
+                <span lang="en">Bright, friendly art that reads the same way in every market we launch in.</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal" id="roadmap">
+        <h3 class="section-title" style="font-size:24px">
+          <span lang="ko">진행 현황</span><span lang="en">Where we are</span>
+        </h3>
+
+        <div class="timeline">
+          <div class="timeline__item">
+            <div class="timeline__date">2026. Q2</div>
+            <div class="timeline__body">
+              <p><span lang="ko">주식회사 빌리언플레이 법인 설립</span><span lang="en">BILLIONPLAY CO., LTD. incorporated</span></p>
+            </div>
+          </div>
+          <div class="timeline__item">
+            <div class="timeline__date">2026. Q2</div>
+            <div class="timeline__body">
+              <p><span lang="ko">캐주얼 퍼즐 프로젝트 개발 착수</span><span lang="en">Casual puzzle project started</span></p>
+            </div>
+          </div>
+          <div class="timeline__item">
+            <div class="timeline__date">2026. Q3</div>
+            <div class="timeline__body">
+              <p><span lang="ko">코어 플레이 및 콘텐츠 개발 완료</span><span lang="en">Core gameplay and content complete</span></p>
+            </div>
+          </div>
+          <div class="timeline__item timeline__item--now">
+            <div class="timeline__date"><span lang="ko">현재</span><span lang="en">Now</span></div>
+            <div class="timeline__body">
+              <p><span lang="ko">품질 검증 및 출시 준비</span><span lang="en">Quality testing and launch prep</span></p>
+            </div>
+          </div>
+        </div>
+
+        <p class="about__company">
+          <span lang="ko">주식회사 빌리언플레이 · 기획 · 아트 · 개발 3인이 전 과정을 직접 수행합니다.</span>
+          <span lang="en">BILLIONPLAY CO., LTD. A team of three covering design, art and engineering end to end.</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ CONTACT ══ -->
+  <section class="section section--soft" id="contact" aria-labelledby="contact-title">
+    <div class="shell">
+      <div class="reveal" style="margin-bottom:40px">
+        <h2 class="section-title" id="contact-title">
+          <span lang="ko">문의</span><span lang="en">Get in touch</span>
+        </h2>
+      </div>
+
+      <div class="contact__inner reveal">
+        <div>
+          <div class="contact__block">
+            <h3><span lang="ko">제품 및 제휴 문의</span><span lang="en">Business and partnership</span></h3>
+            <p><a href="mailto:support@billionplaygames.com">support@billionplaygames.com</a></p>
+          </div>
+          <div class="contact__block">
+            <h3><span lang="ko">운영 시간</span><span lang="en">Office hours</span></h3>
+            <p>
+              <span lang="ko">평일 10:00 – 18:00 (KST)</span>
+              <span lang="en">Mon – Fri, 10:00 – 18:00 (KST)</span>
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <div class="contact__block">
+            <h3><span lang="ko">주소</span><span lang="en">Address</span></h3>
+            <p>
+              <span lang="ko">주식회사 빌리언플레이<br />부산광역시 해운대구 센텀중앙로 97<br />센텀스카이비즈</span>
+              <span lang="en">BILLIONPLAY CO., LTD.<br />97, Centum jungang-ro, Haeundae-gu<br />Busan, Republic of Korea</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ══════════════════════════════════════════════ FOOTER ══ -->
+<footer class="footer">
+  <div class="shell">
+    <div class="footer__inner">
+      <a class="brand" href="#top" aria-label="Billion Play">
+        <span class="brand__mark" aria-hidden="true">B</span>
+        <span>Billion<em>Play</em></span>
+      </a>
+      <nav class="footer__links" aria-label="Footer">
+        <a href="./privacy.html"><span lang="ko">개인정보처리방침</span><span lang="en">Privacy Policy</span></a>
+        <a href="./terms.html"><span lang="ko">이용약관</span><span lang="en">Terms of Service</span></a>
+        <a href="./account-deletion.html"><span lang="ko">계정 삭제 요청</span><span lang="en">Account Deletion</span></a>
+        <a href="mailto:support@billionplaygames.com">Email</a>
+      </nav>
+    </div>
+
+    <div class="footer-legal">
+      <p lang="ko">
+        주식회사 BILLIONPLAY CO., LTD. | 대표이사: 고무진 | 사업자등록번호: 216-81-20560<br />
+        부산광역시 해운대구 센텀중앙로 97 (재송동, 센텀스카이비즈)<br />
+        © <span data-year>2026</span> Billion Play Inc. All rights reserved.
+      </p>
+      <p lang="en">
+        BILLIONPLAY CO., LTD. | CEO: Ko Mu-jin | Business Registration No. 216-81-20560<br />
+        97, Centum jungang-ro, Haeundae-gu, Busan, Republic of Korea<br />
+        © <span data-year>2026</span> Billion Play Inc. All rights reserved.
+      </p>
+    </div>
   </div>
+</footer>
 
-  <script>
-    (function () {
-      var root = document.documentElement;
-      var buttons = document.querySelectorAll('.lang-btn');
-
-      function setLang(lang) {
-        root.setAttribute('data-lang', lang);
-        root.setAttribute('lang', lang);
-        buttons.forEach(function (b) {
-          b.setAttribute('aria-pressed', String(b.dataset.setLang === lang));
-        });
-        try { localStorage.setItem('bp-lang', lang); } catch (e) {}
-      }
-
-      var saved = null;
-      try { saved = localStorage.getItem('bp-lang'); } catch (e) {}
-      if (!saved) {
-        saved = (navigator.language || 'ko').toLowerCase().indexOf('ko') === 0 ? 'ko' : 'en';
-      }
-      setLang(saved);
-
-      buttons.forEach(function (b) {
-        b.addEventListener('click', function () { setLang(b.dataset.setLang); });
-      });
-
-    })();
-  </script>
-
+<script src="./assets/js/main.js" defer></script>
 </body>
 </html>
